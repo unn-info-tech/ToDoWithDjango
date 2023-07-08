@@ -1,8 +1,15 @@
 from django.urls import path
-from . import views
+from .views import (
+    create,
+    read,
+    update,
+    delete
+
+)
 
 urlpatterns=[
-    path("", views.check, name="check"),
-    path(),
-    path(),
+    path("/", create),
+    path("list/", read),
+    path("mark/", update),
+    path("delete/", delete)
 ]

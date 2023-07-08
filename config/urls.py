@@ -16,8 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls import include
+from to_do_list.views import read
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("list/", include("to_do_list.urls")),
     
 ]
