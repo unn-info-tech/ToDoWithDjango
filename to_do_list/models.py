@@ -17,3 +17,5 @@ class Vazifalar(models.Model):
 
     def __str__(self):
         return self.sarlavha
+    
+        # changed
