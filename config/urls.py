@@ -21,6 +21,6 @@ from to_do_list.views import read
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("list/", include("to_do_list.urls")),
+    path("", include("to_do_list.urls")),
     
 ]

@@ -1,15 +1,9 @@
 from django.urls import path
-from .views import (
-    create,
-    read,
-    update,
-    delete
-
-)
+from . import views
 
 urlpatterns=[
-    path("/", create),
-    path("list/", read),
-    path("mark/", update),
-    path("delete/", delete)
+    path("creat/", views.create),
+    path("read/", views.read),
+    path("mark/", views.update),
+    path("delete/", views.delete)
 ]

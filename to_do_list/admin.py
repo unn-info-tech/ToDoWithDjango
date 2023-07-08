@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Todo, User
+from .models import Vazifalar, Foydalanuvchi
 
 # Register your models here.
-admin.site.register(User)
-admin.site.register(Todo)
+admin.site.register(Foydalanuvchi)
+admin.site.register(Vazifalar)
 
