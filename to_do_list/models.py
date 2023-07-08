@@ -16,6 +16,4 @@ class Vazifalar(models.Model):
     bajarildi = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.sarlavha
-    
-        # changed
+        return self.title
