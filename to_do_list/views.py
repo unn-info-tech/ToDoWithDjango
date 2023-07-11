@@ -2,17 +2,32 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Vazifalar
 from .forms import TodoPostForm
+from django.views.decorators.csrf import csrf_protect
+from django.shortcuts import redirect
 # CRUD
 
 def create(request):
-    formMe = TodoPostForm(request.POST or None)
-    if formMe.is_valid():
-        print("it's working", formMe.cleaned_data)
-        obj = formMe.save(commit=False)
-        obj.save()
+    if request.method == 'POST':
+        formMe = TodoPostForm(request.POST)
+        if formMe.is_valid():
+            obj = formMe.save(commit=False)
+            obj.save()
+            return redirect('todo_list')
+    else:
         formMe = TodoPostForm()
-    contextMe = {"obj": formMe}
-    return render(request, "to_do_list/forms.html", contextMe)
+    return render(request, 'to_do_list/create.html', {'form': formMe})
+
+
+    """form = ContactForm(request.POST or None)
+    if form.is_valid():
+        print("The name of data===================",form.cleaned_data)
+        form = ContactForm()
+    contact = "Something of mine 'CONTACT'"
+    context = {
+        "title": contact,
+        "form": form
+    }
+    return render(request, "form.html",context)"""
     
 
 def read(request): #list of activities
