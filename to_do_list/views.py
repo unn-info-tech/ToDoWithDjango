@@ -5,8 +5,9 @@ from .forms import TodoPostForm
 # CRUD
 
 def create(request):
-    formMe = TodoPostForm()
+    formMe = TodoPostForm(request.POST or None)
     if formMe.is_valid():
+        print("it's working", formMe.cleaned_data)
         obj = formMe.save(commit=False)
         obj.save()
         formMe = TodoPostForm()
@@ -25,3 +26,7 @@ def update(request):
 def delete(request):
     return HttpResponse("Delete you activity")
     #dkfdjfksdfjalkdf
+
+
+def check(request):
+    return render(request, "to_do_list/base.html")
