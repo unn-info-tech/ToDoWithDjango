@@ -16,3 +16,4 @@ def update(request):
 
 def delete(request):
     return HttpResponse("Delete you activity")
+    #dkfdjfksdfjalkdf
