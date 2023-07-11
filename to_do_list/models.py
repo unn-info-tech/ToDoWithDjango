@@ -4,7 +4,6 @@ class Foydalanuvchi(models.Model):
     ism = models.CharField(max_length=25)
     familya = models.CharField(max_length=25)
     email = models.EmailField()
-    date = models.DateTimeField(default=now)
 
     def __str__(self):
         return f"{self.ism} {self.familya}"
