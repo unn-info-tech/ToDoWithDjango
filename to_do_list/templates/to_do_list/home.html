@@ -6,8 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    {% for i in nomi%}
-    <h1>{{i.sarlavha}}</h1>
-    {% endfor %}
+    <ul>
+        {% for i in nomi%}
+        <li><h1>{{i.sarlavha}}</h1>{{i.tuliq_malumot}}{{i.tugatish_muddati}}</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
