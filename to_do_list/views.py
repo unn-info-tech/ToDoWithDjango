@@ -9,7 +9,7 @@ def create(request):
 def read(request): #list of activities
     model = Vazifalar.objects.all().values()
     context = {"nomi": model}
-    return render(request, "home.html", context)
+    return render(request, "to_do_list/home.html", context)
 
 def update(request):
     return HttpResponse("Mark your activity")
