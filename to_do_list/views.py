@@ -1,33 +1,32 @@
 from django.http import HttpResponse
-from django.shortcuts import render
-from .models import Vazifalar
-from .forms import TodoPostForm
-from django.views.decorators.csrf import csrf_protect
-from django.shortcuts import redirect
+from django.shortcuts import render,redirect
+from .models import Vazifalar, UquvchiModel
+from .forms import VazifaPostForm, UquvchiForm
 # CRUD
 
 def create(request):
     if request.method == 'POST':
-        formMe = TodoPostForm(request.POST)
+        formMe =  UquvchiForm(request.POST)
         if formMe.is_valid():
-            obj = formMe.save(commit=False)
-            obj.save()
-            return redirect('todo_list')
+            formMe.save()
+            # do something with the new Odam instance
+            return redirect("create")
     else:
-        formMe = TodoPostForm()
-    return render(request, 'to_do_list/create.html', {'form': formMe})
+        formMe =  UquvchiForm()
+    return render(request, 'to_do_list/forms.html', {'formMe': formMe})
 
+    """formMe = VazifaPostForm(request.POST or None)
+    if formMe.is_valid():
+        sar = formMe.cleaned_data("vvvvvvv")
+        tul = formMe.cleaned_data("ffffffff")
+        save = Vazifalar(sarlavha=sar, tuliq_malumot=tul)
+        save.save()
+        return redirect("succes")
+    else:
+        return HttpResponse("did'nt worked")
+"""
 
-    """form = ContactForm(request.POST or None)
-    if form.is_valid():
-        print("The name of data===================",form.cleaned_data)
-        form = ContactForm()
-    contact = "Something of mine 'CONTACT'"
-    context = {
-        "title": contact,
-        "form": form
-    }
-    return render(request, "form.html",context)"""
+    
     
 
 def read(request): #list of activities
@@ -43,5 +42,6 @@ def delete(request):
     #dkfdjfksdfjalkdf
 
 
-def check(request):
-    return render(request, "to_do_list/base.html")
+def uquvchiFunction(request):
+    modelMe = UquvchiModel.objects.all().values()
+    return render(request, "to_do_list/uquvchi.html", {"modelMe": modelMe})

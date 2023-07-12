@@ -1,11 +1,15 @@
 from django import forms
-from .models import Foydalanuvchi, Vazifalar
+from .models import Vazifalar, UquvchiModel
 
-class TodoPostForm(forms.Form):
+class VazifaPostForm(forms.Form):
     sarlavhaF = forms.CharField(max_length=200)
     tuliq_malumotF = forms.CharField(widget=forms.Textarea)
     #dfhdfgjhfjfhj
 
+class UquvchiForm(forms.ModelForm):
+    email = forms.CharField(max_length=20)
     class Meta:
-        model = Vazifalar()
-        fields = ['sarlavha', 'tuliq_malumot']
+        model = UquvchiModel
+        fields = "__all__"
+
+    

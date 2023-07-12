@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.timezone import now
+
 class Foydalanuvchi(models.Model):
     ism = models.CharField(max_length=25)
     familya = models.CharField(max_length=25)
@@ -18,3 +19,10 @@ class Vazifalar(models.Model):
 
     def __str__(self):
         return self.sarlavha
+    
+
+class UquvchiModel(models.Model):
+    first_name = models.CharField(verbose_name="Ism", max_length=35)
+    last_name = models.CharField(verbose_name="Familiya", max_length=23)
+
+    
