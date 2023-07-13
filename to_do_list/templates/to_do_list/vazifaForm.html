@@ -1,0 +1,73 @@
+{% extends "to_do_list/base.html" %}
+{% block contentme %}
+
+<form method="post" action=".">{% csrf_token %}
+  {{ formMe.as_p }}
+  <button type="submit">submit</button>
+</form>
+
+{% endblock %}
+
+
+<!--<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>My Form</title>
+  <style>
+    form {
+      width: 50%;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f2f2f2;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    textarea,
+    input[type="datetime-local"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 5px;
+      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+    button[type="submit"] {
+      display: block;
+      margin: 0 auto;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #3e8e41;
+    }
+  </style>
+</head>
+<body>
+  <form method="post" action=".">
+    {% csrf_token %}
+    <label for="{{ formMe.sarlavha.id_for_label }}">Vazifa:</label>
+    {{ formMe.sarlavha }}
+    <label for="{{ formMe.tuliq_malumot.id_for_label }}">Tuliq_malumot:</label>
+    {{ formMe.tuliq_malumot }}
+    <label for="{{ formMe.tugatish_muddati.id_for_label }}">Tugatish_muddati:</label>
+    {{ formMe.tugatish_muddati }}
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>-->

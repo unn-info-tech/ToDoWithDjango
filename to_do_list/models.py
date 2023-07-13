@@ -1,7 +1,9 @@
 from django.db import models
 from django.utils.timezone import now
+from datetime import time
 
-class Foydalanuvchi(models.Model):
+
+class FoydalanuvchiModel(models.Model):
     ism = models.CharField(max_length=25)
     familya = models.CharField(max_length=25)
     email = models.EmailField()
@@ -10,13 +12,13 @@ class Foydalanuvchi(models.Model):
         return f"{self.ism} {self.familya}"
 
     
-class Vazifalar(models.Model):
-    foydalanuvchi = models.ForeignKey(Foydalanuvchi, on_delete=models.CASCADE)
-    sarlavha = models.CharField(max_length=200)
+class VazifaModel(models.Model):
+    foydalanuvchi = models.ForeignKey(FoydalanuvchiModel, on_delete=models.CASCADE, default=1)
+    sarlavha = models.CharField(verbose_name="vazifa", max_length=200)
     tuliq_malumot = models.TextField()
     tugatish_muddati = models.DateTimeField(null=True, blank=True)
     bajarildi = models.BooleanField(default=False)
-
+    
     def __str__(self):
         return self.sarlavha
     
