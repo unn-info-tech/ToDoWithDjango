@@ -44,7 +44,7 @@ def delete(request):
 #===========================================================================================
 def listUquvchi(request):
     modelMe = UquvchiModel.objects.all().values()
-    return render(request, "to_do_list/uquvchi.html", {"modelMe": modelMe})
+    return render(request, "to_do_list/listUquvchi.html", {"modelMe": modelMe})
 
 
 def createUquvchi(request):
