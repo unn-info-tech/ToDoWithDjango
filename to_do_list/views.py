@@ -1,7 +1,19 @@
 from django.http import HttpResponse
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, get_object_or_404
 from .models import VazifaModel, UquvchiModel
 from .forms import VazifaPostForm, UquvchiForm
+
+#=====================================================================================
+def detailVazifa(request, idMe):
+    objMe = get_object_or_404(VazifaModel, id=idMe)
+    if request.user.is_authenticated:
+        return render(request, "to_do_list/detailVazifa.html", {"objMe": objMe})
+    else:
+        return redirect("readVazifa")
+
+
+#=====================================================================================
+
 # CRUD
 
 def createVazifa(request):
@@ -14,20 +26,7 @@ def createVazifa(request):
     else:
         formMe =  VazifaPostForm()
     return render(request, 'to_do_list/vazifaForm.html', {'formMe': formMe})
-
-    """formMe = VazifaPostForm(request.POST or None)
-    if formMe.is_valid():
-        sar = formMe.cleaned_data("vvvvvvv")
-        tul = formMe.cleaned_data("ffffffff")
-        save = Vazifalar(sarlavha=sar, tuliq_malumot=tul)
-        save.save()
-        return redirect("succes")
-    else:
-        return HttpResponse("did'nt worked")
-"""
-
-    
-    
+ 
 
 def readVazifa(request): #list of activities
     modelMe = VazifaModel.objects.all().values()
@@ -36,8 +35,10 @@ def readVazifa(request): #list of activities
 def update(request):
     return HttpResponse("Mark your activity")
 
-def delete(request):
-    return HttpResponse("Delete you activity")
+def delete(request, idMe):
+    objMe = get_object_or_404(VazifaModel, id=idMe)
+    objMe.delete()
+    return redirect("readVazifa")
 
 
 
