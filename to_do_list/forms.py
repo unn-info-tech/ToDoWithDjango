@@ -4,7 +4,7 @@ from .models import VazifaModel, UquvchiModel
 class VazifaPostForm(forms.ModelForm):
     class Meta:
         model = VazifaModel
-        fields = ["sarlavha", "tuliq_malumot", "tugatish_muddati"]
+        fields = ["sarlavha", "tuliq_malumot", "tugatish_muddati", "bajarildi"]
         widgets = {
             'tugatish_muddati': forms.DateTimeInput(format='%Y-%m-%dT%H:%M', attrs={'type': 'datetime-local'}),
         }

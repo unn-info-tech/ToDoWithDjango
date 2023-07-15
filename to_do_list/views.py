@@ -4,13 +4,10 @@ from .models import VazifaModel, UquvchiModel
 from .forms import VazifaPostForm, UquvchiForm
 
 #=====================================================================================
-def detailVazifa(request, idMe):
-    objMe = get_object_or_404(VazifaModel, id=idMe)
-    if request.user.is_authenticated:
-        return render(request, "to_do_list/detailVazifa.html", {"objMe": objMe})
-    else:
-        return redirect("readVazifa")
 
+def readVazifa(request): #list of activities
+    modelMe = VazifaModel.objects.all().values()
+    return render(request, "to_do_list/readVazifa.html", {"modelMe": modelMe})
 
 #=====================================================================================
 
@@ -28,13 +25,25 @@ def createVazifa(request):
     return render(request, 'to_do_list/vazifaForm.html', {'formMe': formMe})
  
 
-def readVazifa(request): #list of activities
-    modelMe = VazifaModel.objects.all().values()
-    return render(request, "to_do_list/readVazifa.html", {"modelMe": modelMe})
+def detailVazifa(request, idMe):
+    objMe = get_object_or_404(VazifaModel, id=idMe)
+    if request.user.is_authenticated:
+        return render(request, "to_do_list/detailVazifa.html", {"objMe": objMe})
+    else:
+        return redirect("readVazifa")
 
-def update(request):
-    return HttpResponse("Mark your activity")
-
+def updateVazifa(request, idMe):
+    objMe = get_object_or_404(VazifaModel, id=idMe)
+    if request.method == 'POST':
+        formMe =  VazifaPostForm(request.POST, instance=objMe)
+        if formMe.is_valid():
+            formMe.save()
+            # do something with the new Odam instance
+            return redirect('detailVazifa', idMe=idMe)
+    else:
+        formMe =  VazifaPostForm(instance=objMe)
+    return render(request, 'to_do_list/vazifaForm.html', {'formMe': formMe})
+ 
 def delete(request, idMe):
     objMe = get_object_or_404(VazifaModel, id=idMe)
     objMe.delete()
