@@ -11,4 +11,7 @@ urlpatterns=[
 
     path("uquvchilar/", views.listUquvchi),
     path("createUquvchi/", views.createUquvchi, name="createUquvchi"),
+
+
+    #==========================================
 ]

@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render,redirect, get_object_or_404
 from .models import VazifaModel, UquvchiModel
 from .forms import VazifaPostForm, UquvchiForm
+from django.contrib.auth.forms import UserCreationForm
 
 #=====================================================================================
 
@@ -9,7 +10,6 @@ def readVazifa(request): #list of activities
     modelMe = VazifaModel.objects.all().values()
     return render(request, "to_do_list/readVazifa.html", {"modelMe": modelMe})
 
-#=====================================================================================
 
 # CRUD
 
@@ -49,9 +49,8 @@ def delete(request, idMe):
     objMe.delete()
     return redirect("readVazifa")
 
-
-
 #===========================================================================================
+
 def listUquvchi(request):
     modelMe = UquvchiModel.objects.all().values()
     return render(request, "to_do_list/listUquvchi.html", {"modelMe": modelMe})
@@ -67,3 +66,17 @@ def createUquvchi(request):
     else:
         formMe =  UquvchiForm()
     return render(request, 'to_do_list/uquvchiForm.html', {'formMe': formMe})
+#==============================================================================
+# User Sign Up, Sign In
+
+def registerFoydalanuvchi(request):
+    if request.method == "POST":
+        formMe = UserCreationForm(request.POST)
+        if formMe.is_valid():
+            formMe.save()
+            redirect("registerFoydalanuvchi")
+    else:
+        formMe = UserCreationForm()
+    return render(request, 'to_do_list/registerFoydalanuvchi.html', {'formMe': formMe})
+    
+

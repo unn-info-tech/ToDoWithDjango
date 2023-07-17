@@ -24,5 +24,9 @@ urlpatterns = [
 
     path("createVazifa/", views.createVazifa, name="createVazifa"),
     path('readVazifa/', include("to_do_list.urls")),
+
+    #================================================
+    path("registerFoydalanuvchi/", views.registerFoydalanuvchi, name="registerFoydalanuvchi"),
+
     
 ]
