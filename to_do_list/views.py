@@ -11,7 +11,7 @@ def readVazifa(request): #list of activities
     return render(request, "to_do_list/readVazifa.html", {"modelMe": modelMe})
 
 
-# CRUD
+# CRU
 
 def createVazifa(request):
     if request.method == 'POST':
