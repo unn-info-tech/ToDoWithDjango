@@ -28,5 +28,7 @@ urlpatterns = [
     #================================================
     path("registerFoydalanuvchi/", views.registerFoydalanuvchi, name="registerFoydalanuvchi"),
 
-    
+    # =================================================
+    path("uquvchilar/", views.listUquvchi),
+    path("createUquvchi/", views.createUquvchi, name="createUquvchi"),
 ]
