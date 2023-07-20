@@ -1,15 +1,4 @@
-{% extends "to_do_list/base.html" %}
-{% block contentme %}
-
-<form method="post" action=".">{% csrf_token %}
-  {{ formMe.as_p }}
-  <button type="submit">submit</button>
-</form>
-
-{% endblock %}
-
-
-<!--<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
@@ -70,4 +59,4 @@
     <button type="submit">Submit</button>
   </form>
 </body>
-</html>-->
+</html>

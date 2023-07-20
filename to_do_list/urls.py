@@ -2,10 +2,12 @@ from django.urls import path
 from . import views
 
 urlpatterns=[
-    path("", views.readVazifa, name="readVazifa"),
-    path("<int:idMe>/", views.detailVazifa, name="detailVazifa"),
-    path("<int:idMe>/update/", views.updateVazifa),
-    path("<int:idMe>/delete/", views.delete),
+    path("createVazifa/", views.createVazifa, name="createVazifa"),
+    
+    path("readVazifa/", views.readVazifa, name="readVazifa"),
+    path("readVazifa/<int:idMe>/", views.detailVazifa, name="detailVazifa"),
+    path("readVazifa/<int:idMe>/update/", views.updateVazifa),
+    path("readVazifa/<int:idMe>/delete/", views.deleteVazifa),
 
     #==========================================
 

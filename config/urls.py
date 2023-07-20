@@ -22,12 +22,11 @@ from to_do_list import views
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path("createVazifa/", views.createVazifa, name="createVazifa"),
-    path('readVazifa/', include("to_do_list.urls")),
+    path('', include("to_do_list.urls")),
 
     #================================================
-    path("registerFoydalanuvchi/", views.registerFoydalanuvchi, name="registerFoydalanuvchi"),
-
+    path('', include("accounts.urls")),
+    
     # =================================================
     path("uquvchilar/", views.listUquvchi),
     path("createUquvchi/", views.createUquvchi, name="createUquvchi"),

@@ -1,5 +1,8 @@
 from django import forms
 from .models import VazifaModel, UquvchiModel
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+
 
 class VazifaPostForm(forms.ModelForm):
     class Meta:
@@ -9,6 +12,15 @@ class VazifaPostForm(forms.ModelForm):
             'tugatish_muddati': forms.DateTimeInput(format='%Y-%m-%dT%H:%M', attrs={'type': 'datetime-local'}),
         }
 
+
+
+
+        
+      
+
+
+
+#=================================================================================
 class UquvchiForm(forms.ModelForm):
     email = forms.CharField(max_length=20)
     class Meta:
