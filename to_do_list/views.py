@@ -1,7 +1,6 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render,redirect, get_object_or_404
 from django.contrib.admin.views.decorators import staff_member_required
-
 from .models import VazifaModel, UquvchiModel
 from .forms import VazifaPostForm, UquvchiForm
 
@@ -77,6 +76,11 @@ def createUquvchi(request):
     return render(request, 'to_do_list/uquvchiForm.html', {'formMe': formMe})
 #==============================================================================
 
-
+def done(request, pk):
+    if request.method == "POST":
+        item = VazifaModel.objects.get(pk=pk)
+        item.bajarildi = True
+        item.save()
+        return HttpResponseRedirect(redirect('readVazifa'))
     
 

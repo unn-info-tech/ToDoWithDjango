@@ -1,15 +1,24 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>list</title>
+    <link rel="stylesheet" href="{% static 'to_do_list/style.css' %}">
 </head>
 <body>
-    <ul>
-        {% for i in modelMe%}
-        <li><h1>{{i.sarlavha}}</h1>{{i.tuliq_malumot}}<br>{{i.tugatish_muddati}}<br>Bajarildi:{{i.bajarildi}}</li>
+        {% for i in modelMe %}
+        <div class="item">
+            <div class="check_input">
+                <form method="post" action="{% url 'done' i.pk %}">
+                    <input type="checkbox" name="check">
+                </form>
+            </div>
+            <div class="todo_item">
+                <h1>{{i.sarlavha}}</h1>{{i.tuliq_malumot}}<br>{{i.tugatish_muddati}}<br>Bajarildi:{{i.bajarildi}}
+            </div>
+        </div>
         {% endfor %}
-    </ul>
 </body>
 </html>
