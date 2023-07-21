@@ -2,6 +2,10 @@ from django.db import models
 from django.utils.timezone import now
 from datetime import time
 
+from django.contrib.auth.models import User
+
+
+
 
 class FoydalanuvchiModel(models.Model):
     ism = models.CharField(max_length=25)
@@ -13,7 +17,7 @@ class FoydalanuvchiModel(models.Model):
 
     
 class VazifaModel(models.Model):
-    foydalanuvchi = models.ForeignKey(FoydalanuvchiModel, on_delete=models.CASCADE, default=1)
+    foydalanuvchi = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     sarlavha = models.CharField(verbose_name="vazifa", max_length=200)
     tuliq_malumot = models.TextField()
     tugatish_muddati = models.DateTimeField(null=True, blank=True)

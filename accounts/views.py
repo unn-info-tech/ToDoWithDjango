@@ -15,13 +15,13 @@ def registerFoydalanuvchi(request):
     if request.method == "POST":
         formMe = sozlangUserCreationForm(request.POST)
         if formMe.is_valid():
-            foydalanuvchi = formMe.save(commit=False)
-            foydalanuvchi.is_staff = True
-            foydalanuvchi.save()
+            # foydalanuvchi = formMe.save(commit=False)
+            # foydalanuvchi.is_staff = True
+            formMe.save()
             redirect("registerFoydalanuvchi")
     else:
         formMe = sozlangUserCreationForm()
-    return render(request, 'accounts/registerFoydalanuvchi.html', {'formMe': formMe})
+    return render(request, 'accounts/loginFoydalanuvchi.html', {'formMe': formMe})
 
 
 def loginFoydalanuvchi(request):
@@ -42,3 +42,4 @@ def loginFoydalanuvchi(request):
 
 def logoutFoydalanuvchi(request):
     logout(request)
+    return redirect('welcomeFoydalanuvchi')

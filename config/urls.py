@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from django.urls import include
 from to_do_list import views
+from config.views import welcomeFoydalanuvchi
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,6 +27,8 @@ urlpatterns = [
 
     #================================================
     path('', include("accounts.urls")),
+
+    path('', welcomeFoydalanuvchi, name='welcomeFoydalanuvchi'),
     
     # =================================================
     path("uquvchilar/", views.listUquvchi),

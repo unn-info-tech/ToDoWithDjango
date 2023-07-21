@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render,redirect, get_object_or_404
-from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib.auth.decorators import login_required
 
 from .models import VazifaModel, UquvchiModel
 from .forms import VazifaPostForm, UquvchiForm
@@ -11,27 +11,29 @@ from .forms import VazifaPostForm, UquvchiForm
 
 
 #=====================================================================================
-
+@login_required
 def readVazifa(request): #list of activities
-    modelMe = VazifaModel.objects.all().values()
+    modelMe = VazifaModel.objects.filter(foydalanuvchi=request.user).values()
     return render(request, "to_do_list/readVazifa.html", {"modelMe": modelMe})
 
 #=================================================================================
 # CRDU
 
-@staff_member_required
+@login_required
 def createVazifa(request):
     if request.method == 'POST':
         formMe =  VazifaPostForm(request.POST)
         if formMe.is_valid():
+            vazifa = formMe.save(commit=False)
+            vazifa.foydalanuvchi = request.user
             formMe.save()
-            # do something with the new Odam instance
+
             return redirect("createVazifa")
     else:
         formMe =  VazifaPostForm()
     return render(request, 'to_do_list/vazifaForm.html', {'formMe': formMe})
  
-@staff_member_required
+@login_required
 def detailVazifa(request, idMe):
     objMe = get_object_or_404(VazifaModel, id=idMe)
     if request.user.is_authenticated:
@@ -39,7 +41,7 @@ def detailVazifa(request, idMe):
     else:
         return redirect("readVazifa")
 
-@staff_member_required
+@login_required
 def updateVazifa(request, idMe):
     objMe = get_object_or_404(VazifaModel, id=idMe)
     if request.method == 'POST':
@@ -52,7 +54,7 @@ def updateVazifa(request, idMe):
         formMe =  VazifaPostForm(instance=objMe)
     return render(request, 'to_do_list/vazifaForm.html', {'formMe': formMe})
 
-@staff_member_required 
+@login_required 
 def deleteVazifa(request, idMe):
     objMe = get_object_or_404(VazifaModel, id=idMe)
     objMe.delete()
