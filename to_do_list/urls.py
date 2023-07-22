@@ -3,7 +3,7 @@ from . import views
 
 urlpatterns=[
     path("createVazifa/", views.createVazifa, name="createVazifa"),
-    path("readVazifa/<int:pk>", views.done, name="done"),
+    path("readVazifa/<int:pk>/done", views.done, name="done"),
     path("readVazifa/", views.readVazifa, name="readVazifa"),
     path("readVazifa/<int:idMe>/", views.detailVazifa, name="detailVazifa"),
     path("readVazifa/<int:idMe>/update/", views.updateVazifa),
