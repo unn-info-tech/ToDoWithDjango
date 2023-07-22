@@ -3,10 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main page</title>
+    <title>Welcome to Our Website</title>
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom Styles -->
+    <style>
+        body {
+            background-color: #81c784; /* Green background color */
+            padding: 20px;
+        }
+        .cool-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .circle {
+            position: absolute;
+            background-color: #fff; /* White circle color */
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+        .circle-green {
+            width: 100px;
+            height: 100px;
+            top: 30%;
+            left: 10%;
+        }
+        .circle-white {
+            width: 80px;
+            height: 80px;
+            top: 40%;
+            right: 15%;
+        }
+        .circle-green-2 {
+            width: 70px;
+            height: 70px;
+            top: 70%;
+            right: 5%;
+        }
+        .circle-white-2 {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            left: 25%;
+        }
+        .welcome-text {
+            text-align: center;
+            color: #fff;
+            font-size: 24px;
+            margin-top: 50px;
+        }
+        .btn-signup {
+            background-color: #4caf50; /* Green button color */
+            border: none;
+        }
+        .btn-signin {
+            background-color: #fff; /* White button color */
+            color: #4caf50; /* Green text color */
+            border: 2px solid #4caf50; /* Green border */
+        }
+    </style>
 </head>
 <body>
-    <button type="submit" formaction="{% url 'loginFoydalanuvchi' %}">Log in</button>
-    <button type="submit" formaction="{% url 'registerFoydalanuvchi'%}">Sign Up</button>
+    <div class="cool-background">
+        <div class="circle circle-green"></div>
+        <div class="circle circle-white"></div>
+        <div class="circle circle-green-2"></div>
+        <div class="circle circle-white-2"></div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="welcome-text">
+                    <h2>To-do websitemizga hush kelibsiz</h2>
+                    <p>Vazifalaringizni tizimlang va produktivlikni oshiring..</p>
+                    <div class="text-center">
+                        <a href="{% url 'registerFoydalanuvchi' %}" class="btn btn-signup btn-lg">Ro'yhatdan o'tish</a>
+                        <a href="{% url 'loginFoydalanuvchi' %}" class="btn btn-signin btn-lg">Kirish</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Add Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

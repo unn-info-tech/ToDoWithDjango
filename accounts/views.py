@@ -21,7 +21,7 @@ def registerFoydalanuvchi(request):
             redirect("registerFoydalanuvchi")
     else:
         formMe = sozlangUserCreationForm()
-    return render(request, 'accounts/loginFoydalanuvchi.html', {'formMe': formMe})
+    return render(request, 'accounts/registerFoydalanuvchi.html', {'formMe': formMe})
 
 
 def loginFoydalanuvchi(request):

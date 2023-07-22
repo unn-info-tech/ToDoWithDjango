@@ -1,12 +1,132 @@
-{% extends "to_do_list/base.html" %}
-{% block contentme %}
-
-<form method="post" action=".">
-    {% csrf_token %}
-    {{ formMe.as_p }}
-    <button type="submit">Submit</button>
-
-</form>
-
-{% endblock %}
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom Styles -->
+    <style>
+        body {
+            background-color: #81c784; /* Green background color */
+            padding: 20px;
+        }
+        .cool-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .circle {
+            position: absolute;
+            background-color: #fff; /* White circle color */
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+        .circle-green {
+            width: 100px;
+            height: 100px;
+            top: 30%;
+            left: 10%;
+        }
+        .circle-white {
+            width: 80px;
+            height: 80px;
+            top: 40%;
+            right: 15%;
+        }
+        .circle-green-2 {
+            width: 70px;
+            height: 70px;
+            top: 70%;
+            right: 5%;
+        }
+        .circle-white-2 {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            left: 25%;
+        }
+        .card {
+            max-width: 400px;
+            margin: 0 auto;
+            border: none;
+            border-radius: 10px;
+            background-color: #fff; /* White card background color */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            background-color: #4caf50; /* Green card header background color */
+            color: #fff;
+            text-align: center;
+            font-weight: bold;
+            border-bottom: none;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .form-control {
+            border-radius: 4px;
+        }
+        .help-text {
+            color: grey;
+        }
+        .error-message {
+            color: red;
+            margin-top: 5px;
+        }
+        .btn-primary {
+            background-color: #4caf50; /* Green button color */
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="cool-background">
+        <div class="circle circle-green"></div>
+        <div class="circle circle-white"></div>
+        <div class="circle circle-green-2"></div>
+        <div class="circle circle-white-2"></div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Kirish Formasi</h2>
+                </div>
+                <div class="card-body">
+                    <form method="post" action=".">
+                        {% csrf_token %}
+                        <!-- Username Field -->
+                        <div class="form-group">
+                            <label for="{{ formMe.username.id_for_label }}">Ism</label>
+                            {{ formMe.username }}
+                            {% if formMe.username.errors %}
+                                <p class="error-message">{{ formMe.username.errors }}</p>
+                            {% endif %}
+                        </div>
+                        <!-- Password Field -->
+                        <div class="form-group">
+                            <label for="{{ formMe.password.id_for_label }}">Parol</label>
+                            {{ formMe.password }}
+                            {% if formMe.password.errors %}
+                                <p class="error-message">{{ formMe.password.errors }}</p>
+                            {% endif %}
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Kirish</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Add Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
