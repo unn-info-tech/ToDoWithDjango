@@ -29,11 +29,11 @@
                 </div>
 
                 <div class="up_delt">
-                    <form action="{% url 'update_task' i.id %}">
+                    <form action="{% url 'updateVazifa' i.id %}">
                         {% csrf_token %}
                         <input type="submit" value="update" class="inpt">
                     </form>
-                    <form action="{% url 'delete_task' i.id%}" method="post">
+                    <form action="{% url 'deleteVazifa' i.id %}" method="post">
                         {% csrf_token %}
                         <input type="submit" value="delete" class="inpt">
                     </form>
@@ -51,11 +51,11 @@
             </div>
 
             <div class="up_del">
-                <form action="{% url 'update_task' i.id %}">
+                <form action="{% url 'updateVazifa' i.id %}">
                     {% csrf_token %}
                     <input type="submit" value="update" class="inp">
                 </form>
-                <form action="{% url 'delete_task' i.id%}" method="post">
+                <form action="{% url 'deleteVazifa' i.id%}" method="post">
                     {% csrf_token %}
                     <input type="submit" value="delete" class="inp">
                 </form>

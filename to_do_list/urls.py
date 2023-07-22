@@ -6,8 +6,8 @@ urlpatterns=[
     path("readVazifa/<int:pk>/done", views.done, name="done"),
     path("readVazifa/", views.readVazifa, name="readVazifa"),
     path("readVazifa/<int:idMe>/", views.detailVazifa, name="detailVazifa"),
-    path("readVazifa/<int:idMe>/update/", views.updateVazifa),
-    path("readVazifa/<int:idMe>/delete/", views.deleteVazifa),
+    path("readVazifa/<int:idMe>/update/", views.updateVazifa, name='updateVazifa'),
+    path("readVazifa/<int:idMe>/delete/", views.deleteVazifa, name='deleteVazifa'),
 
     #==========================================
 
