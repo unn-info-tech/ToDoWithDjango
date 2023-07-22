@@ -4,22 +4,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>list</title>
+    <title>Task list</title>
     <link rel="stylesheet" href="{% static 'to_do_list/style.css' %}">
 </head>
 <body>
+    <a href="{% url 'logoutFoydalanuvchi' %}">Log Out</a>
+    <div class="create">
+        <form action="{% url 'createVazifa'%}" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Create a task">
+        </form>
+    </div>
+
         {% for i in modelMe %}
+        {% if i.bajarildi %}
+            <div class="itemt">
+                <div class="check_inputt">
+                    <form method="post" action="{% url 'done' i.id %}">
+                        <input type="checkbox" name="check" class="checkt">
+                    </form>
+                </div>
+                <div class="todo_itemt">
+                    <h1>{{i.sarlavha}}</h1><p>{{i.tuliq_malumot}}</p> <h4>{{i.tugatish_muddati}}</h4>
+                </div>
+
+                <div class="up_delt">
+                    <form action="{% url 'update_task' i.id %}">
+                        {% csrf_token %}
+                        <input type="submit" value="update" class="inpt">
+                    </form>
+                    <form action="{% url 'delete_task' i.id%}" method="post">
+                        {% csrf_token %}
+                        <input type="submit" value="delete" class="inpt">
+                    </form>
+                </div>
+            </div>
+        {% else %}
         <div class="item">
             <div class="check_input">
-                <form method="post" action="{% url 'done' i.pk %}">
-                    <input type="checkbox" name="check">
+                <form method="post" action="{% url 'done' i.id %}">
+                    <input type="checkbox" name="check" class="check">
                 </form>
             </div>
             <div class="todo_item">
-                <h1>{{i.sarlavha}}</h1>{{i.tuliq_malumot}}<br>{{i.tugatish_muddati}}<br>Bajarildi:{{i.bajarildi}}
+                <h1><a href="{% url 'detailVazifa' i.id%}">{{i.sarlavha}}</a></h1><p>{{i.tuliq_malumot}}</p> <h4>{{i.tugatish_muddati}}</h4>
+            </div>
+
+            <div class="up_del">
+                <form action="{% url 'update_task' i.id %}">
+                    {% csrf_token %}
+                    <input type="submit" value="update" class="inp">
+                </form>
+                <form action="{% url 'delete_task' i.id%}" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="delete" class="inp">
+                </form>
             </div>
         </div>
+        {% endif %}
         {% endfor %}
-    </ul>
+
+
 </body>
 </html>
+
