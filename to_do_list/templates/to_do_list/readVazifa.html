@@ -6,6 +6,7 @@
     <title>Vazifalar Ro'yxati</title>
     <!-- Add Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Custom Styles -->
     <style>
         body {
@@ -80,18 +81,54 @@
         .task-item h1 {
             font-size: 24px;
             margin-bottom: 5px;
+            font-family: 'Courier New', Courier, monospace;
         }
         .task-item p {
             font-size: 16px;
             margin-bottom: 10px;
         }
-        .task-item h4 {
+        .task-item h5 {
             color: #4caf50; /* Green color for due date */
         }
         .completed-task {
             text-decoration: line-through;
             color: #bdbdbd; /* Grey color for completed tasks */
         }
+        .btn-primary {
+            background-color: #4caf50; /* Green button color */
+            border: none;
+        }
+        .edit_del{
+            display: flex;
+            padding-right: 0%;
+            padding-left: auto;
+            justify-content: end;
+            align-items: end;
+            /* border: 1px solid red; */
+        }
+        .btn {
+            background-color: DodgerBlue; /* Blue background */
+            border: none; /* Remove borders */
+            color: white; /* White text */
+            padding: 5px 9px; /* Some padding */
+            font-size: 16px; /* Set a font size */
+            cursor: pointer; /* Mouse pointer on hover */
+            display: block;
+            margin-right: 5px;
+        }
+
+        /* Darker background on mouse-over */
+        .btn:hover {
+            background-color: RoyalBlue;
+        }
+        .del:hover{
+            background-color: #f84343;
+        }
+        .add{
+            border-top: 2px solid rgb(211, 211, 211);
+            padding: 10px;
+        }
+
     </style>
 </head>
 <body>
@@ -111,11 +148,29 @@
                     <div class="task-list">
                         {% for i in modelMe %}
                         <div class="task-item {% if i.bajarildi %}completed-task{% endif %}">
-                            <h1>{{ i.sarlavha }}</h1>
+                            <h1><strong>{{ i.sarlavha }}</strong></h1>
                             <p>{{ i.tuliq_malumot }}</p>
-                            <h4>{{ i.tugatish_muddati }}</h4>
+                            <h5>{{ i.tugatish_muddati }}</h5>
+
+                            <div class="edit_del">
+                                <form action="{% url 'updateVazifa' i.id %}" method ="post">
+                                    {% csrf_token %}
+                                    <button class="btn"><i class="fa fa-edit"></i></button>
+                                </form>
+                                <form action="{% url 'deleteVazifa' i.id %}" method="post">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn del"><i class="fa fa-trash"></i></button>
+                                </form>
+                            </div>
+
                         </div>
                         {% endfor %}
+                    </div>
+                    <div class="add">
+                        <form action="{% url 'createVazifa' %}" method="get">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary btn-block">+</button>
+                        </form>
                     </div>
                 </div>
             </div>

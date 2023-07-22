@@ -29,7 +29,7 @@ def createVazifa(request):
             vazifa.foydalanuvchi = request.user
             formMe.save()
 
-            return redirect("createVazifa")
+            return redirect("readVazifa")
     else:
         formMe =  VazifaPostForm()
     return render(request, 'to_do_list/vazifaForm.html', {'formMe': formMe})
