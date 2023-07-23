@@ -61,6 +61,14 @@ def deleteVazifa(request, idMe):
     objMe.delete()
     return redirect("readVazifa")
 
+#===========================
+
+def doneVazifa(request, idMe):
+    if request.method == "POST":
+        objVazifa = get_object_or_404(VazifaModel, id=idMe)
+        objVazifa.bajarildi = True
+        objVazifa.save()
+        return redirect('readVazifa')
 #===========================================================================================
 
 def listUquvchi(request):
@@ -80,11 +88,6 @@ def createUquvchi(request):
     return render(request, 'to_do_list/uquvchiForm.html', {'formMe': formMe})
 #==============================================================================
 
-def done(request, pk):
-    if request.method == "POST":
-        item = VazifaModel.objects.get(pk=pk)
-        item.bajarildi = True
-        item.save()
-        return HttpResponseRedirect(redirect('readVazifa'))
+
     
 

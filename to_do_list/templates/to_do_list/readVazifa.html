@@ -107,7 +107,7 @@
             /* border: 1px solid red; */
         }
         .btn {
-            background-color: DodgerBlue; /* Blue background */
+            background-color: #4caf50; /* Blue background */
             border: none; /* Remove borders */
             color: white; /* White text */
             padding: 5px 9px; /* Some padding */
@@ -119,13 +119,13 @@
 
         /* Darker background on mouse-over */
         .btn:hover {
-            background-color: RoyalBlue;
+            background-color: #87a988;
         }
         .del:hover{
-            background-color: #f84343;
+            background-color: #f18181;
         }
         .add{
-            border-top: 2px solid rgb(211, 211, 211);
+            border-top: 2px solid rgb(211, 211, 211);  
             padding: 10px;
         }
 
@@ -147,13 +147,18 @@
                 <div class="card-body">
                     <div class="task-list">
                         {% for i in modelMe %}
+                        <div class="check">
+                            <form action="{% url 'doneVazifa' i.id %}" method="post">
+                                <input type="checkbox" name="check">
+                            </form>
+                        </div> 
                         <div class="task-item {% if i.bajarildi %}completed-task{% endif %}">
                             <h1><strong>{{ i.sarlavha }}</strong></h1>
                             <p>{{ i.tuliq_malumot }}</p>
-                            <h5>{{ i.tugatish_muddati }}</h5>
+                            <h4>{{ i.tugatish_muddati }}</h4>
 
                             <div class="edit_del">
-                                <form action="{% url 'updateVazifa' i.id %}" method ="post">
+                                <form action="{% url 'updateVazifa' i.id %}">
                                     {% csrf_token %}
                                     <button class="btn"><i class="fa fa-edit"></i></button>
                                 </form>
@@ -162,9 +167,10 @@
                                     <button type="submit" class="btn del"><i class="fa fa-trash"></i></button>
                                 </form>
                             </div>
-
                         </div>
                         {% endfor %}
+                        
+
                     </div>
                     <div class="add">
                         <form action="{% url 'createVazifa' %}" method="get">
