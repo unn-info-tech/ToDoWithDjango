@@ -4,16 +4,16 @@ from datetime import time
 
 from django.contrib.auth.models import User
 
+class DateBajarildiModel(models.Model):
+    date = models.DateField()
 
-
-
-class FoydalanuvchiModel(models.Model):
-    ism = models.CharField(max_length=25)
-    familya = models.CharField(max_length=25)
-    email = models.EmailField()
+class BajarildiModel(models.Model):
+    sarlavha = models.CharField(verbose_name="vazifa", max_length=200)
+    tuliq_malumot = models.TextField()
+    tugatilgan_muddat = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
-        return f"{self.ism} {self.familya}"
+        return self.sarlavha
 
     
 class VazifaModel(models.Model):

@@ -148,7 +148,7 @@
                     <div class="task-list">
                         {% for i in modelMe %}
                         <div class="check">
-                            <form action="{% url 'doneVazifa' i.id %}" method="post">
+                            <form action="{% url 'bajarildiVazifa' i.id %}" method="post">
                                 <input type="checkbox" name="check">
                             </form>
                         </div> 

@@ -114,7 +114,7 @@
             <!-- Create To-Do Form -->
             <div class="card">
                 <div class="card-header">
-                    <h2>Vazifa ........</h2>
+                    <h2>Vazifa Yaratish</h2>
                 </div>
                 <div class="card-body">
                     <form method="post" action="{% url 'createVazifa' %}">
@@ -143,15 +143,7 @@
                                 <p class="error-message">{{ formMe.tugatish_muddati.errors }}</p>
                             {% endif %}
                         </div>
-
-                        <div class="form-group">
-                            <label for="{{ formMe.bajarildi.id_for_label }}">Bajarildi</label>
-                            {{ formMe.bajarildi }}
-                            {% if formMe.bajarildi.errors %}
-                                <p class="error-message">{{ formMe.bajarildi.errors }}</p>
-                            {% endif %}
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block">Vazifani ........</button>
+                        <button type="submit" class="btn btn-primary btn-block">Vazifani yaratish</button>
                     </form>
                 </div>
             </div>

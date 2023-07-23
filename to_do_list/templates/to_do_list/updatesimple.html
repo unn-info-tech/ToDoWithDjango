@@ -1,0 +1,10 @@
+{% extends "to_do_list/base.html" %}
+{% block contentme %}
+
+<form method="post"  action=".">
+    {% csrf_token %}
+    {{ formMe.as_p}}
+    <button type="submit">Submit</button>
+</form>
+
+{% endblock %}

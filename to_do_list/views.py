@@ -1,9 +1,10 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render,redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.utils import timezone
 
 from django.contrib.admin.views.decorators import staff_member_required
-from .models import VazifaModel, UquvchiModel
+from .models import VazifaModel, UquvchiModel, BajarildiModel
 from .forms import VazifaPostForm, UquvchiForm
 
 
@@ -32,7 +33,7 @@ def createVazifa(request):
             return redirect("readVazifa")
     else:
         formMe =  VazifaPostForm()
-    return render(request, 'to_do_list/vazifaForm.html', {'formMe': formMe})
+    return render(request, 'to_do_list/createVazifa.html', {'formMe': formMe})
  
 @login_required
 def detailVazifa(request, idMe):
@@ -44,16 +45,19 @@ def detailVazifa(request, idMe):
 
 @login_required
 def updateVazifa(request, idMe):
-    objMe = get_object_or_404(VazifaModel, id=idMe)
+    objVazifa = get_object_or_404(VazifaModel, id=idMe)
     if request.method == 'POST':
-        formMe =  VazifaPostForm(request.POST, instance=objMe)
+        formMe =  VazifaPostForm(request.POST, instance=objVazifa)
         if formMe.is_valid():
             formMe.save()
-            # do something with the new Odam instance
-            return redirect('detailVazifa', idMe=idMe)
+            if objVazifa.bajarildi:
+                bajarildiVazifa(request, objVazifa)
+            return redirect('readVazifa')
+                
+            
     else:
-        formMe =  VazifaPostForm(instance=objMe)
-    return render(request, 'to_do_list/vazifaForm.html', {'formMe': formMe})
+        formMe =  VazifaPostForm(instance=objVazifa)
+    return render(request, 'to_do_list/updatesimple.html', {'formMe': formMe})
 
 @login_required 
 def deleteVazifa(request, idMe):
@@ -63,12 +67,15 @@ def deleteVazifa(request, idMe):
 
 #===========================
 
-def doneVazifa(request, idMe):
-    if request.method == "POST":
-        objVazifa = get_object_or_404(VazifaModel, id=idMe)
-        objVazifa.bajarildi = True
-        objVazifa.save()
-        return redirect('readVazifa')
+def bajarildiVazifa(request, objVazifa):
+    BajarildiModel.objects.create(
+        sarlavha = objVazifa.sarlavha,
+        tuliq_malumot = objVazifa.tuliq_malumot,
+        tugatilgan_muddat = timezone.now(),
+    )
+    
+    objVazifa.delete()
+    
 #===========================================================================================
 
 def listUquvchi(request):
