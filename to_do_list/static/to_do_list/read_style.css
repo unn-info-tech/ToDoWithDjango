@@ -160,9 +160,17 @@ input[type="checkbox"]:checked{
     padding: 10px;
 }
 
+.navbar{
+    overflow: hidden;
+    top:-20px;
+    background-color: #ffffff8e;
+}
 
+.nav-item{
+    margin-left:15px;
+}
 
-body {
+/* body {
     font-family: Arial, Helvetica, sans-serif;
   }
   
@@ -224,4 +232,4 @@ body {
   
   .dropdown:hover .dropdown-content {
     display: block;
-  }
+  } */
