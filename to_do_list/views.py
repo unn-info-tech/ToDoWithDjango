@@ -50,9 +50,7 @@ def updateVazifa(request, idMe):
         formMe =  VazifaPostForm(request.POST, instance=objVazifa)
         if formMe.is_valid():
             formMe.save()
-            if objVazifa.bajarildi:
-                bajarildiVazifa(request, objVazifa)
-            return redirect('readVazifa')
+            return redirect('detailVazifa', idMe=idMe)
                 
             
     else:
@@ -67,14 +65,11 @@ def deleteVazifa(request, idMe):
 
 #===========================
 
-def bajarildiVazifa(request, objVazifa):
-    BajarildiModel.objects.create(
-        sarlavha = objVazifa.sarlavha,
-        tuliq_malumot = objVazifa.tuliq_malumot,
-        tugatilgan_muddat = timezone.now(),
-    )
-    
-    objVazifa.delete()
+def bajarildiVazifa(request, idMe):
+    objVazifa = get_object_or_404(VazifaModel, id=idMe)
+    objVazifa.bajarildi = True
+    objVazifa.save()
+    return redirect('readVazifa')
     
 #===========================================================================================
 
@@ -98,7 +93,7 @@ def createUquvchi(request):
 
     
 
-def bajarildiVazifa(request, pk):
+def bajarildiVazifah(request, pk):
     if request.method == "POST":
         item = VazifaModel.objects.get(pk=pk)
         item.bajarildi = True
