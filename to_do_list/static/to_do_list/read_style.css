@@ -163,6 +163,8 @@ input[type="checkbox"]:checked{
 .navbar{
     overflow: hidden;
     top:-20px;
+    left: -20px;
+    margin-right: -40px;
     background-color: #ffffff8e;
 }
 
