@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vazifalar Ro'yxati</title>
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'to_do_list/read_style.css' %}">
+    
+    
+</head>
+<body>
+
+    <div class="cool-background">
+        <div class="circle circle-green"></div>
+        <div class="circle circle-white"></div>
+        <div class="circle circle-green-2"></div>
+        <div class="circle circle-white-2"></div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Bajarilgan Vazifalar</h2>
+                </div>
+                <div class="card-body">
+                    <div class="task-list">
+                        {% for i in modelMe %}
+
+                        
+                        <div class="item">
+
+                            <div class="chec">
+                                <i class="fa fa-check-circle"></i>
+                            </div>
+
+                            <div class="task-item">
+                                <h1><strong>{{ i.sarlavha }}</strong></h1>
+                                <p>{{ i.tuliq_malumot }}</p>
+                                <h5>Bajarilgan_vaqt{{ i.bajarilgan_vaqt }}</h5>
+                            </div>
+                        </div>
+
+                        {% endfor %}
+                    </div>
+                    <div class="add">
+                        <form action="{% url 'createVazifa' %}" method="get">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary btn-block">+</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Add Bootstrap JS and jQuery -->
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+</body> 
+</html>
+
+

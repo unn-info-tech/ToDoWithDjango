@@ -3,6 +3,7 @@ from django.shortcuts import render,redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 
+
 from django.contrib.admin.views.decorators import staff_member_required
 from .models import VazifaModel, UquvchiModel, BajarildiModel
 from .forms import VazifaPostForm, UquvchiForm
@@ -68,8 +69,13 @@ def deleteVazifa(request, idMe):
 def bajarildiVazifa(request, idMe):
     objVazifa = get_object_or_404(VazifaModel, id=idMe)
     objVazifa.bajarildi = True
+    objVazifa.bajarilgan_vaqt = timezone.localtime()
     objVazifa.save()
     return redirect('readVazifa')
+
+def bajarilganVazifalar(request):
+    bajarilgan = VazifaModel.objects.filter(foydalanuvchi=request.user, bajarildi=True).values()
+    return render(request, "to_do_list/bajarilganVazifalar.html", {"modelMe": bajarilgan})
     
 #===========================================================================================
 

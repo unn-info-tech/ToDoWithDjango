@@ -21,6 +21,7 @@ class VazifaModel(models.Model):
     sarlavha = models.CharField(verbose_name="vazifa", max_length=200)
     tuliq_malumot = models.TextField()
     tugatish_muddati = models.DateTimeField(null=True, blank=True)
+    bajarilgan_vaqt = models.DateTimeField(null=True, blank=True)
     bajarildi = models.BooleanField(default=False)
     
     def __str__(self):

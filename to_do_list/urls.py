@@ -8,6 +8,8 @@ urlpatterns=[
     path("readVazifa/<int:idMe>/", views.detailVazifa, name="detailVazifa"),
     path("readVazifa/<int:idMe>/update/", views.updateVazifa, name='updateVazifa'),
     path("readVazifa/<int:idMe>/delete/", views.deleteVazifa, name='deleteVazifa'),
+    path("bajarilganVazifalar/", views.bajarilganVazifalar, name='bajarilganVazifalar'),
+
 
     #==========================================
 
