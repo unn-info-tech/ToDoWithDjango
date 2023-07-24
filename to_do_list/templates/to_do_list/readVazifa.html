@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="uz">
 <head>
@@ -7,8 +8,10 @@
     <!-- Add Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'to_do_list/read_style.css' %}">
     <!-- Custom Styles -->
-    <style>
+    <!-- <style>
         body {
             background-color: #81c784; /* Green background color */
             padding: 20px;
@@ -129,9 +132,15 @@
             padding: 10px;
         }
 
-    </style>
+        .chec{
+            display: flex;
+            margin-top: 5%;
+        }
+
+    </style> -->
 </head>
 <body>
+
     <div class="cool-background">
         <div class="circle circle-green"></div>
         <div class="circle circle-white"></div>
@@ -147,30 +156,34 @@
                 <div class="card-body">
                     <div class="task-list">
                         {% for i in modelMe %}
-                        <div class="check">
-                            <form action="{% url 'bajarildiVazifa' i.id %}" method="post">
-                                <input type="checkbox" name="check">
-                            </form>
-                        </div> 
-                        <div class="task-item {% if i.bajarildi %}completed-task{% endif %}">
-                            <h1><strong>{{ i.sarlavha }}</strong></h1>
-                            <p>{{ i.tuliq_malumot }}</p>
-                            <h4>{{ i.tugatish_muddati }}</h4>
+                        <div class="item">
 
-                            <div class="edit_del">
-                                <form action="{% url 'updateVazifa' i.id %}">
+                            <div class="chec">
+                                <form action="{% url 'bajarildiVazifa' i.id %}" method="post">
                                     {% csrf_token %}
-                                    <button class="btn"><i class="fa fa-edit"></i></button>
-                                </form>
-                                <form action="{% url 'deleteVazifa' i.id %}" method="post">
-                                    {% csrf_token %}
-                                    <button type="submit" class="btn del"><i class="fa fa-trash"></i></button>
+                                    <input type="checkbox" name="check" onchange="this.form.submit()">
                                 </form>
                             </div>
-                        </div>
-                        {% endfor %}
-                        
 
+                            <div class="task-item {% if i.bajarildi %}completed-task{% endif %}">
+                                <h1><strong>{{ i.sarlavha }}</strong></h1>
+                                <p>{{ i.tuliq_malumot }}</p>
+                                <h5>{{ i.tugatish_muddati }}</h5>
+    
+                                <div class="edit_del">
+                                    <form action="{% url 'updateVazifa' i.id %}" method ="post">
+                                        {% csrf_token %}
+                                        <button class="btn"><i class="fa fa-edit"></i></button>
+                                    </form>
+                                    <form action="{% url 'deleteVazifa' i.id %}" method="post">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn del"><i class="fa fa-trash"></i></button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        {% endfor %}
                     </div>
                     <div class="add">
                         <form action="{% url 'createVazifa' %}" method="get">
@@ -183,10 +196,8 @@
         </div>
     </div>
     <!-- Add Bootstrap JS and jQuery -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    
-</body>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+</body> 
 </html>

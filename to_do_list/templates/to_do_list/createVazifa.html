@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="uz">
 <head>
@@ -6,8 +7,9 @@
     <title>Vazifa Yaratish</title>
     <!-- Add Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'to_do_list/read_style.css' %}">
     <!-- Custom Styles -->
-    <style>
+    <!-- <style>
         body {
             background-color: #81c784; /* Green background color */
             padding: 20px;
@@ -100,7 +102,7 @@
             outline: none;
             border-color: #81c784; /* Light green border color on focus */
         }
-    </style>
+    </style> -->
 </head>
 <body>
     <div class="cool-background">

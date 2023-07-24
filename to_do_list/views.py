@@ -98,3 +98,9 @@ def createUquvchi(request):
 
     
 
+def bajarildiVazifa(request, pk):
+    if request.method == "POST":
+        item = VazifaModel.objects.get(pk=pk)
+        item.bajarildi = True
+        item.save()
+    return HttpResponseRedirect(redirect('readVazifa'))
