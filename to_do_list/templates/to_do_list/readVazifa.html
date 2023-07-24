@@ -156,32 +156,35 @@
                 <div class="card-body">
                     <div class="task-list">
                         {% for i in modelMe %}
-                        <div class="item">
 
-                            <div class="chec">
-                                <form action="{% url 'bajarildiVazifa' i.id %}" method="post">
-                                    {% csrf_token %}
-                                    <input type="checkbox" name="check" onchange="this.form.submit()">
-                                </form>
-                            </div>
+                        {% if not i.bajarildi%}
+                            <div class="item">
 
-                            <div class="task-item {% if i.bajarildi %}completed-task{% endif %}">
-                                <h1><strong>{{ i.sarlavha }}</strong></h1>
-                                <p>{{ i.tuliq_malumot }}</p>
-                                <h5>{{ i.tugatish_muddati }}</h5>
-    
-                                <div class="edit_del">
-                                    <form action="{% url 'updateVazifa' i.id %}">
+                                <div class="chec">
+                                    <form action="{% url 'bajarildiVazifa' i.id %}" method="post">
                                         {% csrf_token %}
-                                        <button class="btn"><i class="fa fa-edit"></i></button>
-                                    </form>
-                                    <form action="{% url 'deleteVazifa' i.id %}" method="post">
-                                        {% csrf_token %}
-                                        <button type="submit" class="btn del"><i class="fa fa-trash"></i></button>
+                                        <input type="checkbox" name="check" onchange="this.form.submit()">
                                     </form>
                                 </div>
+
+                                <div class="task-item {% if i.bajarildi %}completed-task{% endif %}">
+                                    <h1><strong>{{ i.sarlavha }}</strong></h1>
+                                    <p>{{ i.tuliq_malumot }}</p>
+                                    <h5>{{ i.tugatish_muddati }}</h5>
+        
+                                    <div class="edit_del">
+                                        <form action="{% url 'updateVazifa' i.id %}">
+                                            {% csrf_token %}
+                                            <button class="btn"><i class="fa fa-edit"></i></button>
+                                        </form>
+                                        <form action="{% url 'deleteVazifa' i.id %}" method="post">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn del"><i class="fa fa-trash"></i></button>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        {% endif %}
 
                         {% endfor %}
                     </div>
