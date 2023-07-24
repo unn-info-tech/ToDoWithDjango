@@ -9,10 +9,52 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     {% load static %}
     <link rel="stylesheet" href="{% static 'to_do_list/read_style.css' %}">
+    <!-- Custom Styles -->
+    <style>
+        .done_undone {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end; /* Align items to the bottom of the container */
+            margin-top: 10px; /* Adjust the margin as needed */
+        }
+        
+        .done_undone a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            transition: background-color 0.3s; /* Add a transition effect for smoother hover */
+        }
+        
+        .done_undone a:first-child {
+            background-color: #4caf50; /* Green background for "Done" link */
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+        
+        .done_undone a:last-child {
+            background-color: #fff; /* White background for "Undone" link */
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+        
+        .done_undone a:hover {
+            background-color: #87a988; /* Darker background when hovering */
+        }
+        
+        .done_undone a.active {
+            background-color: #87a988; /* Active link style if needed */
+        }
+    </style>
     
     
 </head>
 <body>
+
+    <div class="done_undone">
+        <a href="{% url 'unBajarilganVazifalar' %}">Undone</a>
+        <a href="{% url 'bajarilganVazifalar' %}">Done</a>
+    </div>
 
     <div class="cool-background">
         <div class="circle circle-green"></div>
@@ -45,12 +87,6 @@
                         </div>
 
                         {% endfor %}
-                    </div>
-                    <div class="add">
-                        <form action="{% url 'createVazifa' %}" method="get">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-primary btn-block">+</button>
-                        </form>
                     </div>
                 </div>
             </div>

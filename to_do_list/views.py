@@ -2,6 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render,redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
+import pytz
 
 
 from django.contrib.admin.views.decorators import staff_member_required
@@ -69,7 +70,7 @@ def deleteVazifa(request, idMe):
 def bajarildiVazifa(request, idMe):
     objVazifa = get_object_or_404(VazifaModel, id=idMe)
     objVazifa.bajarildi = True
-    objVazifa.bajarilgan_vaqt = timezone.localtime()
+    objVazifa.bajarilgan_vaqt = timezone.now()
     objVazifa.save()
     return redirect('readVazifa')
 
@@ -77,6 +78,11 @@ def bajarilganVazifalar(request):
     bajarilgan = VazifaModel.objects.filter(foydalanuvchi=request.user, bajarildi=True).values()
     return render(request, "to_do_list/bajarilganVazifalar.html", {"modelMe": bajarilgan})
     
+
+def unBajarilganVazifalar(request):
+    unBajarilgan = VazifaModel.objects.filter(foydalanuvchi=request.user, bajarildi=False).values()
+    return render(request, "to_do_list/bajarilganVazifalar.html", {"modelMe": unBajarilgan})
+
 #===========================================================================================
 
 def listUquvchi(request):

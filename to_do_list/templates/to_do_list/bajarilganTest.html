@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task List</title>
+</head>
+<body>
+    <div>
+        <a href="{% url 'unBajarilganVazifalar' %}">Undone</a>
+        <a href="{% url 'bajarilganVazifalar' %}">Done</a>
+    </div>
+
+    <ul>
+        {% for vazifa in modelMe %}
+        <li>
+            <strong>{{ vazifa.sarlavha }}</strong>
+            <p>{{ task.tuliq_malumot }}</p>
+            <p>{{ task.tugatish_muddat }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
