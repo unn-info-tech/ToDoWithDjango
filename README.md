@@ -16,7 +16,7 @@ Before running the project, make sure you have the following installed:
 ### Installation
 
 ## 1. Clone the repository to your local machine:
-git clone <repository-url>
+**git clone <repository-url>**
 
 ## 2. Navigate to the project directory:
 **cd task_management_system**
@@ -25,13 +25,13 @@ git clone <repository-url>
 **pip install -r requirements.txt**
 
 ## 4. Run the migrations:
-python manage.py migrate
+**python manage.py migrate**
 
 ## 5. Create a superuser to access the Django admin panel:
-python manage.py createsuperuser
+**python manage.py createsuperuser**
 
 ## 6. Start the development server:
-python manage.py runserver
+**python manage.py runserver**
 
 ##  7. Open your web browser and go to http://localhost:8000/ to access the Task Management System.
 
