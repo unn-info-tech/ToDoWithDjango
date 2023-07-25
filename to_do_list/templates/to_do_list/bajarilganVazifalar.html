@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="{% static 'to_do_list/read_style.css' %}">
     <!-- Custom Styles -->
     <style>
+        /* *{
+            border: 1px solid red;
+        } */
         .done_undone {
             display: flex;
             justify-content: center;
@@ -33,7 +36,7 @@
         }
         
         .done_undone a:last-child {
-            background-color: #fff; /* White background for "Undone" link */
+            background-color: #4caf50; /* White background for "Undone" link */
             border-top-right-radius: 5px;
             border-bottom-right-radius: 5px;
         }
@@ -41,15 +44,31 @@
         .done_undone a:hover {
             background-color: #87a988; /* Darker background when hovering */
         }
-        
-        .done_undone a.active {
-            background-color: #87a988; /* Active link style if needed */
-        }
     </style>
     
     
 </head>
 <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <span class="logo-icon"><i class="fa fa-check-circle"></i></span>
+                To-do App
+            </a>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fa fa-list-ul"></i> To-do</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/bajarilganVazifalar/"><i class="fa fa-tasks"></i> Progress</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fa fa-user"></i> Profile</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
     <div class="done_undone">
         <a href="{% url 'unBajarilganVazifalar' %}">Undone</a>
