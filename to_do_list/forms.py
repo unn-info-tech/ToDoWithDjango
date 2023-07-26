@@ -14,8 +14,9 @@ class CoolDateTimeWidget(forms.DateTimeInput):
 class VazifaPostForm(forms.ModelForm):
     class Meta:
         model = VazifaModel
-        fields = ["sarlavha", "tuliq_malumot", "tugatish_muddati", "bajarildi"]
+        fields = ["sarlavha", "tuliq_malumot", "tugatish_muddati", 'boshlanish_vaqti', 'bajarildi']
         widgets = {
+            'boshlanish_vaqti': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
             'tugatish_muddati': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
         }
 

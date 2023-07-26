@@ -137,6 +137,14 @@
                                 <p class="error-message">{{ formMe.tuliq_malumot.errors }}</p>
                             {% endif %}
                         </div>
+                        <!-- Start Field -->
+                        <div class="form-group">
+                            <label for="{{ formMe.boshlanish_vaqti.id_for_label }}">Boshlanish Vaqti</label>
+                            {{ formMe.boshlanish_vaqti }}
+                            {% if formMe.boshlanish_vaqti.errors %}
+                                <p class="error-message">{{ formMe.boshlanish_vaqti.errors }}</p>
+                            {% endif %}
+                        </div>
                         <!-- Deadline Field -->
                         <div class="form-group">
                             <label for="{{ formMe.tugatish_muddati.id_for_label }}">Tugatish muddati</label>

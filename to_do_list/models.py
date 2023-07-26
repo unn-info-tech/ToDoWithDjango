@@ -7,21 +7,18 @@ from django.contrib.auth.models import User
 class DateBajarildiModel(models.Model):
     date = models.DateField()
 
-class BajarildiModel(models.Model):
-    sarlavha = models.CharField(verbose_name="vazifa", max_length=200)
-    tuliq_malumot = models.TextField()
-    tugatilgan_muddat = models.DateTimeField(null=True, blank=True)
-
     def __str__(self):
-        return self.sarlavha
-
+        return self.date.strftime("%Y-%m-%d")
     
 class VazifaModel(models.Model):
     foydalanuvchi = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     sarlavha = models.CharField(verbose_name="vazifa", max_length=200)
     tuliq_malumot = models.TextField()
+    boshlanish_vaqti = models.DateTimeField(null=True, blank=True)
     tugatish_muddati = models.DateTimeField(null=True, blank=True)
-    bajarilgan_vaqt = models.DateTimeField(null=True, blank=True)
+    boshlangan_vaqt = models.TimeField(null=True, blank=True)
+    bajarilgan_vaqt = models.TimeField(null=True, blank=True)
+    bajarilgan_date = models.ForeignKey(DateBajarildiModel, on_delete=models.CASCADE, null=True, blank=True)
     bajarildi = models.BooleanField(default=False)
     
     def __str__(self):

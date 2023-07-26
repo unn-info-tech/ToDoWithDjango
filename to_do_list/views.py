@@ -3,10 +3,13 @@ from django.shortcuts import render,redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 import pytz
+from datetime import date
+
+
 
 
 from django.contrib.admin.views.decorators import staff_member_required
-from .models import VazifaModel, UquvchiModel, BajarildiModel
+from .models import VazifaModel, UquvchiModel, DateBajarildiModel
 from .forms import VazifaPostForm, UquvchiForm
 
 
@@ -66,22 +69,51 @@ def deleteVazifa(request, idMe):
     return redirect("readVazifa")
 
 #===========================
+# History and Filter History
+
+def historyVazifa(request):
+    modelMe = DateBajarildiModel.objects.all().values() # historyVazifalar
+    return render(request, "to_do_list/historyVazifa.html", {"modelMe": modelMe})
+
+
+def filteredHistoryVazifalar(request, idMe):
+    suralgan_date = get_object_or_404(DateBajarildiModel, id=idMe)
+    print(suralgan_date)
+
+    done_vazifalar = VazifaModel.objects.filter(bajarilgan_date=suralgan_date, bajarildi=True, foydalanuvchi=request.user).values()
+    undone_vazifalar = VazifaModel.objects.filter(bajarilgan_date=suralgan_date, bajarildi=False, foydalanuvchi=request.user).values()
+
+    return render(request, "to_do_list/testFilter.html", {"done_vazifalar": done_vazifalar, "undone_vazifalar": undone_vazifalar})
+
+
+    
+
+
+#==========================================================
+# Done and Undone
+
+def bajarilganVazifalar(request, idMe):
+    suralgan_date = get_object_or_404(DateBajarildiModel, id=idMe)
+    bajarilgan = VazifaModel.objects.filter(bajarilgan_date=suralgan_date, foydalanuvchi=request.user, bajarildi=True).values()
+    return render(request, "to_do_list/filteredHistoryVazifalar.html", {"modelMe": bajarilgan, 'idMe': idMe})
+    
+
+def unBajarilganVazifalar(request, idMe):
+    suralgan_date = get_object_or_404(DateBajarildiModel, id=idMe)
+    unBajarilgan = VazifaModel.objects.filter(bajarilgan_date=suralgan_date, foydalanuvchi=request.user, bajarildi=False).values()
+    return render(request, "to_do_list/filteredHistoryVazifalar.html", {"modelMe": unBajarilgan, 'idMe': idMe})
+
+# =============================
+# Mark the Vazifa done
 
 def bajarildiVazifa(request, idMe):
     objVazifa = get_object_or_404(VazifaModel, id=idMe)
     objVazifa.bajarildi = True
-    objVazifa.bajarilgan_vaqt = timezone.now()
+    objVazifa.bajarilgan_vaqt = timezone.localtime().time()
+    objVazifa.bajarilgan_date, created = DateBajarildiModel.objects.get_or_create(date=date.today())
     objVazifa.save()
-    return redirect('readVazifa')
+    return redirect('readVazifa')    
 
-def bajarilganVazifalar(request):
-    bajarilgan = VazifaModel.objects.filter(foydalanuvchi=request.user, bajarildi=True).values()
-    return render(request, "to_do_list/bajarilganVazifalar.html", {"modelMe": bajarilgan})
-    
-
-def unBajarilganVazifalar(request):
-    unBajarilgan = VazifaModel.objects.filter(foydalanuvchi=request.user, bajarildi=False).values()
-    return render(request, "to_do_list/bajarilganVazifalar.html", {"modelMe": unBajarilgan})
 
 #===========================================================================================
 
@@ -103,11 +135,4 @@ def createUquvchi(request):
 #==============================================================================
 
 
-    
 
-def bajarildiVazifah(request, pk):
-    if request.method == "POST":
-        item = VazifaModel.objects.get(pk=pk)
-        item.bajarildi = True
-        item.save()
-    return HttpResponseRedirect(redirect('readVazifa'))
