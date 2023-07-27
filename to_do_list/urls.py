@@ -9,10 +9,13 @@ urlpatterns=[
     path("readVazifa/<int:idMe>/delete/", views.deleteVazifa, name='deleteVazifa'),
     
     path("historyVazifa/", views.historyVazifa, name='historyVazifa'),
-    path("filteredHistoryVazifalar/<int:idMe>/", views.filteredHistoryVazifalar, name='filteredHistoryVazifalar'),
 
     path("bajarilganVazifalar/<int:idMe>/", views.bajarilganVazifalar, name='bajarilganVazifalar'),
     path("unBajarilganVazifalar/<int:idMe>/", views.unBajarilganVazifalar, name='unBajarilganVazifalar'),
+    
+    path("readVazifa/<int:idMe>/bajarildiVazifa/", views.bajarildiVazifa, name='bajarildiVazifa'),
+
+    
     
     
 
