@@ -1,35 +1,33 @@
 from django import forms
-from .models import VazifaModel, UquvchiModel
+from .models import VazifaModel, DateBajarildiModel
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 
-class CoolDateTimeWidget(forms.DateTimeInput):
-    def __init__(self, attrs=None):
-        default_attrs = {'type': 'datetime-local', 'class': 'cool-datetime-widget'}
-        if attrs:
-            default_attrs.update(attrs)
-        super().__init__(attrs=default_attrs)
 
 class VazifaPostForm(forms.ModelForm):
+    input_date = forms.DateField(
+        label='Select a Date',
+        widget=forms.DateInput(attrs={'type': 'date'}),
+    )
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['input_date'].initial = timezone.now().date()
+
     class Meta:
         model = VazifaModel
-        fields = ["sarlavha", "tuliq_malumot", "tugatish_muddati", 'boshlanish_vaqti', 'bajarildi']
+        fields = ["sarlavha", "tuliq_malumot", "tugatish_muddati", 'boshlanish_vaqti', 'bajarildi', 'input_date']
         widgets = {
-            'boshlanish_vaqti': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
-            'tugatish_muddati': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
+            'boshlanish_vaqti': forms.TimeInput(attrs={'type': 'time'}),
+            'tugatish_muddati': forms.TimeInput(attrs={'type': 'time'}),
+            
         }
 
 
 
 
-
 #=================================================================================
-class UquvchiForm(forms.ModelForm):
-    email = forms.CharField(max_length=20)
-    class Meta:
-        model = UquvchiModel
-        fields = "__all__"
 
 
 

@@ -9,8 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     {% load static %}
     <link rel="stylesheet" href="{% static 'to_do_list/read_style.css' %}">
-    
-    
 </head>
 <body>
 
@@ -23,7 +21,7 @@
             </a>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/readVazifa"><i class="fa fa-list-ul"></i> To-do</a>
+                    <a class="nav-link" href="{% url 'readVazifa' %}"><i class="fa fa-list-ul"></i> To-do</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/historyVazifa/"><i class="fa fa-tasks"></i> Progress</a>
@@ -34,7 +32,6 @@
             </ul>
         </div>
     </nav>
-
 
     <div class="cool-background">
         <div class="circle circle-green"></div>
@@ -50,76 +47,35 @@
                 </div>
                 <div class="card-body">
                     <div class="task-list">
-                        {% for i in modelMe %}
+                        {% for vazifa in modelMe %}
                             <div class="item">
 
                                 <div class="chec">
-                                    <form action="{% url 'bajarildiVazifa' i.id %}" method="post">
+                                    <form action="{% url 'bajarildiVazifa' vazifa.id %}" method="post">
                                         {% csrf_token %}
                                         <input type="checkbox" name="check" onchange="this.form.submit()">
                                     </form>
                                 </div>
 
-                                <div class="task-item {% if i.bajarildi %}completed-task{% endif %}">
-                                    <h1><strong>{{ i.sarlavha }}</strong></h1>
-                                    <p>{{ i.tuliq_malumot }}</p>
-                                    <h5>Start Time: {{ i.boshlanish_vaqti|date:"F j, Y, P" }}</h5>
-                                    <h5>Due Date: {{ i.tugatish_muddati|date:"F j, Y, P" }}</h5>
-                                    <h5>Time Remaining: <span id="countdown_{{ i.id }}"></span></h5>
+                                <div class="task-item {% if vazifa.bajarildi %}completed-task{% endif %}">
+                                    <h1><strong>{{ vazifa.sarlavha }}</strong></h1>
+                                    <p>{{ vazifa.tuliq_malumot }}</p>
+                                    <h5>Start Time: {{ vazifa.boshlanish_vaqti}}</h5>
+                                    <h5>Due Time: {{ vazifa.tugatish_muddati|time:"H:i:s" }}</h5>
+                                    <h5>Bajarilgan Date: {{ vazifa.bajarilgan_date.date }}</h5>
         
                                     <div class="edit_del">
-                                        <form action="{% url 'updateVazifa' i.id %}">
+                                        <form action="{% url 'updateVazifa' vazifa.id %}">
                                             {% csrf_token %}
                                             <button class="btn"><i class="fa fa-edit"></i></button>
                                         </form>
-                                        <form action="{% url 'deleteVazifa' i.id %}" method="post">
+                                        <form action="{% url 'deleteVazifa' vazifa.id %}" method="post">
                                             {% csrf_token %}
                                             <button type="submit" class="btn del"><i class="fa fa-trash"></i></button>
                                         </form>
                                     </div>
-                                    <script>
-                                        // Get the start time and deadline for the current to-do item
-                                        var startTime = new Date('{{ i.boshlanish_vaqti|date:"Y-m-d H:i:s" }}').getTime();
-                                        var deadline = new Date('{{ i.tugatish_muddati|date:"Y-m-d H:i:s" }}').getTime();
-                                        
-                                        // Function to update the countdown
-                                        function updateCountdown() {
-                                            // Get the current date and time
-                                            var now = new Date().getTime();
-                                            
-                                            // Calculate the remaining time
-                                            var timeLeft = deadline - now;
-                                            
-                                            // Calculate days, hours, minutes, and seconds
-                                            var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-                                            var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                                            var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-                                            var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-                                            
-                                            // Display the remaining time in the element with id="countdown_{{ i.id }}"
-                                            document.getElementById('countdown_{{ i.id }}').innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-                                            
-                                            // If the countdown has expired, display "Expired" and return
-                                            if (timeLeft < 0) {
-                                                document.getElementById('countdown_{{ i.id }}').innerHTML = "Expired";
-                                                return;
-                                            }
-                                            
-                                            // If the current time is less than the start time, set a timeout to start the countdown when the start time is reached
-                                            if (now < startTime) {
-                                                setTimeout(updateCountdown, startTime - now);
-                                            } else {
-                                                // Otherwise, update the countdown every second
-                                                setTimeout(updateCountdown, 1000);
-                                            }
-                                        }
-                                        
-                                        // Call the updateCountdown function to start the countdown
-                                        updateCountdown();
-                                    </script>
                                 </div>
                             </div>
-
                         {% endfor %}
                     </div>
                     <div class="add">
@@ -136,5 +92,5 @@
     <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
-</body> 
+</body>
 </html>

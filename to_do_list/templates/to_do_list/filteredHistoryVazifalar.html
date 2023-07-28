@@ -36,14 +36,26 @@
         }
         
         .done_undone a:last-child {
-            background-color: #4caf50; /* White background for "Undone" link */
+            background-color: #fafbfa; /* White background for "Undone" link */
             border-top-right-radius: 5px;
             border-bottom-right-radius: 5px;
+            color: #4caf50;
         }
         
         .done_undone a:hover {
             background-color: #87a988; /* Darker background when hovering */
         }
+
+        /* For Done Tasks */
+        .check-green {
+            color: #4caf50;
+        }
+
+        /* For Undone Tasks */
+        .check-red {
+            color: rgb(239, 88, 88);
+}
+
     </style>
     
     
@@ -61,7 +73,7 @@
                     <a class="nav-link" href="{% url 'readVazifa' %}"><i class="fa fa-list-ul"></i> To-do</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/bajarilganVazifalar/"><i class="fa fa-tasks"></i> Progress</a>
+                    <a class="nav-link" href="/historyVazifa/"><i class="fa fa-tasks"></i> Progress</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><i class="fa fa-user"></i> Profile</a>
@@ -71,8 +83,8 @@
     </nav>
 
     <div class="done_undone">
-        <a href="{% url 'unBajarilganVazifalar' idMe %}">Undone</a>
-        <a href="{% url 'bajarilganVazifalar' idMe %}">Done</a>
+        <a href="{% url 'bajarilganVazifalar' idMe %}">Bajarilgan</a>
+        <a href="{% url 'unBajarilganVazifalar' idMe %}">Bajarilmagan</a>
     </div>
 
     <div class="cool-background">
@@ -89,12 +101,11 @@
                 </div>
                 <div class="card-body">
                     <div class="task-list">
-                        {% for i in modelMe %}
-
+                        {% for i in bajarilgan %}
                         
                         <div class="item">
 
-                            <div class="chec">
+                            <div class="check check-green">
                                 <i class="fa fa-check-circle"></i>
                             </div>
 
@@ -102,10 +113,52 @@
                                 <h1><strong>{{ i.sarlavha }}</strong></h1>
                                 <p>{{ i.tuliq_malumot }}</p>
                                 <h5>Bajarilgan_vaqt{{ i.bajarilgan_vaqt }}</h5>
+                                
+                                <div class="edit_del">
+                                    <form action="{% url 'updateVazifa' i.id %}">
+                                        {% csrf_token %}
+                                        <button class="btn"><i class="fa fa-edit"></i></button>
+                                    </form>
+                                    <form action="{% url 'deleteVazifa' i.id %}" method="post">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn del"><i class="fa fa-trash"></i></button>
+                                    </form>
+                                </div>
+
                             </div>
                         </div>
 
                         {% endfor %}
+
+                        <!-- For Undone Tasks -->
+                        {% for i in unBajarilgan %}
+                        <div class="item">
+
+                            <div class="check check-red">
+                                <i class="fa fa-times-circle"></i>
+                            </div>
+
+                            <div class="task-item">
+                                <h1><strong>{{ i.sarlavha }}</strong></h1>
+                                <p>{{ i.tuliq_malumot }}</p>
+                                
+                                <div class="edit_del">
+                                    <form action="{% url 'updateVazifa' i.id %}">
+                                        {% csrf_token %}
+                                        <button class="btn"><i class="fa fa-edit"></i></button>
+                                    </form>
+                                    <form action="{% url 'deleteVazifa' i.id %}" method="post">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn del"><i class="fa fa-trash"></i></button>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        {% endfor %}
+
+
                     </div>
                 </div>
             </div>

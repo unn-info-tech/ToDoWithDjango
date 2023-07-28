@@ -2,44 +2,52 @@ body {
     background-color: #81c784; /* Green background color */
     padding: 20px;
 }
-.cool-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-}
-.circle {
-    position: absolute;
-    background-color: #fff; /* White circle color */
-    border-radius: 50%;
-    opacity: 0.3;
-}
-.circle-green {
-    width: 100px;
-    height: 100px;
-    top: 30%;
-    left: 10%;
-}
-.circle-white {
-    width: 80px;
-    height: 80px;
-    top: 40%;
-    right: 15%;
-}
-.circle-green-2 {
-    width: 70px;
-    height: 70px;
-    top: 70%;
-    right: 5%;
-}
-.circle-white-2 {
-    width: 120px;
-    height: 120px;
-    top: 60%;
-    left: 25%;
-}
+/* Add the background circles */
+    .cool-background {
+        position: absolute; /* Position the background circles absolutely */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden; /* Hide any overflowing content from the circles */
+    }
+    
+    .circle {
+        position: absolute; /* Position the circles absolutely */
+        border-radius: 50%; /* Make the circles round */
+    }
+    
+    .circle-green {
+        width: 400px;
+        height: 400px;
+        background-color: #4caf50;
+        top: -100px;
+        left: -100px;
+    }
+    
+    .circle-white {
+        width: 350px;
+        height: 350px;
+        background-color: #fff;
+        top: 100px;
+        left: 80px;
+    }
+    
+    .circle-green-2 {
+        width: 200px;
+        height: 200px;
+        background-color: #4caf50;
+        top: 200px;
+        right: -80px;
+    }
+    
+    .circle-white-2 {
+        width: 300px;
+        height: 300px;
+        background-color: #fff;
+        bottom: 0;
+        right: -150px;
+    }
 .card {
     max-width: 800px;
     width: 800px;
