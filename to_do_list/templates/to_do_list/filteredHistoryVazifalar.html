@@ -83,8 +83,8 @@
     </nav>
 
     <div class="done_undone">
-        <a href="{% url 'bajarilganVazifalar' idMe %}">Bajarilgan</a>
-        <a href="{% url 'unBajarilganVazifalar' idMe %}">Bajarilmagan</a>
+        <a href="{% url 'bajarilganVazifalar' idMe %}">Bajarilgan {{len_bajarilgan}}</a>
+        <a href="{% url 'unBajarilganVazifalar' idMe %}">Bajarilmagan {{len_unBajarilgan}}</a>
     </div>
 
     <div class="cool-background">

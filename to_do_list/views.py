@@ -97,7 +97,7 @@ def bajarilganVazifalar(request, idMe):
         bajarilgan_date=suralgan_date, 
         foydalanuvchi=request.user, 
         bajarildi=True).values()
-    return render(request, "to_do_list/filteredHistoryVazifalar.html", {"bajarilgan": bajarilgan, 'idMe': idMe})
+    return render(request, "to_do_list/filteredHistoryVazifalar.html", {"bajarilgan": bajarilgan, 'idMe': idMe, 'len_bajarilgan': len(bajarilgan)})
     
 # __lte = Filter the to-do items where the due date is before or equal to the current datetime
 @login_required
@@ -109,7 +109,7 @@ def unBajarilganVazifalar(request, idMe):
         bajarilgan_date=suralgan_date, 
         foydalanuvchi=request.user, 
         bajarildi=False).values()
-    return render(request, "to_do_list/filteredHistoryVazifalar.html", {"unBajarilgan": unBajarilgan, 'idMe': idMe})
+    return render(request, "to_do_list/filteredHistoryVazifalar.html", {"unBajarilgan": unBajarilgan, 'idMe': idMe, 'len_unBajarilgan': len(unBajarilgan)})
 
 
 # =============================
