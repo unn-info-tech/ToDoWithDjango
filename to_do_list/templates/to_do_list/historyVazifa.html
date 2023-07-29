@@ -1,148 +1,11 @@
-<!DOCTYPE html>
-<html lang="uz">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>History Vazifalar</title>
-    <!-- Add Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% extends 'to_do_list/layout.html' %}
+{% block title %} Vazifalar Tarixi {% endblock %}
+{% block head %}
     {% load static %}
     <link rel="stylesheet" href="{% static 'to_do_list/history_style.css' %}">
-
-    <style>/* CSS for History Vazifalar Page */
-        body {
-            background-color: #f0f0f0; /* Set the background color for the body */
-            font-family: Arial, sans-serif; /* Set the font family for the text */
-            }
-            
-            .container {
-                padding-top: 30px; /* Add padding at the top of the container */
-            }
-            
-            .card {
-                width: 400px; /* Set the width of the card */
-                border: none; /* Remove the border from the card */
-                border-radius: 10px; /* Add border-radius for rounded corners */
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box-shadow for the card */
-            }
-            
-            .card-header {
-                background-color: #4caf50; /* Set the background color for the card header */
-                color: #fff; /* Set the text color for the card header */
-                padding: 20px; /* Add padding to the card header */
-                border-radius: 10px 10px 0 0; /* Add rounded corners for the top of the card header */
-            }
-            
-            .card-header h2 {
-                margin: 0; /* Remove margin from the h2 element inside the card header */
-            }
-            
-            .card-body {
-                padding: 20px; /* Add padding to the card body */
-            }
-            
-            ul {
-                list-style: none; /* Remove default list-style from ul */
-                padding: 0; /* Remove padding from ul */
-                margin: 0; /* Remove margin from ul */
-            }
-            
-            ul li {
-                margin-bottom: 10px; /* Add margin between list items */
-            }
-            
-            ul li a {
-                display: block; /* Make the links block-level elements */
-                padding: 10px 20px; /* Add padding to the links */
-                background-color: #4caf50; /* Set the background color for the links */
-                color: #fff; /* Set the text color for the links */
-                text-decoration: none; /* Remove underline from the links */
-                border-radius: 5px; /* Add rounded corners for the links */
-                transition: background-color 0.3s; /* Add a transition effect for smoother hover */
-            }
-            
-            ul li a:hover {
-                background-color: #87a988; /* Darker background when hovering */
-            }
-            
-            /* Add the background circles */
-            .cool-background {
-                position: absolute; /* Position the background circles absolutely */
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                overflow: hidden; /* Hide any overflowing content from the circles */
-            }
-            
-            .circle {
-                position: absolute; /* Position the circles absolutely */
-                border-radius: 50%; /* Make the circles round */
-            }
-            
-            .circle-green {
-                width: 400px;
-                height: 400px;
-                background-color: #4caf50;
-                top: -100px;
-                left: -100px;
-            }
-            
-            .circle-white {
-                width: 350px;
-                height: 350px;
-                background-color: #fff;
-                top: 100px;
-                left: 80px;
-            }
-            
-            .circle-green-2 {
-                width: 200px;
-                height: 200px;
-                background-color: #4caf50;
-                top: 200px;
-                right: -80px;
-            }
-            
-            .circle-white-2 {
-                width: 300px;
-                height: 300px;
-                background-color: #fff;
-                bottom: 0;
-                right: -150px;
-            }
-        </style>
-</head>
-<body>
-
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <span class="logo-icon"><i class="fa fa-check-circle"></i></span>
-                To-do App
-            </a>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'readVazifa' %}"><i class="fa fa-list-ul"></i> To-do</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/historyVazifa/"><i class="fa fa-tasks"></i> Progress</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa fa-user"></i> Profile</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="cool-background">
-        <div class="circle circle-green"></div>
-        <div class="circle circle-white"></div>
-        <div class="circle circle-green-2"></div>
-        <div class="circle circle-white-2"></div>
-    </div>
+{% endblock %}
+{% block content %}
+    
     <div class="container">
         <div class="row justify-content-center">
             <div class="card">
@@ -161,9 +24,4 @@
             </div>
         </div>
     </div>
-    <!-- Add Bootstrap JS and jQuery -->
-    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
-</body> 
-</html>
+{% endblock %}

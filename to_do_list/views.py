@@ -71,7 +71,7 @@ def updateVazifa(request, idMe):
             
     else:
         formMe =  VazifaPostForm(instance=objVazifa)
-    return render(request, 'to_do_list/updatesimple.html', {'formMe': formMe})
+    return render(request, 'to_do_list/updateVazifa.html', {'formMe': formMe})
 
 @login_required 
 def deleteVazifa(request, idMe):

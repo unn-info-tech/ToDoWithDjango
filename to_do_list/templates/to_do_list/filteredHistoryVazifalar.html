@@ -1,97 +1,13 @@
-<!DOCTYPE html>
-<html lang="uz">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vazifalar Ro'yxati</title>
-    <!-- Add Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% extends 'to_do_list/layout.html' %}
+{% block title %} Filter {% endblock %}
+{% block head %}
     {% load static %}
-    <link rel="stylesheet" href="{% static 'to_do_list/read_style.css' %}">
-    <!-- Custom Styles -->
-    <style>
-        /* *{
-            border: 1px solid red;
-        } */
-        .done_undone {
-            display: flex;
-            justify-content: center;
-            align-items: flex-end; /* Align items to the bottom of the container */
-            margin-top: 10px; /* Adjust the margin as needed */
-        }
-        
-        .done_undone a {
-            color: #fff;
-            text-decoration: none;
-            padding: 10px 20px;
-            font-size: 18px;
-            transition: background-color 0.3s; /* Add a transition effect for smoother hover */
-        }
-        
-        .done_undone a:first-child {
-            background-color: #4caf50; /* Green background for "Done" link */
-            border-top-left-radius: 5px;
-            border-bottom-left-radius: 5px;
-        }
-        
-        .done_undone a:last-child {
-            background-color: #fafbfa; /* White background for "Undone" link */
-            border-top-right-radius: 5px;
-            border-bottom-right-radius: 5px;
-            color: #4caf50;
-        }
-        
-        .done_undone a:hover {
-            background-color: #87a988; /* Darker background when hovering */
-        }
-
-        /* For Done Tasks */
-        .check-green {
-            color: #4caf50;
-        }
-
-        /* For Undone Tasks */
-        .check-red {
-            color: rgb(239, 88, 88);
-}
-
-    </style>
-    
-    
-</head>
-<body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <span class="logo-icon"><i class="fa fa-check-circle"></i></span>
-                To-do App
-            </a>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'readVazifa' %}"><i class="fa fa-list-ul"></i> To-do</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/historyVazifa/"><i class="fa fa-tasks"></i> Progress</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa fa-user"></i> Profile</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
+    <link rel="stylesheet" href="{% static 'to_do_list/filterHistory.css' %}">
+{% endblock %}
+{% block content %}
     <div class="done_undone">
         <a href="{% url 'bajarilganVazifalar' idMe %}">Bajarilgan {{len_bajarilgan}}</a>
         <a href="{% url 'unBajarilganVazifalar' idMe %}">Bajarilmagan {{len_unBajarilgan}}</a>
-    </div>
-
-    <div class="cool-background">
-        <div class="circle circle-green"></div>
-        <div class="circle circle-white"></div>
-        <div class="circle circle-green-2"></div>
-        <div class="circle circle-white-2"></div>
     </div>
     <div class="container">
         <div class="row justify-content-center">
@@ -164,11 +80,5 @@
             </div>
         </div>
     </div>
-    <!-- Add Bootstrap JS and jQuery -->
-    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
-</body> 
-</html>
-
+{% endblock %}
 

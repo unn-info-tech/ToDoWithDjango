@@ -1,44 +1,13 @@
-<!DOCTYPE html>
-<html lang="uz">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vazifalar Ro'yxati</title>
-    <!-- Add Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% extends 'to_do_list/layout.html'%}
+
+    {% block title %}Vazifalar Ro'yhati{% endblock %}
+
+    {% block head %}
     {% load static %}
     <link rel="stylesheet" href="{% static 'to_do_list/read_style.css' %}">
-</head>
-<body>
+    {% endblock %}
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <span class="logo-icon"><i class="fa fa-check-circle"></i></span>
-                To-do App
-            </a>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'readVazifa' %}"><i class="fa fa-list-ul"></i> To-do</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/historyVazifa/"><i class="fa fa-tasks"></i> Progress</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa fa-user"></i> Profile</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="cool-background">
-        <div class="circle circle-green"></div>
-        <div class="circle circle-white"></div>
-        <div class="circle circle-green-2"></div>
-        <div class="circle circle-white-2"></div>
-    </div>
+    {% block content %}
     <div class="container">
         <div class="row justify-content-center">
             <div class="card">
@@ -88,9 +57,4 @@
             </div>
         </div>
     </div>
-    <!-- Add Bootstrap JS and jQuery -->
-    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
-</body>
-</html>
+    {% endblock %}
