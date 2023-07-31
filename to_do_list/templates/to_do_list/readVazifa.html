@@ -15,11 +15,11 @@
                 padding-bottom: 10px;">
                     <div class="card-header">
                         <h2>Vazifalar Ro'yxati</h2>
-                        <h3>{{ group.vazifa_kuni }}</h3>
+                        <h2>{{ group.vazifa_kuni }}</h2>
                     </div>
                     {% for vazifa in group.vazifalar %}
                         <div class="card-body">
-                            <div class="task-list">
+                            
                                 <div class="item">
                                     <div class="chec">
                                         <form action="{% url 'bajarildiVazifa' vazifa.id %}" method="post">
@@ -31,8 +31,9 @@
                                     <div class="task-item">
                                         <h1><strong>{{ vazifa.sarlavha }}</strong></h1>
                                         <p>{{ vazifa.tuliq_malumot }}</p>
-                                        <h5>Start Time: {{ vazifa.boshlanish_vaqti}}</h5>
-                                        <h5>Due Time: {{ vazifa.tugatish_muddati|time:"H:i:s" }}</h5>
+                                        <h5>Start Time: {{ vazifa.boshlanish_vaqti|time:"H:i:s" }}</h5>
+                                        <h5>Due Date: {{ vazifa.tugatish_muddati|time:"H:i:s" }}</h5>
+                                        <h5>Time Remaining: <span id="countdown_{{ vazifa.id }}"></span></h5>
             
                                         <div class="edit_del">
                                             <form action="{% url 'updateVazifa' vazifa.id %}">
@@ -44,9 +45,50 @@
                                                 <button type="submit" class="btn del"><i class="fa fa-trash"></i></button>
                                             </form>
                                         </div>
+
+                                        <script>
+                                            // Get the start time and deadline for the current to-do item
+                                            var startTime = new Date('{{ vazifa.bajarilgan_date|date:"Y-m-d"}} {{ vazifa.boshlanish_vaqti|time:"H:i:s" }}').getTime();
+                                            var deadline = new Date('{{ vazifa.bajarilgan_date|date:"Y-m-d" }} {{vazifa.tugatish_muddati|time:"H:i:s"}}').getTime();
+                                            
+                                            // Function to update the countdown
+                                            function updateCountdown() {
+                                                // Get the current date and time
+                                                var now = new Date().getTime();
+                                                
+                                                // Calculate the remaining time
+                                                var timeLeft = deadline - now;
+                                                
+                                                // Calculate days, hours, minutes, and seconds
+                                                var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                                                var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                                var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                                                var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                                                
+                                                // Display the remaining time in the element with id="countdown_{{ i.id }}"
+                                                document.getElementById('countdown_{{ vazifa.id }}').innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+                                                
+                                                // If the countdown has expired, display "Expired" and return
+                                                if (timeLeft < 0) {
+                                                    document.getElementById('countdown_{{ vazifa.id }}').innerHTML = "Expired";
+                                                    return;
+                                                }
+                                                
+                                                // If the current time is less than the start time, set a timeout to start the countdown when the start time is reached
+                                                if (now < startTime) {
+                                                    setTimeout(updateCountdown, startTime - now);
+                                                } else {
+                                                    // Otherwise, update the countdown every second
+                                                    setTimeout(updateCountdown, 1000);
+                                                }
+                                            }
+                                            
+                                            // Call the updateCountdown function to start the countdown
+                                            updateCountdown();
+                                        </script>
                                     </div>
+
                                 </div>
-                            </div>
                         </div>
                     {% endfor %}
                 </div>
@@ -60,3 +102,6 @@
         </div>
     </div>
     {% endblock %}
+
+    
+

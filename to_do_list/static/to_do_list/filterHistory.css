@@ -200,10 +200,10 @@ input[type="checkbox"]:checked{
 
 /* Darker background on mouse-over */
 .btn:hover {
-    background-color: RoyalBlue;
+    background-color: #76c679;
 }
 .del:hover{
-    background-color: #f84343;
+    background-color: #f27f7f;
 }
 .add{
     border-top: 2px solid rgb(211, 211, 211);

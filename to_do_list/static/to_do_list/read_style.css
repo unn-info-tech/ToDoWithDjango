@@ -114,14 +114,20 @@ body {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 .card-header {
-    background-color: #e7e7e779; /* Green card header background color */
-    color: #4caf50;
+    background-color: #4caf50; /* Green card header background color */
+    color: #fff;
     text-align: center;
     font-weight: bold;
     border-bottom: none;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     border-bottom: 2px solid rgba(173, 173, 173, 0.603);
+}
+
+.card-body {
+    margin-top: -10px;
+    margin-bottom: -10px;
+
 }
 .card-header h2{
     font-weight: 900;
@@ -200,9 +206,12 @@ input[type="checkbox"]:checked{
     background-color: #81c784;
 }
 
+
+
 .chec{
     display: flex;
     margin-top: 5%;
+    color: #4caf50;
 }
 
 .btn {
@@ -218,16 +227,17 @@ input[type="checkbox"]:checked{
 
 /* Darker background on mouse-over */
 .btn:hover {
-    background-color: RoyalBlue;
+    background-color: #76c679;
 }
 .del:hover{
-    background-color: #f84343;
+    background-color: #f27f7f;
 }
 .add{
     border-top: 2px solid rgb(211, 211, 211);
     padding-left: 10%;
     padding-right: 10%;
-    background-color: #e7e7e700;
+    background-color: #76c679;
+    font-weight: 90;
 }
 
 .navbar{

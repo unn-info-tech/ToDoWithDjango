@@ -12,7 +12,7 @@
                     <h2>Vazifani uzgartirish<h2>
                 </div>
                 <div class="card-body">
-                    <form method="post" action="{% url 'createVazifa' %}">
+                    <form method="post" action=".">
                         {% csrf_token %}
                         <!-- Title Field -->
                         <div class="form-group">
@@ -30,15 +30,26 @@
                                 <p class="error-message">{{ formMe.tuliq_malumot.errors }}</p>
                             {% endif %}
                         </div>
+                        
+                        <!-- Todo date -->
+                        <div class="form-group">
+                            <label for="{{ formMe.input_date.id_for_label }}">Vazifa kuni</label>
+                            {{ formMe.input_date }}
+                            {% if formMe.input_date.errors %}
+                                <p class="error-message">{{ formMe.input_date.errors }}</p>
+                            {% endif %}
+                        </div>
 
                         <!-- Start Field -->
                         <div class="form-group">
-                            <label for="{{ formMe.tugatish_muddati.id_for_label }}">Boshlanish vaqti</label>
+                            <label for="{{ formMe.boshlanish_vaqti.id_for_label }}">Boshlanish vaqti</label>
                             {{ formMe.boshlanish_vaqti }}
                             {% if formMe.boshlanish_vaqti.errors %}
                                 <p class="error-message">{{ formMe.boshlanish_vaqti.errors }}</p>
                             {% endif %}
                         </div>
+
+                        
 
                         <!-- Deadline Field -->
                         <div class="form-group">
@@ -50,7 +61,7 @@
                         </div>
 
                         
-                        <button type="submit" class="btn btn-primary btn-block">Uzgartirish</button>
+                        <button type="submit" class="btn btn-primary btn-block"><strong>Uzgartirish</strong></button>
                     </form>
                 </div>
             </div>
