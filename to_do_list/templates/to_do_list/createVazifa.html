@@ -3,24 +3,6 @@
     {% block title %} Vazifa Yaratish {% endblock %}
     {% block head %} 
         <link rel="stylesheet" href="{% static 'to_do_list/read_style.css' %}">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <style>
-            /* Custom border styles for form fields */
-            .form-group input,
-            .form-group textarea,
-            .form-group select {
-                border: 1px solid #ced4da; /* Default border color */
-                border-radius: 0.25rem; /* Rounded border */
-                padding: 0.375rem 0.75rem; /* Adjust padding as needed */
-            }
-            .form-group input:focus,
-            .form-group textarea:focus,
-            .form-group select:focus {
-                border-color: #4caf50; /* Border color on focus */
-                outline: 0; /* Remove default focus outline */
-                box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Focus shadow effect */
-            }
-        </style>
     {% endblock %}
 
     {% block content %}
@@ -29,7 +11,7 @@
             <!-- Create To-Do Form -->
             <div class="card">
                 <div class="card-header">
-                    <h2>Vazifa Yaratish</h2>
+                    <h2>Yaratish</h2>
                 </div>
                 <div class="card-body">
                     <form method="post" action="{% url 'createVazifa' %}">

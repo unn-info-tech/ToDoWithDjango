@@ -99,3 +99,15 @@ body {
         bottom: 0;
         right: -150px;
     }
+.navbar{
+    overflow: hidden;
+    top:-20px;
+    left: -20px;
+    margin-right: -40px;
+    background-color: #ffffff8e;
+}
+
+.nav-item{
+    margin-left:15px;
+}
+    

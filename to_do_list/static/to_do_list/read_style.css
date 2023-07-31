@@ -4,7 +4,21 @@
     align-items: flex-end; /* Align items to the bottom of the container */
     margin-top: 10px; /* Adjust the margin as needed */
 }
-
+/* Custom border styles for form fields */
+.form-group input,
+.form-group textarea,
+.form-group select {
+    border: 1px solid #ced4da; /* Default border color */
+    border-radius: 0.25rem; /* Rounded border */
+    padding: 0.375rem 0.75rem; /* Adjust padding as needed */
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: #4caf50; /* Border color on focus */
+    outline: 0; /* Remove default focus outline */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Focus shadow effect */
+}
 .done_undone a {
     color: #fff;
     text-decoration: none;
@@ -100,13 +114,17 @@ body {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 .card-header {
-    background-color: #4caf50; /* Green card header background color */
-    color: #fff;
+    background-color: #e7e7e779; /* Green card header background color */
+    color: #4caf50;
     text-align: center;
     font-weight: bold;
     border-bottom: none;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    border-bottom: 2px solid rgba(173, 173, 173, 0.603);
+}
+.card-header h2{
+    font-weight: 900;
 }
 .item{
     display: flex;
@@ -188,7 +206,7 @@ input[type="checkbox"]:checked{
 }
 
 .btn {
-    background-color: DodgerBlue; /* Blue background */
+    background-color: rgb(44, 199, 39); /* Blue background */
     border: none; /* Remove borders */
     color: white; /* White text */
     padding: 5px 9px; /* Some padding */
@@ -207,7 +225,9 @@ input[type="checkbox"]:checked{
 }
 .add{
     border-top: 2px solid rgb(211, 211, 211);
-    padding: 10px;
+    padding-left: 10%;
+    padding-right: 10%;
+    background-color: #e7e7e700;
 }
 
 .navbar{
@@ -221,67 +241,3 @@ input[type="checkbox"]:checked{
 .nav-item{
     margin-left:15px;
 }
-
-/* body {
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  
-  .navbar {
-    overflow: hidden;
-    background-color: #333;
-  }
-  
-  .navbar a {
-    float: left;
-    font-size: 16px;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-  
-  .dropdown {
-    float: left;
-    overflow: hidden;
-  }
-  
-  .dropdown .dropbtn {
-    font-size: 16px;  
-    border: none;
-    outline: none;
-    color: white;
-    padding: 14px 16px;
-    background-color: inherit;
-    font-family: inherit;
-    margin: 0;
-  }
-  
-  .navbar a:hover, .dropdown:hover .dropbtn {
-    background-color: red;
-  }
-  
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  
-  .dropdown-content a {
-    float: none;
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-  }
-  
-  .dropdown-content a:hover {
-    background-color: #ddd;
-  }
-  
-  .dropdown:hover .dropdown-content {
-    display: block;
-  } */

@@ -2,7 +2,8 @@
 {% block title %} Vazifalar Tarixi {% endblock %}
 {% block head %}
     {% load static %}
-    <link rel="stylesheet" href="{% static 'to_do_list/history_style.css' %}">
+    <link rel="stylesheet" href="{% static 'to_do_list/read_style.css' %}">
+
 {% endblock %}
 {% block content %}
     
@@ -13,13 +14,9 @@
                     <h2>History Vazifalar</h2>
                 </div>
                 <div class="card-body">
-                    <ul>
                         {% for i in modelMe %}
-                        <li>
-                            <a href="{% url 'bajarilganVazifalar' i.id %}">{{ i.date }}</a>
-                        </li>
+                            <a href="{% url 'bajarilganVazifalar' i.id %}"><div class="item">{{ i.date }}</div></a>
                         {% endfor %}
-                    </ul>
                 </div>
             </div>
         </div>
