@@ -92,9 +92,7 @@ def deleteVazifa(request, idMe):
 # History 
 
 def historyVazifa(request):
-    modelMe = DateBajarildiModel.objects.filter(
-        date__lte=timezone.localdate(),
-    ).values() # historyVazifalar
+    modelMe = DateBajarildiModel.objects.all().values() # historyVazifalar
     return render(request, "to_do_list/historyVazifa.html", {"modelMe": modelMe})
 
 
