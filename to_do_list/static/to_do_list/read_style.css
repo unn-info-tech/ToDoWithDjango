@@ -107,7 +107,8 @@ body {
 .card {
     max-width: 800px;
     width: 800px;
-    margin: 0 auto;
+    margin: 10px;
+    padding-bottom: 10px;
     border: none;
     border-radius: 10px;
     background-color: #fff; /* White card background color */
@@ -130,7 +131,7 @@ body {
     display: flex;
     padding: 10px;
     padding-left: 15px;
-    margin-bottom: 5px;
+    margin-bottom: -15px;
     background-color: #f0f0f0ce;
     /* justify-content: center;
     align-items: center; */
@@ -206,7 +207,7 @@ input[type="checkbox"]:checked{
 }
 
 .btn {
-    background-color: rgb(44, 199, 39); /* Blue background */
+    background-color: #4caf50; /* Blue background */
     border: none; /* Remove borders */
     color: white; /* White text */
     padding: 5px 9px; /* Some padding */

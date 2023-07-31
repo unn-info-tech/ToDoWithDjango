@@ -188,7 +188,7 @@ input[type="checkbox"]:checked{
 }
 
 .btn {
-    background-color: DodgerBlue; /* Blue background */
+    background-color: #4caf50; /* Blue background */
     border: none; /* Remove borders */
     color: white; /* White text */
     padding: 5px 9px; /* Some padding */
