@@ -30,6 +30,16 @@
                                 <p class="error-message">{{ formMe.tuliq_malumot.errors }}</p>
                             {% endif %}
                         </div>
+
+                        <!-- Start Field -->
+                        <div class="form-group">
+                            <label for="{{ formMe.tugatish_muddati.id_for_label }}">Boshlanish vaqti</label>
+                            {{ formMe.boshlanish_vaqti }}
+                            {% if formMe.boshlanish_vaqti.errors %}
+                                <p class="error-message">{{ formMe.boshlanish_vaqti.errors }}</p>
+                            {% endif %}
+                        </div>
+
                         <!-- Deadline Field -->
                         <div class="form-group">
                             <label for="{{ formMe.tugatish_muddati.id_for_label }}">Tugatish muddati</label>
@@ -39,13 +49,7 @@
                             {% endif %}
                         </div>
 
-                        <div class="form-group">
-                            <label for="{{ formMe.bajarildi.id_for_label }}">Bajarildi</label>
-                            {{ formMe.bajarildi }}
-                            {% if formMe.bajarildi.errors %}
-                                <p class="error-message">{{ formMe.bajarildi.errors }}</p>
-                            {% endif %}
-                        </div>
+                        
                         <button type="submit" class="btn btn-primary btn-block">Uzgartirish</button>
                     </form>
                 </div>

@@ -3,7 +3,8 @@ from django.shortcuts import render,redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from datetime import date, datetime
-from django.db.models import Q
+from itertools import groupby
+from operator import itemgetter
 
 
 
@@ -26,9 +27,18 @@ def readVazifa(request): #list of activities
         tugatish_muddati__gt=timezone.localtime().time(),
         bajarilgan_date__date__gte=timezone.localdate(),
         foydalanuvchi=request.user,
-        bajarildi=False).values()
+        bajarildi=False).order_by('bajarilgan_date__date')
+    
 
-    return render(request, "to_do_list/readVazifa.html", {"modelMe": modelMe})
+    # Create a list to store the grouped to-do items and date headings
+    grouped_items = []
+    for date, vazifalar in groupby(modelMe, key=lambda x: x.bajarilgan_date):
+        grouped_items.append({
+            'vazifa_kuni': date,
+            'vazifalar': list(vazifalar)
+        })
+
+    return render(request, "to_do_list/readVazifa.html", {"modelMe": grouped_items})
 
 #=================================================================================
 # CRDU
@@ -82,7 +92,9 @@ def deleteVazifa(request, idMe):
 # History 
 
 def historyVazifa(request):
-    modelMe = DateBajarildiModel.objects.all().values() # historyVazifalar
+    modelMe = DateBajarildiModel.objects.filter(
+        date__lte=timezone.localdate(),
+    ).values() # historyVazifalar
     return render(request, "to_do_list/historyVazifa.html", {"modelMe": modelMe})
 
 

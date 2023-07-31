@@ -1,0 +1,18 @@
+{% extends "to_do_list/base.html" %}
+{% block contentme %}
+
+{% for group in modelMe %}
+    <h3>{{ group.vazifa_kuni }}</h3>
+    <ul>
+        {% for item in group.vazifalar %}
+            <li>
+                <!-- Display the details of the to-do item here -->
+                {{ item.sarlavha }}
+                <!-- ... -->
+            </li>
+        {% endfor %}
+    </ul>
+{% endfor %}
+
+
+{% endblock%}

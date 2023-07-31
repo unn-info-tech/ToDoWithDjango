@@ -10,43 +10,44 @@
     {% block content %}
     <div class="container">
         <div class="row justify-content-center">
-            <div class="card">
-                <div class="card-header">
-                    <h2>Vazifalar Ro'yxati</h2>
-                </div>
-                <div class="card-body">
-                    <div class="task-list">
-                        {% for vazifa in modelMe %}
-                            <div class="item">
-
-                                <div class="chec">
-                                    <form action="{% url 'bajarildiVazifa' vazifa.id %}" method="post">
-                                        {% csrf_token %}
-                                        <input type="checkbox" name="check" onchange="this.form.submit()">
-                                    </form>
-                                </div>
-
-                                <div class="task-item {% if vazifa.bajarildi %}completed-task{% endif %}">
-                                    <h1><strong>{{ vazifa.sarlavha }}</strong></h1>
-                                    <p>{{ vazifa.tuliq_malumot }}</p>
-                                    <h5>Start Time: {{ vazifa.boshlanish_vaqti}}</h5>
-                                    <h5>Due Time: {{ vazifa.tugatish_muddati|time:"H:i:s" }}</h5>
-                                    <h5>Bajarilgan Date: {{ vazifa.bajarilgan_date.date }}</h5>
-        
-                                    <div class="edit_del">
-                                        <form action="{% url 'updateVazifa' vazifa.id %}">
+            {% for group in modelMe %}
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Vazifalar Ro'yxati</h2>
+                        <h3>{{ group.vazifa_kuni }}</h3>
+                    </div>
+                    {% for vazifa in group.vazifalar %}
+                        <div class="card-body">
+                            <div class="task-list">
+                                <div class="item">
+                                    <div class="chec">
+                                        <form action="{% url 'bajarildiVazifa' vazifa.id %}" method="post">
                                             {% csrf_token %}
-                                            <button class="btn"><i class="fa fa-edit"></i></button>
+                                            <input type="checkbox" name="check" onchange="this.form.submit()">
                                         </form>
-                                        <form action="{% url 'deleteVazifa' vazifa.id %}" method="post">
-                                            {% csrf_token %}
-                                            <button type="submit" class="btn del"><i class="fa fa-trash"></i></button>
-                                        </form>
+                                    </div>
+
+                                    <div class="task-item">
+                                        <h1><strong>{{ vazifa.sarlavha }}</strong></h1>
+                                        <p>{{ vazifa.tuliq_malumot }}</p>
+                                        <h5>Start Time: {{ vazifa.boshlanish_vaqti}}</h5>
+                                        <h5>Due Time: {{ vazifa.tugatish_muddati|time:"H:i:s" }}</h5>
+            
+                                        <div class="edit_del">
+                                            <form action="{% url 'updateVazifa' vazifa.id %}">
+                                                {% csrf_token %}
+                                                <button class="btn"><i class="fa fa-edit"></i></button>
+                                            </form>
+                                            <form action="{% url 'deleteVazifa' vazifa.id %}" method="post">
+                                                {% csrf_token %}
+                                                <button type="submit" class="btn del"><i class="fa fa-trash"></i></button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        {% endfor %}
-                    </div>
+                        </div>
+                    {% endfor %}
                     <div class="add">
                         <form action="{% url 'createVazifa' %}" method="get">
                             {% csrf_token %}
@@ -54,7 +55,7 @@
                         </form>
                     </div>
                 </div>
-            </div>
+            {%endfor%}
         </div>
     </div>
     {% endblock %}
