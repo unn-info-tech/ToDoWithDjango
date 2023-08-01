@@ -17,23 +17,28 @@
                         <h2>Vazifalar Ro'yxati</h2>
                         <h2>{{ group.vazifa_kuni }}</h2>
                     </div>
+                    
                     {% for vazifa in group.vazifalar %}
                         <div class="card-body">
                             
                                 <div class="item">
-                                    <div class="chec">
-                                        <form action="{% url 'bajarildiVazifa' vazifa.id %}" method="post">
-                                            {% csrf_token %}
-                                            <input type="checkbox" name="check" onchange="this.form.submit()">
-                                        </form>
-                                    </div>
+                                    {% if group.vazifa_kuni|date:"Y-m-d" <= dateMe|date:"Y-m-d" %}
+                                        <div class="chec">
+                                            <form action="{% url 'bajarildiVazifa' vazifa.id %}" method="post">
+                                                {% csrf_token %}
+                                                <input type="checkbox" name="check" onchange="this.form.submit()">
+                                            </form>
+                                        </div>
+                                    {% endif %}
 
                                     <div class="task-item">
                                         <h1><strong>{{ vazifa.sarlavha }}</strong></h1>
                                         <p>{{ vazifa.tuliq_malumot }}</p>
                                         <h5>Start Time: {{ vazifa.boshlanish_vaqti|time:"H:i:s" }}</h5>
                                         <h5>Due Date: {{ vazifa.tugatish_muddati|time:"H:i:s" }}</h5>
-                                        <h5>Time Remaining: <span id="countdown_{{ vazifa.id }}"></span></h5>
+                                        {% if vazifa.boshlanish_vaqti <= timeMe %}
+                                            <h5>Time Remaining: <span id="countdown_{{ vazifa.id }}"></span></h5>
+                                        {% endif %}
             
                                         <div class="edit_del">
                                             <form action="{% url 'updateVazifa' vazifa.id %}">
@@ -48,8 +53,8 @@
 
                                         <script>
                                             // Get the start time and deadline for the current to-do item
-                                            var startTime = new Date('{{ vazifa.bajarilgan_date|date:"Y-m-d"}} {{ vazifa.boshlanish_vaqti|time:"H:i:s" }}').getTime();
-                                            var deadline = new Date('{{ vazifa.bajarilgan_date|date:"Y-m-d" }} {{vazifa.tugatish_muddati|time:"H:i:s"}}').getTime();
+                                            var startTime = new Date('{{ group.vazifa_kuni }} {{ vazifa.boshlanish_vaqti|time:"H:i:s" }}').getTime();
+                                            var deadline = new Date('{{ group.vazifa_kuni}} {{vazifa.tugatish_muddati|time:"H:i:s"}}').getTime();
                                             
                                             // Function to update the countdown
                                             function updateCountdown() {
@@ -58,6 +63,10 @@
                                                 
                                                 // Calculate the remaining time
                                                 var timeLeft = deadline - now;
+
+                                                console.log("startTime:", startTime);
+                                                console.log("deadline:", deadline);
+                                                console.log("timeLeft:", timeLeft);
                                                 
                                                 // Calculate days, hours, minutes, and seconds
                                                 var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
@@ -66,7 +75,7 @@
                                                 var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
                                                 
                                                 // Display the remaining time in the element with id="countdown_{{ i.id }}"
-                                                document.getElementById('countdown_{{ vazifa.id }}').innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+                                                document.getElementById('countdown_{{ vazifa.id }}').innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
                                                 
                                                 // If the countdown has expired, display "Expired" and return
                                                 if (timeLeft < 0) {

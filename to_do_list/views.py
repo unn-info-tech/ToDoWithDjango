@@ -22,12 +22,11 @@ from .forms import VazifaPostForm
 @login_required
 def readVazifa(request): #list of activities
     # __gt = Filter the to-do items where the due date is greater than the current datetime
-    print(timezone.localdate())
     modelMe = VazifaModel.objects.filter(
         tugatish_muddati__gt=timezone.localtime().time(),
         bajarilgan_date__date__gte=timezone.localdate(),
         foydalanuvchi=request.user,
-        bajarildi=False).order_by('bajarilgan_date__date')
+        bajarildi=False).order_by('bajarilgan_date__date', 'boshlanish_vaqti')
     
 
     # Create a list to store the grouped to-do items and date headings
@@ -35,10 +34,13 @@ def readVazifa(request): #list of activities
     for date, vazifalar in groupby(modelMe, key=lambda x: x.bajarilgan_date):
         grouped_items.append({
             'vazifa_kuni': date,
-            'vazifalar': list(vazifalar)
+            'vazifalar': sorted(vazifalar, key=lambda vazifa: vazifa.boshlanish_vaqti)
         })
 
-    return render(request, "to_do_list/readVazifa.html", {"modelMe": grouped_items})
+    return render(request, "to_do_list/readVazifa.html", {"modelMe": grouped_items, 
+                                                          'timeMe': timezone.localtime().time(),
+                                                          'dateMe': timezone.localdate(),
+                                                          })
 
 #=================================================================================
 # CRDU
