@@ -1,64 +1,41 @@
 {% extends 'to_do_list/layout.html'%}
+{% load django_bootstrap5 %}
 {% load static %}
     {% block title %} Vazifa Yaratish {% endblock %}
     {% block head %} 
         <link rel="stylesheet" href="{% static 'to_do_list/read_style.css' %}">
+        <style>
+            .form input[type="checkbox"]{
+                display: none;
+            }
+            .form-check-label{
+                display: none;
+            }
+        </style>
     {% endblock %}
 
     {% block content %}
     <div class="container">
         <div class="row justify-content-center">
+
             <!-- Create To-Do Form -->
             <div class="card">
                 <div class="card-header">
                     <h2>Yaratish</h2>
                 </div>
+                <div class="row my-5">
+                    <div class="col-md-12">
                 <div class="card-body">
-                    <form method="post" action="{% url 'createVazifa' %}">
+                    <form method="post" action="{% url 'createVazifa' %}" class="form">
+
+                    {% bootstrap_form formMe %}
                         {% csrf_token %}
-                        <!-- Title Field -->
-                        <div class="form-group">
-                            <label for="{{ formMe.sarlavha.id_for_label }}">Sarlavha</label>
-                            {{ formMe.sarlavha }}
-                            {% if formMe.sarlavha.errors %}
-                                <p class="error-message">{{ formMe.sarlavha.errors }}</p>
-                            {% endif %}
-                        </div>
-                        <!-- Description Field -->
-                        <div class="form-group">
-                            <label for="{{ formMe.tuliq_malumot.id_for_label }}">Tavsif</label>
-                            {{ formMe.tuliq_malumot }}
-                            {% if formMe.tuliq_malumot.errors %}
-                                <p class="error-message">{{ formMe.tuliq_malumot.errors }}</p>
-                            {% endif %}
-                        </div>
-                        <!-- Todo date -->
-                        <div class="form-group">
-                            <label for="{{ formMe.input_date.id_for_label }}">Vazifa kuni</label>
-                            {{ formMe.input_date }}
-                            {% if formMe.input_date.errors %}
-                                <p class="error-message">{{ formMe.input_date.errors }}</p>
-                            {% endif %}
-                        </div>
-                        <!-- Start Field -->
-                        <div class="form-group">
-                            <label for="{{ formMe.boshlanish_vaqti.id_for_label }}">Boshlanish Vaqti</label>
-                            {{ formMe.boshlanish_vaqti }}
-                            {% if formMe.boshlanish_vaqti.errors %}
-                                <p class="error-message">{{ formMe.boshlanish_vaqti.errors }}</p>
-                            {% endif %}
-                        </div>
-                        <!-- Deadline Field -->
-                        <div class="form-group">
-                            <label for="{{ formMe.tugatish_muddati.id_for_label }}">Tugatish muddati</label>
-                            {{ formMe.tugatish_muddati }}
-                            {% if formMe.tugatish_muddati.errors %}
-                                <p class="error-message">{{ formMe.tugatish_muddati.errors }}</p>
-                            {% endif %}
-                        </div>
+                        
                         <button type="submit" class="btn btn-primary btn-block"><strong>Vazifani yaratish</strong></button>
                     </form>
                 </div>
+            </div>
+            </div>
             </div>
         </div>
     </div>

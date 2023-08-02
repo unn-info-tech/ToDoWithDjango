@@ -12,24 +12,24 @@
         <div class="row justify-content-center">
             {% for group in modelMe %}
                 <div class="card" style="
-                padding-bottom: 10px;">
+                padding-bottom: 20px; padding-top: -30px;">
                     <div class="card-header">
                         <h2>Vazifalar Ro'yxati</h2>
                         <h2>{{ group.vazifa_kuni }}</h2>
                     </div>
                     
                     {% for vazifa in group.vazifalar %}
-                        <div class="card-body">
+                        <div class="card-body" style="margin-top: 10px;">
                             
                                 <div class="item">
-                                    {% if group.vazifa_kuni|date:"Y-m-d" <= dateMe|date:"Y-m-d" %}
                                         <div class="chec">
                                             <form action="{% url 'bajarildiVazifa' vazifa.id %}" method="post">
                                                 {% csrf_token %}
+                                            {% if group.vazifa_kuni == dateMe|date:"Y-m-d" %}
                                                 <input type="checkbox" name="check" onchange="this.form.submit()">
+                                            {% endif %}
                                             </form>
                                         </div>
-                                    {% endif %}
 
                                     <div class="task-item">
                                         <h1><strong>{{ vazifa.sarlavha }}</strong></h1>

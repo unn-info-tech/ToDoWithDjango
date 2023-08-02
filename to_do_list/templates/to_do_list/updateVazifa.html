@@ -1,7 +1,18 @@
 {% extends 'to_do_list/layout.html' %}
+{% load django_bootstrap5 %}
 {% block title %}Vazifani Uzgartirish {%endblock%}
 {% load static %}
-{% block head %} <link rel="stylesheet" href="{% static 'to_do_list/read_style.css' %}">{% endblock %}
+{% block head %} 
+    <link rel="stylesheet" href="{% static 'to_do_list/read_style.css' %}">
+    <style>
+        .form input[type="checkbox"]{
+            display: none;
+        }
+        .form-check-label{
+            display: none;
+        }
+    </style>
+{% endblock %}
 
 {% block content %}
     <div class="container">
@@ -12,53 +23,53 @@
                     <h2>Vazifani uzgartirish<h2>
                 </div>
                 <div class="card-body">
-                    <form method="post" action=".">
+                    <form method="post" action="." class="form">
                         {% csrf_token %}
                         <!-- Title Field -->
-                        <div class="form-group">
-                            <label for="{{ formMe.sarlavha.id_for_label }}">Sarlavha</label>
-                            {{ formMe.sarlavha }}
+                        <!-- <div class="form-group">
+                            <label for="{{ formMe.sarlavha.id_for_label }}">Sarlavha</label> -->
+                            {% bootstrap_form formMe %}
                             {% if formMe.sarlavha.errors %}
                                 <p class="error-message">{{ formMe.sarlavha.errors }}</p>
                             {% endif %}
-                        </div>  
+                        <!-- </div>   -->
                         <!-- Description Field -->
-                        <div class="form-group">
-                            <label for="{{ formMe.tuliq_malumot.id_for_label }}">Tavsif</label>
-                            {{ formMe.tuliq_malumot }}
+                        <!-- <div class="form-group">
+                            <label for="{{ formMe.tuliq_malumot.id_for_label }}">Tavsif</label> -->
+                            <!-- {% bootstrap_form formMe %} -->
                             {% if formMe.tuliq_malumot.errors %}
                                 <p class="error-message">{{ formMe.tuliq_malumot.errors }}</p>
                             {% endif %}
-                        </div>
+                        <!-- </div> -->
                         
                         <!-- Todo date -->
-                        <div class="form-group">
-                            <label for="{{ formMe.input_date.id_for_label }}">Vazifa kuni</label>
-                            {{ formMe.input_date }}
+                        <!-- <div class="form-group">
+                            <label for="{{ formMe.input_date.id_for_label }}">Vazifa kuni</label> -->
+                            <!-- {% bootstrap_form formMe %} -->
                             {% if formMe.input_date.errors %}
                                 <p class="error-message">{{ formMe.input_date.errors }}</p>
                             {% endif %}
-                        </div>
+                        <!-- </div> -->
 
                         <!-- Start Field -->
-                        <div class="form-group">
-                            <label for="{{ formMe.boshlanish_vaqti.id_for_label }}">Boshlanish vaqti</label>
-                            {{ formMe.boshlanish_vaqti }}
+                        <!-- <div class="form-group">
+                            <label for="{{ formMe.boshlanish_vaqti.id_for_label }}">Boshlanish vaqti</label> -->
+                            <!-- {% bootstrap_form formMe %} -->
                             {% if formMe.boshlanish_vaqti.errors %}
                                 <p class="error-message">{{ formMe.boshlanish_vaqti.errors }}</p>
                             {% endif %}
-                        </div>
+                        <!-- </div> -->
 
                         
 
                         <!-- Deadline Field -->
-                        <div class="form-group">
-                            <label for="{{ formMe.tugatish_muddati.id_for_label }}">Tugatish muddati</label>
-                            {{ formMe.tugatish_muddati }}
+                        <!-- <div class="form-group">
+                            <label for="{{ formMe.tugatish_muddati.id_for_label }}">Tugatish muddati</label> -->
+                            <!-- {% bootstrap_form formMe %} -->
                             {% if formMe.tugatish_muddati.errors %}
                                 <p class="error-message">{{ formMe.tugatish_muddati.errors }}</p>
                             {% endif %}
-                        </div>
+                        <!-- </div> -->
 
                         
                         <button type="submit" class="btn btn-primary btn-block"><strong>Uzgartirish</strong></button>

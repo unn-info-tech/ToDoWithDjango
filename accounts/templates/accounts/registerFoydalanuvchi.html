@@ -1,3 +1,4 @@
+{% load django_bootstrap5 %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -100,40 +101,54 @@
                     <h2>Ro'yhatdan o'tish Formasi</h2>
                 </div>
                 <div class="card-body">
-                    <form method="post" action=".">
+                    <form method="post" action="." class="form">
                         {% csrf_token %}
+                        {% bootstrap_form formMe%}
+                        {% if formMe.errors %}
+                            <p class="error-message">{{ formMe.username.errors }}</p>
+                        {% endif %}
+                        
+                        {% if formMe.email.errors %}
+                            <p class="error-message">{{ formMe.email.errors }}</p>
+                        {% endif %}
+                        {% if formMe.password1.errors %}
+                            <p class="error-message">{{ formMe.password1.errors }}</p>
+                        {% endif %}
+                        {% if formMe.password2.errors %}
+                            <p class="error-message">{{ formMe.password2.errors }}</p>
+                        {% endif %}
                         <!-- Username Field -->
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="{{ formMe.username.id_for_label }}">Ism</label>
                             {{ formMe.username }}
                             {% if formMe.username.errors %}
                                 <p class="error-message">{{ formMe.username.errors }}</p>
                             {% endif %}
-                        </div>
+                        </div> -->
                         <!-- Email Field -->
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="{{ formMe.email.id_for_label }}">Email</label>
                             {{ formMe.email }}
                             {% if formMe.email.errors %}
                                 <p class="error-message">{{ formMe.email.errors }}</p>
                             {% endif %}
-                        </div>
+                        </div> -->
                         <!-- Password Field -->
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="{{ formMe.password1.id_for_label }}">Parol</label>
                             {{ formMe.password1 }}
                             {% if formMe.password1.errors %}
                                 <p class="error-message">{{ formMe.password1.errors }}</p>
                             {% endif %}
-                        </div>
+                        </div> -->
                         <!-- Confirm Password Field -->
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="{{ formMe.password2.id_for_label }}">Parolni tasdiqlang</label>
                             {{ formMe.password2 }}
                             {% if formMe.password2.errors %}
                                 <p class="error-message">{{ formMe.password2.errors }}</p>
                             {% endif %}
-                        </div>
+                        </div> -->
                         <button type="submit" class="btn btn-primary btn-block">Ro'yhatdan o'tish</button>
                     </form>
                 </div>
