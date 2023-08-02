@@ -17,7 +17,7 @@ class VazifaPostForm(forms.ModelForm):
 
     class Meta:
         model = VazifaModel
-        fields = ["sarlavha", "tuliq_malumot", "tugatish_muddati", 'boshlanish_vaqti', 'bajarildi', 'input_date']
+        fields = ["sarlavha", "tuliq_malumot", 'boshlanish_vaqti', "tugatish_muddati", 'bajarildi', 'input_date']
         widgets = {
             'boshlanish_vaqti': forms.TimeInput(attrs={'type': 'time'}),
             'tugatish_muddati': forms.TimeInput(attrs={'type': 'time'}),
