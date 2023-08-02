@@ -1,0 +1,25 @@
+{% extends 'to_do_list/base.html' %}
+
+{% block contentme %}
+    <h1>Mening sahifam</h1>
+    <p>{{ request.user.username }}</p>
+    <p>Email: {{ request.user.email }}</p>
+    <form action="{% url 'editFoydalanuvchi' %}" method="get">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button type="submit">Sahifani o'zgartirish</button>
+      </form>
+    <form action="{% url 'changeParolFoydalanuvchi' %}" method="get">
+        {% csrf_token %}
+        <button type="submit">Parolni yangilash</button>
+        {{form.as_p}}
+    </form>
+    <form action="{% url 'logoutFoydalanuvchi' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Sahifadan chiqish</button>
+    </form>
+    <form action="{% url 'deleteFoydalanuvchi' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Sahifani o'chirish</button>
+    </form>
+{% endblock %}

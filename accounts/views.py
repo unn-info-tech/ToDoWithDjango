@@ -1,8 +1,17 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import sozlangUserCreationForm
+from django.contrib.auth.models import User
+
+
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm, PasswordChangeForm
+from .forms import sozlangUserCreationForm, sozlangUserChangeForm
+from django.contrib.auth.decorators import login_required
+from django.urls import reverse
+from django.views.decorators.http import require_POST
+from django.contrib import messages
 
 
 # Create your views here.
@@ -43,3 +52,40 @@ def loginFoydalanuvchi(request):
 def logoutFoydalanuvchi(request):
     logout(request)
     return redirect('welcomeFoydalanuvchi')
+
+#-------------------------------------------------------
+
+@login_required
+def profileFoydalanuvchi(request):
+    return render(request, 'accounts/profileFoydalanuvchi.html')
+
+
+@login_required
+def editFoydalanuvchi(request):
+    if request.method == 'POST':
+        formMe = sozlangUserChangeForm(request.POST, instance=request.user)
+        if formMe.is_valid():
+            formMe.save()
+            update_session_auth_hash(request, request.user)
+            return redirect('editFoydalanuvchi')
+    else:
+        formMe = sozlangUserChangeForm(instance=request.user)
+    return render(request, 'accounts/editFoydalanuvchi.html', {'formMe': formMe})
+
+
+@login_required
+def changeParolFoydalanuvchi(request):
+    if request.method == 'POST':
+        formMe = PasswordChangeForm(request.user, request.POST)
+        if formMe.is_valid():
+            formMe.save()
+            return redirect('changeParolDone')
+    else:
+        formMe = PasswordChangeForm(request.user)
+    return render(request, 'accounts/changeParolFoydalanuvchi.html', {"formMe": formMe})
+
+
+@login_required
+def deleteFoydalanuvchi(request):
+    request.user.delete()
+    return redirect('registerFoydalanuvchi')

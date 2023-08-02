@@ -1,0 +1,10 @@
+{% extends 'to_do_list/base.html' %}
+
+{% block contentme %}
+<h2>Parolni yangilashingiz mumkin:</h2>
+<form method="post" accept=".">
+    {% csrf_token %}
+    {{ formMe.as_p }}
+    <button type="submit">O'zgarishni saqlash</button>
+</form>
+{% endblock %}

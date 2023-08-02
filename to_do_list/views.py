@@ -30,6 +30,7 @@ def readVazifa(request): #list of activities
     
 
     # Create a list to store the grouped to-do items and date headings
+    dateMe = timezone.localdate()
     grouped_items = []
     for date, vazifalar in groupby(modelMe, key=lambda x: x.bajarilgan_date):
         grouped_items.append({

@@ -28,7 +28,7 @@
                 <div class="card-body">
                     <form method="post" action="{% url 'createVazifa' %}" class="form">
 
-                    {% bootstrap_form formMe %}
+                        {% bootstrap_form formMe %}
                         {% csrf_token %}
                         
                         <button type="submit" class="btn btn-primary btn-block"><strong>Vazifani yaratish</strong></button>
