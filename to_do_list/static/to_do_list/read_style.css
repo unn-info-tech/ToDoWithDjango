@@ -206,7 +206,9 @@ input[type="checkbox"]:checked{
     background-color: #81c784;
 }
 
-
+label{
+    display: none;
+}
 
 .chec{
     display: flex;

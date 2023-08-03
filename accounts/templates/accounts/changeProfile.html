@@ -1,9 +1,37 @@
 {% extends 'accounts/layout.html' %}
+<!-- 
+{% block contentme %}
+<h2>Parolni yangilashingiz mumkin:</h2>
+<form method="post" accept=".">
+    {% csrf_token %}
+    {{ formMe.as_p }}
+    <button type="submit">O'zgarishni saqlash</button>
+</form>
+{% endblock %} -->
+
+
 {% load static %}
+{% load django_bootstrap5 %}
 {% block title%}Profile{% endblock %}
 {% block head %}
+
     <link rel="stylesheet" href="{% static 'accounts/style.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+
+        /* .mb-3 .form-label{
+            display: none;
+        } */
+
+        .forrrm label{
+            display: none;
+        }
+
+        .mb-3 #id_password{
+            display:none;
+        }
+        .mb-3 .form-text{ display: none;}
+    </style>
 {% endblock %}
 {% block navbar %}
     <!-- Navbar -->
@@ -33,15 +61,40 @@
     <h1>Mening sahifam</h1>
     <div class="info-change">
         <form action="{% url 'profileFoydalanuvchi'%}" method="get" id="get_info">
-            <button type="submit" class="btn btn-primary" id="show" style="background-color: rgb(108, 202, 95);">Shaxsiy malumotlar</button>
+            <button type="submit" class="btn btn-primary" id="show">Shaxsiy malumotlar</button>
         </form>
         <form action="{% url 'changeProfile'%}" method="get" id="post_info">
-            <button type="submit" class="btn btn-primary" id="change">Uzgartirish</button>
+            <button type="submit" class="btn btn-primary" id="change" style="background-color: rgb(108, 202, 95);">Uzgartirish</button>
         </form>
     </div>
-    <div class="info">
-        <h1><strong>{{ request.user.username }}</strong></h1>
-        <h2>{{ request.user.email }}</h2>
+
+    <div class="blue_zone">
+        <h3>Sahifaga o'zgartirish kiritish:</h3>
+        <form method="post"  action="{% url 'editFoydalanuvchi'%}" class="form forrrm">
+            {% csrf_token %}
+            {% bootstrap_form username_email %}
+            <button type="submit" class="btn btn-primary">O'zgarishni saqlash</button>
+        </form>
+    </div>
+    
+    <div class="yellow_zone">
+        <h3>Parolni yangilashingiz mumkin:</h3>
+        <form method="post" accept="changeParolFoydalanuvchi">
+            {% csrf_token %}
+            {% bootstrap_form password %}
+            <button type="submit" class="btn">O'zgarishni saqlash</button>
+        </form>
+    </div>
+
+    <div class="red_zone">
+        <form action="{% url 'logoutFoydalanuvchi' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="logout">Sahifadan chiqish</button>
+        </form>
+        <form action="{% url 'deleteFoydalanuvchi' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="delete">Sahifani o'chirish</button>
+        </form>
     </div>
     
 {% endblock %}
