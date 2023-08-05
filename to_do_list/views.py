@@ -22,7 +22,7 @@ from .forms import VazifaPostForm
 @login_required
 def readVazifa(request): #list of activities
     # __gt = Filter the to-do items where the due date is greater than the current datetime
-    print(type(timezone.localdate()))
+    print(timezone.localdate().year)
     modelMe = VazifaModel.objects.filter(
         tugatish_muddati__gt=timezone.localtime().time(),
         bajarilgan_date__date__gte=timezone.localdate(),
@@ -62,7 +62,7 @@ def createVazifa(request):
             return redirect("readVazifa")
     else:
         formMe =  VazifaPostForm()
-    return render(request, 'to_do_list/createVazifa.html', {'formMe': formMe})
+    return render(request, 'to_do_list/test.html', {'formMe': formMe})
  
 @login_required
 def detailVazifa(request, idMe):
