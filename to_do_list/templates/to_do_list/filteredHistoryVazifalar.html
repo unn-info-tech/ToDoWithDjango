@@ -6,15 +6,22 @@
 {% endblock %}
 {% block content %}
     <div class="done_undone">
-        <a href="{% url 'bajarilganVazifalar' idMe %}">Bajarilgan {{len_bajarilgan}}</a>
-        <a href="{% url 'unBajarilganVazifalar' idMe %}">Bajarilmagan {{len_unBajarilgan}}</a>
+        <a href="{% url 'bajarilganVazifalar' idMe %}">Bajarilgan </a>
+        <a href="{% url 'unBajarilganVazifalar' idMe %}">Bajarilmagan </a>
     </div>
     <div class="container">
         <div class="row justify-content-center">
             <div class="card">
+                {% if bajarilgan %}
                 <div class="card-header">
-                    <h2>Bajarilgan Vazifalar</h2>
+                    <h2>Bajarilgan Vazifalar ({{len_bajarilgan}})</h2>
                 </div>
+                {% endif %}
+                {% if unBajarilgan %}
+                <div class="card-header">
+                    <h2>Bajarilgmagan Vazifalar ({{len_unBajarilgan}})</h2>
+                </div>
+                {% endif %}
                 <div class="card-body">
                     <div class="task-list">
                         {% for i in bajarilgan %}
