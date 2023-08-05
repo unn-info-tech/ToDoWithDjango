@@ -38,6 +38,64 @@
                                         <h5>Due Date: {{ vazifa.tugatish_muddati|time:"H:i:s" }}</h5>
                                         {% if vazifa.boshlanish_vaqti <= timeMe %}
                                             <h5>Time Remaining: <span id="countdown_{{ vazifa.id }}"></span></h5>
+
+                                            <script>
+                                                // Get the start time and deadline for the current to-do item
+                                                var startTime = new Date('{{ group.vazifa_kuni }} {{ vazifa.boshlanish_vaqti|time:"H:i:s" }}').getTime();
+                                                var deadline = new Date('{{ group.vazifa_kuni}} {{vazifa.tugatish_muddati|time:"H:i:s"}}').getTime();
+                                                
+                                                // Function to update the countdown
+                                                function updateCountdown() {
+                                                    // Get the current date and time
+                                                    var now = new Date().getTime();
+                                                    
+                                                    // Calculate the remaining time
+                                                    var timeLeft = deadline - now;
+    
+                                                    console.log("startTime:", startTime);
+                                                    console.log("deadline:", deadline);
+                                                    console.log("timeLeft:", timeLeft);
+                                                    
+                                                    // Calculate days, hours, minutes, and seconds
+                                                    var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                                                    var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                                    var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                                                    var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                                                    // Display the remaining time in the element with id="countdown_{{ vazifa.id }}"
+                                                    var countdownElement = document.getElementById('countdown_{{ vazifa.id }}');
+
+                                                    // Check if there are 3 or fewer minutes left
+                                                    if (days === 0 && hours === 0 && minutes <= 3) {
+                                                        // Set the countdown text to red
+                                                        countdownElement.style.color = "red";
+                                                    } else {
+                                                        // Set the countdown text to black
+                                                        countdownElement.style.color = "#4caf50";
+                                                    }
+
+                                                    // Display the remaining time
+                                                    countdownElement.innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
+
+                                                    // If the countdown has expired, display "Expired" and return
+                                                    if (timeLeft < 0) {
+                                                        countdownElement.innerHTML = "Expired";
+                                                        return;
+                                                    }
+
+                                                    
+                                                    // If the current time is less than the start time, set a timeout to start the countdown when the start time is reached
+                                                    if (now < startTime) {
+                                                        setTimeout(updateCountdown, startTime - now);
+                                                    } else {
+                                                        // Otherwise, update the countdown every second
+                                                        setTimeout(updateCountdown, 1000);
+                                                    }
+                                                }
+                                                
+                                                // Call the updateCountdown function to start the countdown
+                                                updateCountdown();
+                                            </script>
                                         {% endif %}
             
                                         <div class="edit_del">
@@ -51,50 +109,7 @@
                                             </form>
                                         </div>
 
-                                        <script>
-                                            // Get the start time and deadline for the current to-do item
-                                            var startTime = new Date('{{ group.vazifa_kuni }} {{ vazifa.boshlanish_vaqti|time:"H:i:s" }}').getTime();
-                                            var deadline = new Date('{{ group.vazifa_kuni}} {{vazifa.tugatish_muddati|time:"H:i:s"}}').getTime();
-                                            
-                                            // Function to update the countdown
-                                            function updateCountdown() {
-                                                // Get the current date and time
-                                                var now = new Date().getTime();
-                                                
-                                                // Calculate the remaining time
-                                                var timeLeft = deadline - now;
-
-                                                console.log("startTime:", startTime);
-                                                console.log("deadline:", deadline);
-                                                console.log("timeLeft:", timeLeft);
-                                                
-                                                // Calculate days, hours, minutes, and seconds
-                                                var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-                                                var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                                                var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-                                                var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-                                                
-                                                // Display the remaining time in the element with id="countdown_{{ i.id }}"
-                                                document.getElementById('countdown_{{ vazifa.id }}').innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
-                                                
-                                                // If the countdown has expired, display "Expired" and return
-                                                if (timeLeft < 0) {
-                                                    document.getElementById('countdown_{{ vazifa.id }}').innerHTML = "Expired";
-                                                    return;
-                                                }
-                                                
-                                                // If the current time is less than the start time, set a timeout to start the countdown when the start time is reached
-                                                if (now < startTime) {
-                                                    setTimeout(updateCountdown, startTime - now);
-                                                } else {
-                                                    // Otherwise, update the countdown every second
-                                                    setTimeout(updateCountdown, 1000);
-                                                }
-                                            }
-                                            
-                                            // Call the updateCountdown function to start the countdown
-                                            updateCountdown();
-                                        </script>
+                                        
                                     </div>
 
                                 </div>

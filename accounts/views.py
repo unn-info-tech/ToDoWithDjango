@@ -27,7 +27,7 @@ def registerFoydalanuvchi(request):
             # foydalanuvchi = formMe.save(commit=False)
             # foydalanuvchi.is_staff = True
             formMe.save()
-            redirect("loginFoydalanuvchi")
+            redirect("readVazifa")
     else:
         formMe = sozlangUserCreationForm()
     return render(request, 'accounts/registerFoydalanuvchi.html', {'formMe': formMe})
@@ -88,4 +88,4 @@ def changeParolFoydalanuvchi(request):
 @login_required
 def deleteFoydalanuvchi(request):
     request.user.delete()
-    return redirect('registerFoydalanuvchi')
+    return redirect('welcomeFoydalanuvchi')
