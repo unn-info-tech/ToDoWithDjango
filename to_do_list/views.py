@@ -55,7 +55,8 @@ def createVazifa(request):
             vazifa = formMe.save(commit=False)
             vazifa.foydalanuvchi = request.user
             input_date = formMe.cleaned_data['input_date']
-            vazifa.bajarilgan_date, created = DateBajarildiModel.objects.get_or_create(date=input_date)
+            vazifa.bajarilgan_date, created = DateBajarildiModel.objects.get_or_create(date=input_date,
+                                                                                       foydalanuvchi=request.user)
             formMe.save()
 
             return redirect("readVazifa")
@@ -96,9 +97,20 @@ def deleteVazifa(request, idMe):
 # History 
 
 def historyVazifa(request):
+    date_now = timezone.localdate()
     modelMe = DateBajarildiModel.objects.filter(
-        date__lte = timezone.localdate()
+        date__lte = date_now,
+        foydalanuvchi=request.user,
     ).values() # historyVazifalar
+
+    last_10kun = date_now - timezone.timedelta(days=10)
+    # Delete older records for non-staff users
+    if not request.user.is_staff:
+        DateBajarildiModel.objects.filter(
+            date__lt=last_10kun,
+            foydalanuvchi=request.user
+        ).delete()
+
     return render(request, "to_do_list/historyVazifa.html", {"modelMe": modelMe})
 
 
@@ -134,7 +146,8 @@ def bajarildiVazifa(request, idMe):
     objVazifa = get_object_or_404(VazifaModel, id=idMe)
     objVazifa.bajarildi = True
     objVazifa.bajarilgan_vaqt = timezone.localtime().time()
-    objVazifa.bajarilgan_date, created = DateBajarildiModel.objects.get_or_create(date=date.today())
+    objVazifa.bajarilgan_date, created = DateBajarildiModel.objects.get_or_create(date=date.today(),
+                                                                                  foydalanuvchi=request.user,)
     objVazifa.save()
     return redirect('readVazifa')    
 

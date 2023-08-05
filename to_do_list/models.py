@@ -5,6 +5,7 @@ from datetime import time
 from django.contrib.auth.models import User
 
 class DateBajarildiModel(models.Model):
+    foydalanuvchi = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     date = models.DateField()
 
     def __str__(self):

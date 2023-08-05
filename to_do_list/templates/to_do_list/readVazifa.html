@@ -25,9 +25,7 @@
                                         <div class="chec">
                                             <form action="{% url 'bajarildiVazifa' vazifa.id %}" method="post">
                                                 {% csrf_token %}
-                                            {% if group.vazifa_kuni == dateMe|date:"Y-m-d" %}
                                                 <input type="checkbox" name="check" onchange="this.form.submit()">
-                                            {% endif %}
                                             </form>
                                         </div>
 
