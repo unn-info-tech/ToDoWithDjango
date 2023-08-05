@@ -1,3 +1,6 @@
+
+/* *{border: 1px solid red;    } */
+
 .done_undone {
     display: flex;
     justify-content: center;
@@ -206,7 +209,9 @@ input[type="checkbox"]:checked{
     background-color: #81c784;
 }
 
-
+label{
+    display: none;
+}
 
 .chec{
     display: flex;

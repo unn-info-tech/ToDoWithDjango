@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import sozlangUserCreationForm
 from django.contrib.auth.models import User
-
+from django.http import HttpResponse
 
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm, PasswordChangeForm
 from .forms import sozlangUserCreationForm, sozlangUserChangeForm
@@ -59,6 +59,14 @@ def logoutFoydalanuvchi(request):
 def profileFoydalanuvchi(request):
     return render(request, 'accounts/profileFoydalanuvchi.html')
 
+@login_required
+def changeProfile(request):
+    context={
+        "username_email": sozlangUserChangeForm(instance=request.user),
+        
+        "password": PasswordChangeForm(request.user),
+    }
+    return render(request, "accounts/changeProfile.html", context)
 
 @login_required
 def editFoydalanuvchi(request):
@@ -67,10 +75,10 @@ def editFoydalanuvchi(request):
         if formMe.is_valid():
             formMe.save()
             update_session_auth_hash(request, request.user)
-            return redirect('editFoydalanuvchi')
-    else:
-        formMe = sozlangUserChangeForm(instance=request.user)
-    return render(request, 'accounts/editFoydalanuvchi.html', {'formMe': formMe})
+            return redirect('changeProfile')
+    # else:
+    #     formMe = sozlangUserChangeForm(instance=request.user)
+    # return render(request, 'accounts/editFoydalanuvchi.html', {'formMe': formMe})
 
 
 @login_required
@@ -79,10 +87,10 @@ def changeParolFoydalanuvchi(request):
         formMe = PasswordChangeForm(request.user, request.POST)
         if formMe.is_valid():
             formMe.save()
-            return redirect('changeParolDone')
-    else:
-        formMe = PasswordChangeForm(request.user)
-    return render(request, 'accounts/changeParolFoydalanuvchi.html', {"formMe": formMe})
+            return redirect('profileFoydalanuvchi')
+    # else:
+    #     formMe = PasswordChangeForm(request.user)
+    # return render(request, 'accounts/changeParolFoydalanuvchi.html', {"formMe": formMe})
 
 
 @login_required
