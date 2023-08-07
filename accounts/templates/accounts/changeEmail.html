@@ -2,7 +2,7 @@
 {% load django_bootstrap5 %}
 {% block style %}
 <style>
-    .username{
+    .email{
         display: none;
     }
     .form-label, .form-control-static, .form-text{
@@ -11,8 +11,8 @@
 </style>
 {% endblock %}
 
-{% block username %}
-    <form method="post" action="changeUsername" class="form forrrm">
+{% block email %}
+    <form method="post" action="changeEmail" class="form forrrm">
         {% csrf_token %}
         {% bootstrap_form form %}
         <button type="submit" class="btn btn-primary">O'zgarishni saqlash</button>

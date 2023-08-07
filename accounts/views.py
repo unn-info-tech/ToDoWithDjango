@@ -122,7 +122,7 @@ def changeEmail(request):
             update_session_auth_hash(request, request.user)
             return redirect("profileFoydalanuvchi")
     else:
-        # form=changeEmail(instance=request.user)
-        return render(request, "accounts/changeEmail.html")
+        form=changeEmailForm(instance=request.user)
+        return render(request, "accounts/changeEmail.html", {"form":form})
     
 
