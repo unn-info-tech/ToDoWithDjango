@@ -37,13 +37,13 @@
     <div class="info">
         <div class="field username">
             <h1><strong>{{ request.user.username }}</strong></h1>
-                <a href="{% url 'changeUsername' %}"><i class="fa fa-edit"></i></a>
+            <a href="{% url 'changeUsername' %}"><i class="fa fa-edit" style="font-size: 30px;"></i></a>
         </div>
         {% block username%}
         {% endblock %}
         <div class="field email">
             <h3>{{ request.user.email }}</h3>
-            <a href="{% url 'changeEmail' %}"><i class="fa fa-edit"></i></a>
+            <a href="{% url 'changeEmail' %}"><i class="fa fa-edit" style="font-size:30px"></i></a>
         </div>  
         {% block email %}
         {% endblock %}  
@@ -53,11 +53,18 @@
                 <button type="submit" class="btn">Parolni yangilash</button>
             </form>
         </div>
+
         <div class="field logout">
-            <form action="{% url 'logoutFoydalanuvchi' %}" method="post" class="passwordbtn">
+        <div class="red_zone">
+            <form action="{% url 'logoutFoydalanuvchi' %}" method="post">
                 {% csrf_token %}
                 <button type="submit" class="logout">Sahifadan chiqish</button>
             </form>
+            <form action="{% url 'deleteFoydalanuvchi' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="delete">Sahifani o'chirish</button>
+            </form>
+        </div>
         </div>
     </div>
 

@@ -92,31 +92,38 @@
     display: flex;
     margin-right: 0px;
     margin-left:auto;
+    padding-left: 0px;
+    padding-right: auto;
 }
 .field .logout{
-    background-color: white;
-    margin-right: 0px;
+    background-color: rgba(255, 8, 0, 0.514);
+    margin-right: 10px;
     margin-left:auto;
     border-radius: 5px;
     border: 1px solid rgb(255, 39, 39);
-
+    width: auto;
+    height: 30px;
+    color:white;
 }
+
 .logout{
     border: none;
 }
-.field .logout:hover{
+
+/* .field .logout:hover{
     background-color: rgba(255, 8, 0, 0.514);
-}
+} */
 .red_zone .delete{
-    background-color: white;
+    background-color: red;
     margin-right: 10px;
     border-radius: 5px;
     border: 2px solid red;
     width: auto;
     height: 30px;
+    color:white;
 }
 
-.red_zone .delete:hover{
+/* .red_zone .delete:hover{
     background-color: red;
     color: white;
-}
+} */
