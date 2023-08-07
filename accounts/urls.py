@@ -13,4 +13,9 @@ urlpatterns=[
     path("loginFoydalanuvchi/", views.loginFoydalanuvchi, name="loginFoydalanuvchi"),
     path("logoutFoydalanuvchi/", views.logoutFoydalanuvchi, name="logoutFoydalanuvchi"),
     
+
+
+    path("changeUsername", views.changeUsername, name="changeUsername"),
+    path("changeEmail", views.changeEmail, name="changeEmail"),
+    
 ]

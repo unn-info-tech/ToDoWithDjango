@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm, PasswordChangeForm
-from .forms import sozlangUserCreationForm, sozlangUserChangeForm
+from .forms import sozlangUserCreationForm, sozlangUserChangeForm, changeUsernameForm, changeEmailForm
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.views.decorators.http import require_POST
@@ -97,3 +97,32 @@ def changeParolFoydalanuvchi(request):
 def deleteFoydalanuvchi(request):
     request.user.delete()
     return redirect('welcomeFoydalanuvchi')
+
+
+
+
+@login_required
+def changeUsername(request):
+    if request.method=="POST":
+        form = changeUsernameForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, request.user)
+            return redirect("profileFoydalanuvchi")
+    else:
+        form =  changeUsernameForm(instance=request.user)
+        return render(request, "accounts/changeUsername.html", {"form":form})
+
+@login_required
+def changeEmail(request):
+    if request.method=="POST":
+        form = changeEmailForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, request.user)
+            return redirect("profileFoydalanuvchi")
+    else:
+        # form=changeEmail(instance=request.user)
+        return render(request, "accounts/changeEmail.html")
+    
+

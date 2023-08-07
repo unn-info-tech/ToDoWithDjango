@@ -6,6 +6,10 @@
     background-color: #ffffff8e;
 }
 
+/* *{
+    border:1px solid red;
+} */
+
 .nav-item{
     margin-left:15px;
 }
@@ -40,16 +44,38 @@
 }
 
 .info{
-    display:grid;
-    justify-content: center;
-    align-items: center;
+    display:flexbox;
+    justify-content: last baseline;
+    padding-right: 0px;
+    padding-left: auto;
 }
 .info h1{
-    text-align-last: center;
-    font-size: 100px;
     font-family: 'Courier New', Courier, monospace;
 }
 
+.field{
+    margin-right: 0px;
+    margin-left: auto;
+    display: flex;
+    justify-content: last baseline;
+    border-bottom: 1px solid black;
+}
+
+.field a{
+    margin-right: 0px;
+    margin-left: auto;
+
+}
+.email{
+    margin-top:10px;
+}
+
+.passwordbtn{
+    margin-top: 10px;
+    margin-right: 0px;
+    margin-left: auto;
+    border:none;
+}
 
 .yellow_zone{
     margin-top:5%;
@@ -60,22 +86,25 @@
 }
 
 .red_zone{
-    background-color: rgba(253, 204, 204, 0.356);
-    border: 2px solid red;
     border-radius: 10px;
     padding: 2%;
     margin-top: 3%;
     display: flex;
+    margin-right: 0px;
+    margin-left:auto;
 }
-.red_zone .logout{
+.field .logout{
     background-color: white;
-    margin-right: 10px;
+    margin-right: 0px;
+    margin-left:auto;
     border-radius: 5px;
     border: 1px solid rgb(255, 39, 39);
-    width: auto;
-    height: 30px;
+
 }
-.red_zone .logout:hover{
+.logout{
+    border: none;
+}
+.field .logout:hover{
     background-color: rgba(255, 8, 0, 0.514);
 }
 .red_zone .delete{

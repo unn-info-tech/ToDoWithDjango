@@ -16,3 +16,12 @@ class sozlangUserChangeForm(UserChangeForm):
         fields = ['username', 'email']
 
 
+class changeUsernameForm(UserChangeForm):
+    class Meta:
+        model = User
+        fields = ['username']
+
+class changeEmailForm(UserChangeForm):
+    class Meta:
+        model = User
+        fields = ['email']
