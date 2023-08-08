@@ -136,3 +136,12 @@
     font-size: smaller;
     color: rgb(97, 96, 96);
 }
+
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #359c3e;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem #6dff726c;
+}

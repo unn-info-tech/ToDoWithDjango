@@ -27,10 +27,10 @@ def registerFoydalanuvchi(request):
             # foydalanuvchi = formMe.save(commit=False)
             # foydalanuvchi.is_staff = True
             formMe.save()
-            redirect("readVazifa")
+            return redirect("readVazifa")
     else:
         formMe = sozlangUserCreationForm()
-    return render(request, 'accounts/registerFoydalanuvchi.html', {'formMe': formMe})
+        return render(request, 'accounts/registerFoydalanuvchi.html', {'formMe': formMe})
 
 
 def loginFoydalanuvchi(request):
