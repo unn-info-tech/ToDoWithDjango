@@ -8,6 +8,8 @@
     <!-- Add Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Custom Styles -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'accounts/style.css' %}">
     <style>
         body {
             background-color: #81c784; /* Green background color */
@@ -151,6 +153,9 @@
                         </div> -->
                         <button type="submit" class="btn btn-primary btn-block">Ro'yhatdan o'tish</button>
                     </form>
+                    <div class="asking">
+                        <a href="{% url 'loginFoydalanuvchi' %}"><p>Ro'yhatdan o'tganmisiz?</p></a>
+                    </div>
                 </div>
             </div>
         </div>

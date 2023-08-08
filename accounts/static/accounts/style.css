@@ -127,3 +127,12 @@
     background-color: red;
     color: white;
 } */
+
+.asking {
+    margin-top: 10px;
+}
+
+.form-text{
+    font-size: smaller;
+    color: rgb(97, 96, 96);
+}

@@ -8,6 +8,8 @@
     <!-- Add Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Custom Styles -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'accounts/style.css' %}">
     <style>
         body {
             background-color: #81c784; /* Green background color */
@@ -101,18 +103,24 @@
                     <h2>Kirish Formasi</h2>
                 </div>
                 <div class="card-body">
-                    <form method="post" action="." class="form">
-                        {% csrf_token %}
-                        <!-- Username Field -->
-                        {% bootstrap_form formMe%}
-                        {% if formMe.username.errors %}
-                            <p class="error-message">{{ formMe.username.errors }}</p>
-                        {% endif %}
-                        {% if formMe.password.errors %}
-                            <p class="error-message">{{ formMe.password.errors }}</p>
-                        {% endif %}
-                        <button type="submit" class="btn btn-primary btn-block">Kirish</button>
-                    </form>
+                    <div>
+
+                        <form method="post" action="." class="form">
+                            {% csrf_token %}
+                            <!-- Username Field -->
+                            {% bootstrap_form formMe%}
+                            {% if formMe.username.errors %}
+                                <p class="error-message">{{ formMe.username.errors }}</p>
+                            {% endif %}
+                            {% if formMe.password.errors %}
+                                <p class="error-message">{{ formMe.password.errors }}</p>
+                            {% endif %}
+                            <button type="submit" class="btn btn-primary btn-block">Kirish</button>
+                        </form>
+                    </div>
+                    <div class="asking">
+                        <a href="{% url 'registerFoydalanuvchi' %}"><p>Bu yerda yangimisiz?</p></a>
+                    </div>
                 </div>
             </div>
         </div>
