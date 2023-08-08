@@ -2,7 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render,redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from itertools import groupby
 from operator import itemgetter
 
@@ -52,17 +52,26 @@ def createVazifa(request):
     if request.method == 'POST':
         formMe =  VazifaPostForm(request.POST)
         if formMe.is_valid():
-            vazifa = formMe.save(commit=False)
-            vazifa.foydalanuvchi = request.user
             input_date = formMe.cleaned_data['input_date']
-            vazifa.bajarilgan_date, created = DateBajarildiModel.objects.get_or_create(date=input_date,
-                                                                                       foydalanuvchi=request.user)
-            formMe.save()
-
+            challenge = int(formMe.cleaned_data['challenge'])
+            vazifas = []
+            for i in range(challenge):
+                vazifa_kuni, created = DateBajarildiModel.objects.get_or_create(date=input_date + timedelta(days=i), foydalanuvchi=request.user)
+                vazifa = VazifaModel(
+                    foydalanuvchi = request.user,
+                    sarlavha=formMe.cleaned_data['sarlavha'],
+                    tuliq_malumot=formMe.cleaned_data['tuliq_malumot'],
+                    bajarilgan_date = vazifa_kuni,
+                    boshlanish_vaqti=formMe.cleaned_data['boshlanish_vaqti'],
+                    tugatish_muddati=formMe.cleaned_data['tugatish_muddati'],
+                )
+                vazifas.append(vazifa)
+                
+            VazifaModel.objects.bulk_create(vazifas)
             return redirect("readVazifa")
     else:
         formMe =  VazifaPostForm()
-    return render(request, 'to_do_list/test.html', {'formMe': formMe})
+    return render(request, 'to_do_list/createVazifa.html', {'formMe': formMe})
  
 @login_required
 def detailVazifa(request, idMe):
