@@ -23,28 +23,18 @@
                         <div class="card-body" style="margin-top: 10px;">
                             
                                 <div class="item">
-                                    {% if "2023-07-10" == "2023-07-10" %}
-                                        <p>Both dates are the same.</p>
-                                    {% else %}
-                                        <p>Dates are different.</p>
-                                    {% endif %}
-
-                                    {% if group.vazifa_kuni == dateMe %}
+                                    {% if group.dat %}
                                         <div class="chec">
                                             <form action="{% url 'bajarildiVazifa' vazifa.id %}" method="post">
                                                 {% csrf_token %}
                                                 <input type="checkbox" name="check" onchange="this.form.submit()">
                                             </form>
                                         </div>
-                                    {% else %}
-                                        <p>not working</p>
                                     {% endif %}
 
                                     <div class="task-item">
                                         <h1><strong>{{ vazifa.sarlavha }}</strong></h1>
                                         <p>{{ vazifa.tuliq_malumot }}</p>
-                                        <p>rr{{group.vazifa_kuni }}</p>
-                                        <p>dateMe{{ dateMe }}</p>
                                         <h5>Start Time: {{ vazifa.boshlanish_vaqti|time:"H:i:s" }}</h5>
                                         <h5>Due Date: {{ vazifa.tugatish_muddati|time:"H:i:s" }}</h5>
                                         {% if vazifa.boshlanish_vaqti <= timeMe %}

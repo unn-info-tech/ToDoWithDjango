@@ -34,9 +34,12 @@ def readVazifa(request): #list of activities
     dateMe = timezone.localdate()
     grouped_items = []
     for date, vazifalar in groupby(modelMe, key=lambda x: x.bajarilgan_date):
+        boo = f'{dateMe}' == f'{date}'
+        print(boo)
         grouped_items.append({
             'vazifa_kuni': date,
-            'vazifalar': sorted(vazifalar, key=lambda vazifa: vazifa.boshlanish_vaqti)
+            'vazifalar': sorted(vazifalar, key=lambda vazifa: vazifa.boshlanish_vaqti),
+            'dat': boo,
         })
 
     return render(request, "to_do_list/readVazifa.html", {"modelMe": grouped_items, 
