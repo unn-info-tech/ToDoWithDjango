@@ -295,3 +295,10 @@ select {
     outline: 0;
     box-shadow: 0 0 0 0.2rem #6dff726c;
 }
+
+.addd{
+    font-size:30px; 
+    border: 2px solid rgb(221, 221, 221);
+    border-radius: 10px; 
+    padding: 0px;
+}
