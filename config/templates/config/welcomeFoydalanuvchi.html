@@ -1,15 +1,22 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Our Website</title>
+    <title>Welcome to our website</title>
     <!-- Add Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Custom Styles -->
     <style>
+        .logo {
+            display: block;
+            margin: 0 auto 30px; /* Centered with a bottom margin */
+            max-width: 30%; /* Make sure the logo doesn't exceed its container's width */
+        }
+
         body {
-            background-color: #81c784; /* Green background color */
+            background-color: #f0f0f0; /* Green background color */
             padding: 20px;
         }
         .cool-background {
@@ -22,37 +29,40 @@
         }
         .circle {
             position: absolute;
-            background-color: #fff; /* White circle color */
             border-radius: 50%;
-            opacity: 0.3;
+            /* opacity: 0.3; */
         }
         .circle-green {
-            width: 100px;
-            height: 100px;
-            top: 30%;
-            left: 10%;
+            width: 350px;
+            height: 350px;
+            background-color: #4caf50;
+            top: 10%;
+            left: 5%;
         }
         .circle-white {
-            width: 80px;
-            height: 80px;
-            top: 40%;
+            width: 400px;
+            height: 400px;
+            background-color: #fff;
+            top: 30%;
             right: 15%;
         }
         .circle-green-2 {
-            width: 70px;
-            height: 70px;
-            top: 70%;
+            width: 300px;
+            height: 300px;
+            background-color: #4caf50;
+            top: 40%;
             right: 5%;
         }
         .circle-white-2 {
-            width: 120px;
-            height: 120px;
+            width: 250px;
+            height: 250px;
+            background-color: #fff;
             top: 60%;
-            left: 25%;
+            left: 20%;
         }
         .welcome-text {
             text-align: center;
-            color: #fff;
+            color: #000000;
             font-size: 24px;
             margin-top: 50px;
         }
@@ -78,8 +88,12 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="welcome-text">
-                    <h2>To-do websitemizga hush kelibsiz</h2>
-                    <p>Vazifalaringizni tizimlang va produktivlikni oshiring..</p>
+                    <img src="{% static 'to_do_list/media/Untitled.png' %}" alt="Logo" class="logo">
+                    <h1>Assalamu 'alaykum hurmatli foydalanuvchi😊</h1><br>
+                    <h2>Saytimizga Xush kelibsiz!
+                        Bu yerda ekanligingizdan xursandmiz.</h2><br>
+                    <h3>Vazifalaringizni tizimlang va produktivlikni oshiring.</h3>
+                    <p>Boshlash uchun ro'yxatdan o'ting yoki tizimga kiring. Qani ketdik>>></p>
                     <div class="text-center">
                         <a href="{% url 'registerFoydalanuvchi' %}" class="btn btn-signup btn-lg">Ro'yhatdan o'tish</a>
                         <a href="{% url 'readVazifa' %}" class="btn btn-signin btn-lg">Kirish</a>

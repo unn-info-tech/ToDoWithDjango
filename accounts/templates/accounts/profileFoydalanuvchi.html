@@ -22,13 +22,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'readVazifa' %}"><i class="fa fa-list-ul"></i> To-do</a>
+                        <a class="nav-link" href="{% url 'readVazifa' %}"><i class="fa fa-list-ul"></i> Vazifalar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/historyVazifa/"><i class="fa fa-tasks"></i> Progress</a>
+                        <a class="nav-link" href="/historyVazifa/"><i class="fa fa-tasks"></i> Tarix</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/profileFoydalanuvchi/"><i class="fa fa-user"></i> Profile</a>
+                        <a class="nav-link" href="/profileFoydalanuvchi/"><i class="fa fa-user"></i> Mening sahifam</a>
                     </li>
                 </ul>
             </div>
@@ -41,13 +41,13 @@
     <div class="info">
         <div class="field username">
             <h5>Ism: {{ request.user.username }}</h5>
-            <a href="{% url 'changeUsername' %}"><i class="fa fa-edit" style="font-size: 30px;"></i></a>
+            <a href="{% url 'changeUsername' %}"><i class="fa fa-edit" style="font-size: 25px;"></i></a>
         </div>
         {% block username%}
         {% endblock %}
         <div class="field email">
             <h5>Email: {{ request.user.email }}</h5>
-            <a href="{% url 'changeEmail' %}"><i class="fa fa-edit" style="font-size:30px"></i></a>
+            <a href="{% url 'changeEmail' %}"><i class="fa fa-edit" style="font-size:25px"></i></a>
         </div>  
         {% block email %}
         {% endblock %}  
@@ -59,7 +59,7 @@
         </div> -->
         <div class="field email">
             <h5>Parol: ********</h5>
-            <a href="{% url 'changeProfile' %}"><i class="fa fa-edit" style="font-size:30px"></i></a>
+            <a href="{% url 'changeProfile' %}"><i class="fa fa-edit" style="font-size:25px"></i></a>
         </div> 
         
         <div class="field logout">
