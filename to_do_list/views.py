@@ -123,6 +123,16 @@ def historyVazifa(request):
     return render(request, "to_do_list/historyVazifa.html", {"modelMe": modelMe})
 
 
+# delete History Date
+def historyDeleteDate(request, idMe):
+    objMe = get_object_or_404(DateBajarildiModel, id=idMe)
+    objMe.delete()
+    return redirect("historyVazifa")
+
+
+
+
+
 
 #==========================================================
 # Done and Undone

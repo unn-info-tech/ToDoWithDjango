@@ -36,13 +36,13 @@
 
     <div class="info">
         <div class="field username">
-            <h1><strong>{{ request.user.username }}</strong></h1>
+            <h5>Ism: {{ request.user.username }}</h5>
             <a href="{% url 'changeUsername' %}"><i class="fa fa-edit" style="font-size: 30px;"></i></a>
         </div>
         {% block username%}
         {% endblock %}
         <div class="field email">
-            <h3>{{ request.user.email }}</h3>
+            <h5>Email: {{ request.user.email }}</h5>
             <a href="{% url 'changeEmail' %}"><i class="fa fa-edit" style="font-size:30px"></i></a>
         </div>  
         {% block email %}
@@ -54,7 +54,7 @@
             </form>
         </div> -->
         <div class="field email">
-            <h3>Password: ********</h3>
+            <h5>Parol: ********</h5>
             <a href="{% url 'changeProfile' %}"><i class="fa fa-edit" style="font-size:30px"></i></a>
         </div> 
         
