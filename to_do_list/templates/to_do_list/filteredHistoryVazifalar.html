@@ -8,14 +8,14 @@
     </style>
 {% endblock %}
 {% block content %}
-    <div class="card" id="done_undone">
+    <div class="container justify-content-center card-body" id="done_undone">
         <div class="row">
             <div class="col done">
                 <form action="{% url 'bajarilganVazifalar' idMe %}" method="get" class="done">
                     <button type="submit" class="btn">Bajarilgan</button>
                 </form>
             </div>
-            <div class="col">
+            <div class="col undone">
                 <form action="{% url 'unBajarilganVazifalar' idMe %}" method="get" class="undone">
                     <button type="submit" class="btn">Bajarilmagan</button>
                 </form>

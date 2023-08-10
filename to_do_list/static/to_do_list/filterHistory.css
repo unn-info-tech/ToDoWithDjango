@@ -1,11 +1,18 @@
 #done_undone {
+    /* margin-left: 38%;
+    margin-right: 38%; */
     display: flex;
-    padding-right: 0%;
-    padding-left: auto;
+    /* padding-right: 0%;
+    padding-left: auto; */
     /* border: 1px solid red; */
     background-color: #f0f0f0;
     box-shadow: none;
 }
+
+
+/* *{
+    border: 1px solid red;
+} */
 
 .done{
     display: flex;
@@ -13,42 +20,26 @@
     align-items: end;
 }
 .col{
+    display: flexbox;
     padding-right: 0px;
     padding-left: 0px;
+}
+
+.row{
+    display: flex;
 }
 
 .undone{
     display: flexbox;
 }
+
 .done button, .undone button{
     height: 50px;
     font-size:25px;
     margin: 5px;
+    margin-bottom: -15px;
+    border: 1px solid green;
 }
-    /* *{
-        border: 1px solid red;
-    } */
-
-/* .done_undone a {
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 20px;
-    font-size: 18px;
-    transition: background-color 0.3s; /* Add a transition effect for smoother hover */
-
-
-/* .done_undone a:first-child {
-    background-color: #4caf50; 
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-}
-
-.done_undone a:last-child {
-    background-color: #fafbfa; 
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    color: #4caf50;
-} */
 
 .done_undone a:hover {
     background-color: #87a988; /* Darker background when hovering */
@@ -123,6 +114,7 @@ body {
     background-color: #fff; /* White card background color */
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
+
 .card-header {
     background-color: #4caf50; /* Green card header background color */
     color: #fff;
