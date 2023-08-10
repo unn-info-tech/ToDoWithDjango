@@ -1,30 +1,54 @@
-.done_undone {
+#done_undone {
     display: flex;
-    justify-content: center;
-    align-items: flex-end; /* Align items to the bottom of the container */
-    margin-top: 10px; /* Adjust the margin as needed */
+    padding-right: 0%;
+    padding-left: auto;
+    /* border: 1px solid red; */
+    background-color: #f0f0f0;
+    box-shadow: none;
 }
 
-.done_undone a {
+.done{
+    display: flex;
+    justify-content:end;
+    align-items: end;
+}
+.col{
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.undone{
+    display: flexbox;
+}
+.done button, .undone button{
+    height: 50px;
+    font-size:25px;
+    margin: 5px;
+}
+    /* *{
+        border: 1px solid red;
+    } */
+
+/* .done_undone a {
     color: #fff;
     text-decoration: none;
     padding: 10px 20px;
     font-size: 18px;
     transition: background-color 0.3s; /* Add a transition effect for smoother hover */
-}
 
-.done_undone a:first-child {
-    background-color: #4caf50; /* Green background for "Done" link */
+
+/* .done_undone a:first-child {
+    background-color: #4caf50; 
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
 }
 
 .done_undone a:last-child {
-    background-color: #fafbfa; /* White background for "Undone" link */
+    background-color: #fafbfa; 
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     color: #4caf50;
-}
+} */
 
 .done_undone a:hover {
     background-color: #87a988; /* Darker background when hovering */
@@ -197,6 +221,11 @@ input[type="checkbox"]:checked{
     display: block;
     margin-right: 5px;
 }
+
+.btn.active{
+    background-color: #466d48;
+}
+
 
 /* Darker background on mouse-over */
 .btn:hover {

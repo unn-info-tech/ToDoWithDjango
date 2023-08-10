@@ -27,28 +27,34 @@
     </div>
 
    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding-top: 0px; padding-bottom: 0px; height: 80px;">
-        <div class="container" style="margin-top: 0px; margin-bottom: 0px;">
+   <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
             <a class="navbar-brand" href="#">
                 {% load static %}
-                <span class="logo-icon"><img src="{% static 'to_do_list/media/Untitled.png'%}" class="image" style="height: 70px; width: 100px;"></span>
-                
+                <span class="logo-icon"><img src="{% static 'to_do_list/media/Untitled.png' %}" class="image" style="height: 70px; width: 100px;"></span>
             </a>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'readVazifa' %}"><i class="fa fa-list-ul"></i> To-do</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/historyVazifa/"><i class="fa fa-tasks"></i> Progress</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/profileFoydalanuvchi/"><i class="fa fa-user"></i> Profile</a>
-                </li>
-            </ul>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'readVazifa' %}"><i class="fa fa-list-ul"></i> To-do</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/historyVazifa/"><i class="fa fa-tasks"></i> Progress</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/profileFoydalanuvchi/"><i class="fa fa-user"></i> Profile</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
+
     {% block content %}
     {% endblock %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 {% block script %}
