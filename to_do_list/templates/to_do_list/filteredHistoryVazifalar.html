@@ -3,11 +3,24 @@
 {% block head %}
     {% load static %}
     <link rel="stylesheet" href="{% static 'to_do_list/filterHistory.css' %}">
+    <style>
+        
+    </style>
 {% endblock %}
 {% block content %}
-    <div class="done_undone">
-        <a href="{% url 'bajarilganVazifalar' idMe %}">Bajarilgan </a>
-        <a href="{% url 'unBajarilganVazifalar' idMe %}">Bajarilmagan </a>
+    <div class="container justify-content-center card-body" id="done_undone">
+        <div class="row">
+            <div class="col done">
+                <form action="{% url 'bajarilganVazifalar' idMe %}" method="get" class="done">
+                    <button type="submit" class="btn">Bajarilgan</button>
+                </form>
+            </div>
+            <div class="col undone">
+                <form action="{% url 'unBajarilganVazifalar' idMe %}" method="get" class="undone">
+                    <button type="submit" class="btn">Bajarilmagan</button>
+                </form>
+            </div>
+        </div>
     </div>
     <div class="container">
         <div class="row justify-content-center">
@@ -91,4 +104,17 @@
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const buttons = document.querySelectorAll(".btn");
+    
+            buttons.forEach(button => {
+                button.addEventListener("click", function () {
+                    buttons.forEach(btn => btn.classList.remove("active"));
+                    this.classList.add("active");
+                });
+            });
+        });
+    </script>
+
 {% endblock %}

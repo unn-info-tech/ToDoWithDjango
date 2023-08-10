@@ -1,29 +1,44 @@
-.done_undone {
+#done_undone {
+    /* margin-left: 38%;
+    margin-right: 38%; */
     display: flex;
-    justify-content: center;
-    align-items: flex-end; /* Align items to the bottom of the container */
-    margin-top: 10px; /* Adjust the margin as needed */
+    /* padding-right: 0%;
+    padding-left: auto; */
+    /* border: 1px solid red; */
+    background-color: #f0f0f0;
+    box-shadow: none;
 }
 
-.done_undone a {
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 20px;
-    font-size: 18px;
-    transition: background-color 0.3s; /* Add a transition effect for smoother hover */
+
+/* *{
+    border: 1px solid red;
+} */
+
+.done{
+    display: flex;
+    justify-content:end;
+    align-items: end;
+}
+.col{
+    display: flexbox;
+    padding-right: 0px;
+    padding-left: 0px;
 }
 
-.done_undone a:first-child {
-    background-color: #4caf50; /* Green background for "Done" link */
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+.row{
+    display: flex;
 }
 
-.done_undone a:last-child {
-    background-color: #fafbfa; /* White background for "Undone" link */
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    color: #4caf50;
+.undone{
+    display: flexbox;
+}
+
+.done button, .undone button{
+    height: 50px;
+    font-size:25px;
+    margin: 5px;
+    margin-bottom: -15px;
+    border: 1px solid green;
 }
 
 .done_undone a:hover {
@@ -99,6 +114,7 @@ body {
     background-color: #fff; /* White card background color */
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
+
 .card-header {
     background-color: #4caf50; /* Green card header background color */
     color: #fff;
@@ -197,6 +213,11 @@ input[type="checkbox"]:checked{
     display: block;
     margin-right: 5px;
 }
+
+.btn.active{
+    background-color: #466d48;
+}
+
 
 /* Darker background on mouse-over */
 .btn:hover {

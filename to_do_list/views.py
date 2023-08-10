@@ -136,7 +136,7 @@ def historyDeleteDate(request, idMe):
 
 #==========================================================
 # Done and Undone
-
+@login_required
 def bajarilganVazifalar(request, idMe):
     suralgan_date = get_object_or_404(DateBajarildiModel, id=idMe)
     bajarilgan = VazifaModel.objects.filter(
