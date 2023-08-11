@@ -15,7 +15,15 @@
                 </div>
                 <div class="card-body">
                         {% for i in modelMe %}
-                            <a href="{% url 'bajarilganVazifalar' i.id %}" style="text-decoration: none; color:#4caf50;"><div class="item" style="margin-bottom:10px; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center; font-size: larger;"><strong>{{ i.date }}</strong></div></a>
+                            <a href="{% url 'bajarilganVazifalar' i.id %}" style="text-decoration: none; color:#4caf50;">
+                                <div class="item" style="margin-bottom:10px; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center; font-size: larger;">
+                                    <strong>{{ i.date }}</strong>
+                                    <a href="{% url 'historyDeleteDate' i.id %}" class="btn btn-sm btn-danger" style="align-items: end;">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </div>
+
+                            </a>
                         {% endfor %}
                 </div>
             </div>

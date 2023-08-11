@@ -25,7 +25,7 @@ def readVazifa(request): #list of activities
     print(timezone.localdate().year)
     modelMe = VazifaModel.objects.filter(
         tugatish_muddati__gt=timezone.localtime().time(),
-        bajarilgan_date__date__gte=timezone.localdate(),
+        bajarilgan_date__date__gte=timezone.localdate().strftime('%Y-%m-%d'),
         foydalanuvchi=request.user,
         bajarildi=False).order_by('bajarilgan_date__date', 'boshlanish_vaqti')
     
@@ -34,14 +34,17 @@ def readVazifa(request): #list of activities
     dateMe = timezone.localdate()
     grouped_items = []
     for date, vazifalar in groupby(modelMe, key=lambda x: x.bajarilgan_date):
+        boo = f'{dateMe}' == f'{date}'
+        print(boo)
         grouped_items.append({
             'vazifa_kuni': date,
-            'vazifalar': sorted(vazifalar, key=lambda vazifa: vazifa.boshlanish_vaqti)
+            'vazifalar': sorted(vazifalar, key=lambda vazifa: vazifa.boshlanish_vaqti),
+            'dat': boo,
         })
 
     return render(request, "to_do_list/readVazifa.html", {"modelMe": grouped_items, 
                                                           'timeMe': timezone.localtime().time(),
-                                                          'dateMe': timezone.localdate(),
+                                                          'dateMe': timezone.localdate().strftime('%Y-%m-%d'),
                                                           })
 
 #=================================================================================

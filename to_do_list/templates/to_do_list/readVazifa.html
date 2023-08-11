@@ -10,6 +10,12 @@
     {% block content %}
     <div class="container">
         <div class="row justify-content-center">
+            <div class="card">
+                <form action="{% url 'createVazifa' %}" method="get">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-premary btn-block addd" value="+">
+                </form>
+            </div>
             {% for group in modelMe %}
                 <div class="card" style="
                 padding-bottom: 20px; padding-top: -30px;">
@@ -18,16 +24,19 @@
                         <h2>{{ group.vazifa_kuni }}</h2>
                     </div>
                     
-                    {% for vazifa in group.vazifalar %}
+                    
+                    {% for vazifa in group.vazifalar%}
                         <div class="card-body" style="margin-top: 10px;">
                             
                                 <div class="item">
+                                    {% if group.dat %}
                                         <div class="chec">
                                             <form action="{% url 'bajarildiVazifa' vazifa.id %}" method="post">
                                                 {% csrf_token %}
                                                 <input type="checkbox" name="check" onchange="this.form.submit()">
                                             </form>
                                         </div>
+                                    {% endif %}
 
                                     <div class="task-item">
                                         <h1><strong>{{ vazifa.sarlavha }}</strong></h1>
@@ -107,7 +116,6 @@
                                             </form>
                                         </div>
 
-                                        
                                     </div>
 
                                 </div>
@@ -115,12 +123,6 @@
                     {% endfor %}
                 </div>
             {%endfor%}
-            <div class="card">
-                <form action="{% url 'createVazifa' %}" method="get">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-primary btn-block">+</button>
-                </form>
-            </div>
         </div>
     </div>
     {% endblock %}

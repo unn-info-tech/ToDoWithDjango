@@ -5,6 +5,67 @@
     <link rel="stylesheet" href="{% static 'accounts/style.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="{% static 'to_do_list/media/Untitled.png' %}" type="image/icon type">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .profile-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .field {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .field h5 {
+            margin: 0;
+            padding: 0;
+        }
+
+        .edit-link {
+            text-decoration: none;
+            color: #3498db;
+            margin-left: 10px;
+        }
+
+        .edit-icon {
+            font-size: 20px;
+            color: #3498db;
+        }
+
+        .logout-btn {
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .delete-btn {
+            background-color: #ff6348;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
     {% block style%}
     {% endblock %}
 {% endblock %}
@@ -38,6 +99,7 @@
 
 {% block content %}
 
+<<<<<<< HEAD
     <div class="info">
         <div class="field username">
             <h5>Ism: {{ request.user.username }}</h5>
@@ -73,6 +135,47 @@
                 <button type="submit" class="delete">Sahifani o'chirish</button>
             </form>
         </div>
+=======
+    <div class="container">
+        <div class="profile-card">
+            <div class="field username">
+                <h5>Ism: {{ request.user.username }}</h5>
+                <a href="{% url 'changeUsername' %}" class="edit-link"><i class="fas fa-edit edit-icon"></i></a>
+            </div>
+            <!-- Username Block -->
+
+            {% block username%}
+            {% endblock %}
+
+            <div class="field email">
+                <h5>Email: {{ request.user.email }}</h5>
+                <a href="{% url 'changeEmail' %}" class="edit-link"><i class="fas fa-edit edit-icon"></i></a>
+            </div>
+            <!-- Email Block -->
+
+            {% block email %}
+            {% endblock %}
+
+            <div class="field password">
+                <h5>Parol: ********</h5>
+                <a href="{% url 'changeProfile' %}" class="edit-link"><i class="fas fa-edit edit-icon"></i></a>
+            </div>
+            <!-- Password Block -->
+
+            <div class="field logout">
+                <div class="red-zone">
+                    <form action="{% url 'logoutFoydalanuvchi' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="logout-btn">Sahifadan chiqish</button>
+                    </form>
+                    <form action="{% url 'deleteFoydalanuvchi' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="delete-btn">Sahifani o'chirish</button>
+                    </form>
+                </div>
+            </div>
+            <!-- Logout and Delete Buttons -->
+>>>>>>> b312d4aa7c333711ebabb0a5d37deb44e724c61a
         </div>
     </div>
 
