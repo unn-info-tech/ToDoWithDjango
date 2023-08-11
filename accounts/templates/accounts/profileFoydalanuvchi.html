@@ -99,43 +99,6 @@
 
 {% block content %}
 
-<<<<<<< HEAD
-    <div class="info">
-        <div class="field username">
-            <h5>Ism: {{ request.user.username }}</h5>
-            <a href="{% url 'changeUsername' %}"><i class="fa fa-edit" style="font-size: 25px;"></i></a>
-        </div>
-        {% block username%}
-        {% endblock %}
-        <div class="field email">
-            <h5>Email: {{ request.user.email }}</h5>
-            <a href="{% url 'changeEmail' %}"><i class="fa fa-edit" style="font-size:25px"></i></a>
-        </div>  
-        {% block email %}
-        {% endblock %}  
-        <!-- <div class="field passwordbtn">
-            <form action="{% url 'changeProfile' %}" method="get" class="passwordbtn">
-                {% csrf_token %}
-                <button type="submit" class="btn">Parolni yangilash</button>
-            </form>
-        </div> -->
-        <div class="field email">
-            <h5>Parol: ********</h5>
-            <a href="{% url 'changeProfile' %}"><i class="fa fa-edit" style="font-size:25px"></i></a>
-        </div> 
-        
-        <div class="field logout">
-        <div class="red_zone">
-            <form action="{% url 'logoutFoydalanuvchi' %}" method="post">
-                {% csrf_token %}
-                <button type="submit" class="logout">Sahifadan chiqish</button>
-            </form>
-            <form action="{% url 'deleteFoydalanuvchi' %}" method="post">
-                {% csrf_token %}
-                <button type="submit" class="delete">Sahifani o'chirish</button>
-            </form>
-        </div>
-=======
     <div class="container">
         <div class="profile-card">
             <div class="field username">
@@ -174,8 +137,6 @@
                     </form>
                 </div>
             </div>
-            <!-- Logout and Delete Buttons -->
->>>>>>> b312d4aa7c333711ebabb0a5d37deb44e724c61a
         </div>
     </div>
 
