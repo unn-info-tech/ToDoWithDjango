@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade-like Progress Tracker</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Trade-like Progress Tracker</h1>
+
+        <div class="row">
+            <div class="col-md-12">
+                <canvas id="progressChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var ctx = document.getElementById('progressChart').getContext('2d');
+        var progressData = [1, 2, 5, 7, 4, 6, 8, null, null, null]; // Replace with your progress values
+
+        var progressChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7', 'Day 8', 'Day 9', 'Day 10'],
+                datasets: [{
+                    label: 'Progress',
+                    data: progressData,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderWidth: 2,
+                    pointRadius: 0,
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        suggestedMax: 10, // Set the maximum y-axis value to 10
+                        ticks: {
+                            callback: function(value, index, values) {
+                                return value + ' soat'; // Add the string ' Hours' next to the value
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

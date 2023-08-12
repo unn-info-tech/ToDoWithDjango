@@ -10,6 +10,7 @@ urlpatterns=[
     
     path("historyVazifa/", views.historyVazifa, name='historyVazifa'),
     path("historyDeleteDate/<int:idMe>/", views.historyDeleteDate, name='historyDeleteDate'),
+    path("progress/", views.progress, name='progress'),
 
 
     path("bajarilganVazifalar/<int:idMe>/", views.bajarilganVazifalar, name='bajarilganVazifalar'),

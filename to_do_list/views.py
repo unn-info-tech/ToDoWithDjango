@@ -106,8 +106,8 @@ def deleteVazifa(request, idMe):
     return redirect("readVazifa")
 
 #===========================
-# History 
 
+# History request
 def historyVazifa(request):
     date_now = timezone.localdate()
     modelMe = DateBajarildiModel.objects.filter(
@@ -132,6 +132,67 @@ def historyDeleteDate(request, idMe):
     objMe.delete()
     return redirect("historyVazifa")
 
+# time difference without request
+def calculate_time_difference(boshlanish_vaqti, bajarilgan_vaqt):
+    boshlanish_vaqti = datetime.combine(timezone.localdate(), boshlanish_vaqti)
+    bajarilgan_vaqt = datetime.combine(timezone.localdate(), bajarilgan_vaqt)
+
+
+    time_difference = bajarilgan_vaqt - boshlanish_vaqti
+
+    total_hours = time_difference.total_seconds() // 3600  # Calculate total hours
+    total_minutes = (time_difference.total_seconds() % 3600) / 60  # Calculate remaining minutes
+
+    total_decimal = total_hours + (total_minutes / 60)  # Convert minutes to decimal part
+
+    return total_decimal
+
+# progress
+def progress(request):
+    date_now = timezone.localdate()
+    kunlar = DateBajarildiModel.objects.filter(
+        date__lte = date_now,
+        foydalanuvchi=request.user,
+    ) # historyVazifalar
+    last_10kun = date_now - timezone.timedelta(days=10)
+    # Delete older records for non-staff users
+    if not request.user.is_staff:
+        DateBajarildiModel.objects.filter(
+            date__lt=last_10kun,
+            foydalanuvchi=request.user
+        ).delete()
+
+    print(kunlar)
+    bajarilgan_by_date = {}
+    vazifalar = []
+    for record in kunlar:
+        suralgan_date = record
+        print(suralgan_date, "suralgan122")
+
+        vazifalar = VazifaModel.objects.filter(
+            bajarilgan_date=suralgan_date,
+            foydalanuvchi=request.user,
+            bajarildi=True
+        ).values()
+        print(vazifalar)
+        
+        converted_queryset = []
+        for object in vazifalar:
+            boshlanish_vaqti_str = object['boshlanish_vaqti'].strftime('%H:%M:%S')
+            bajarilgan_vaqt_str = object['bajarilgan_vaqt'].strftime('%H:%M:%S')
+            print("Boshlanish vaqti:", boshlanish_vaqti_str)
+            print("Bajarilgan vaqt:", bajarilgan_vaqt_str)
+
+            float = calculate_time_difference( boshlanish_vaqti_str, bajarilgan_vaqt_str)
+            print("float:",float)
+            converted_queryset.append(float)
+         
+
+        bajarilgan_by_date[suralgan_date] = sum(converted_queryset)
+        print(bajarilgan_by_date)
+    
+    return render(request, "to_do_list/progress.html")
+
 
 
 
@@ -146,7 +207,11 @@ def bajarilganVazifalar(request, idMe):
         bajarilgan_date=suralgan_date, 
         foydalanuvchi=request.user, 
         bajarildi=True).values()
-    return render(request, "to_do_list/filteredHistoryVazifalar.html", {"bajarilgan": bajarilgan, 'idMe': idMe, 'len_bajarilgan': len(bajarilgan)})
+    return render(request, "to_do_list/filteredHistoryVazifalar.html", {"bajarilgan": bajarilgan,
+                                                                        'idMe': idMe,
+                                                                        'len_bajarilgan': len(bajarilgan),
+                                                                        'suralgan_date': suralgan_date})
+                                                                        
     
 # __lte = Filter the to-do items where the due date is before or equal to the current datetime
 @login_required
@@ -175,6 +240,10 @@ def bajarildiVazifa(request, idMe):
 
 
 #===========================================================================================
+
+# Functions without request
+
+    
 
 
 
