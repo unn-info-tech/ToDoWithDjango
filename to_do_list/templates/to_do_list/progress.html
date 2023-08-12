@@ -1,6 +1,8 @@
 {% extends 'to_do_list/layout.html' %}
 {% block head %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    {% load static%}
+    <link rel="stylesheet" href="{% static 'to_do_list/read_style.css' %}">
     <!-- Include Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
@@ -49,11 +51,12 @@
     </style>
 {% endblock %}
 {% block content %}
+
     <div class="container">
         <h1></h1>
 
         <div class="row">
-            <div class="col-md-12" style="width: 100%;">
+            <div class="col-md-12">
                 <div class="chart-container">
                     <canvas id="progressChart"></canvas>
                 </div>

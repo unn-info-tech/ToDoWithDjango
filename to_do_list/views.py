@@ -94,7 +94,7 @@ def updateVazifa(request, idMe):
         formMe =  VazifaPostForm(request.POST, instance=objVazifa)
         if formMe.is_valid():
             formMe.save()
-            return redirect('detailVazifa', idMe=idMe)
+            return redirect('readVazifa')
                 
             
     else:
