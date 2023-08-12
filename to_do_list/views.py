@@ -5,6 +5,7 @@ from django.utils import timezone
 from datetime import date, datetime, timedelta
 from itertools import groupby
 from operator import itemgetter
+import json
 
 
 
@@ -41,6 +42,7 @@ def readVazifa(request): #list of activities
             'vazifalar': sorted(vazifalar, key=lambda vazifa: vazifa.boshlanish_vaqti),
             'dat': boo,
         })
+        
 
     return render(request, "to_do_list/readVazifa.html", {"modelMe": grouped_items, 
                                                           'timeMe': timezone.localtime().time(),
@@ -136,10 +138,8 @@ def historyDeleteDate(request, idMe):
 def calculate_time_difference(boshlanish_vaqti, bajarilgan_vaqt):
     boshlanish_vaqti = datetime.combine(timezone.localdate(), boshlanish_vaqti)
     bajarilgan_vaqt = datetime.combine(timezone.localdate(), bajarilgan_vaqt)
-
-
     time_difference = bajarilgan_vaqt - boshlanish_vaqti
-
+    print("TIME DIFFERENCE:",time_difference)
     total_hours = time_difference.total_seconds() // 3600  # Calculate total hours
     total_minutes = (time_difference.total_seconds() % 3600) / 60  # Calculate remaining minutes
 
@@ -178,20 +178,24 @@ def progress(request):
         
         converted_queryset = []
         for object in vazifalar:
-            boshlanish_vaqti_str = object['boshlanish_vaqti'].strftime('%H:%M:%S')
-            bajarilgan_vaqt_str = object['bajarilgan_vaqt'].strftime('%H:%M:%S')
+            print('bajarildi:',object['bajarildi'])
+            boshlanish_vaqti_str = object['boshlanish_vaqti']
+            bajarilgan_vaqt_str = object['bajarilgan_vaqt']
             print("Boshlanish vaqti:", boshlanish_vaqti_str)
             print("Bajarilgan vaqt:", bajarilgan_vaqt_str)
 
             float = calculate_time_difference( boshlanish_vaqti_str, bajarilgan_vaqt_str)
             print("float:",float)
             converted_queryset.append(float)
+            print(converted_queryset)
          
 
-        bajarilgan_by_date[suralgan_date] = sum(converted_queryset)
-        print(bajarilgan_by_date)
+        bajarilgan_by_date[suralgan_date.date.strftime('%Y-%m-%d')] = sum(converted_queryset)
+    print(bajarilgan_by_date)
+    data_json = json.dumps(bajarilgan_by_date)
+    print(data_json)
     
-    return render(request, "to_do_list/progress.html")
+    return render(request, "to_do_list/progress.html", {'data_json': data_json})
 
 
 
@@ -233,7 +237,7 @@ def bajarildiVazifa(request, idMe):
     objVazifa = get_object_or_404(VazifaModel, id=idMe)
     objVazifa.bajarildi = True
     objVazifa.bajarilgan_vaqt = timezone.localtime().time()
-    objVazifa.bajarilgan_date, created = DateBajarildiModel.objects.get_or_create(date=date.today(),
+    objVazifa.bajarilgan_date, created = DateBajarildiModel.objects.get_or_create(date=timezone.localdate(),
                                                                                   foydalanuvchi=request.user,)
     objVazifa.save()
     return redirect('readVazifa')    
