@@ -29,7 +29,8 @@
                         <div class="card-body" style="margin-top: 10px;">
                             
                                 <div class="item">
-                                    {% if group.dat %}
+                                    {% if group.dat and vazifa.boshlanish_vaqti <= timeMe%}
+                                    
                                         <div class="chec">
                                             <form action="{% url 'bajarildiVazifa' vazifa.id %}" method="post">
                                                 {% csrf_token %}

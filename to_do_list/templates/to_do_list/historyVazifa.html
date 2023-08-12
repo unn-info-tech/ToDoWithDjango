@@ -3,7 +3,28 @@
 {% block head %}
     {% load static %}
     <link rel="stylesheet" href="{% static 'to_do_list/read_style.css' %}">
-
+    <style>
+        /* *{border:1px solid red;} */
+        .dat{
+            display: flex;
+            padding-left:0px;
+            margin-left: auto;
+            margin-right:0px;
+            margin-bottom:30px;
+            
+        }
+        .item{
+            margin-left: 0px;
+            margin-right: 10px;
+            padding-left:37%;
+            padding-right:37%;
+        }
+        .delete-btn{
+            margin-right:0px;
+            margin-left:auto;
+            height: inherit;
+        }
+    </style>
 {% endblock %}
 {% block content %}
     
@@ -15,15 +36,18 @@
                 </div>
                 <div class="card-body">
                         {% for i in modelMe %}
-                            <a href="{% url 'bajarilganVazifalar' i.id %}" style="text-decoration: none; color:#4caf50;">
-                                <div class="item" style="margin-bottom:10px; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center; font-size: larger;">
+                        <div class="dat">
+                                <div class="item" style="margin-left: auto; margin-right: 0px; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center; font-size: larger;">
+                            <a href="{% url 'bajarilganVazifalar' i.id %}" style="margin-left: auto; margin-right: 0px; text-decoration: none; color:#4caf50;">
                                     <strong>{{ i.date }}</strong>
-                                    <a href="{% url 'historyDeleteDate' i.id %}" class="btn btn-sm btn-danger" style="align-items: end;">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-                                </div>
-
                             </a>
+                                </div>
+                            <div class="delete-btn" >
+                                <a href="{% url 'historyDeleteDate' i.id %}" class="btn btn-sm btn-danger" style="margin-right: 0px; margin-left:auto;">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            </div>
+                        </div>
                         {% endfor %}
                 </div>
             </div>

@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trade-like Progress Tracker</title>
-    <!-- Include Bootstrap CSS -->
+{% extends 'to_do_list/layout.html' %}
+{% block head %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Include Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -49,82 +44,16 @@
             background: linear-gradient(45deg, #f3f3f3, #ffffff);
         }
 
-        /* Style the card layout */
-        .card {
-            border: none;
-            border-radius: 10px;
-            background-color: #ffffff;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
-
-        .card-header {
-            background-color: #4caf50;
-            color: #fff;
-            text-align: center;
-            font-weight: bold;
-            border: none;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-            padding: 15px 0;
-        }
-
-        .card-body {
-            padding: 20px;
-        }
-
-        /* Style the task item */
-        .task-item {
-            border-bottom: 1px solid #f0f0f0;
-            padding: 15px 0;
-        }
-
-        .task-item h1 {
-            font-size: 24px;
-            margin-bottom: 5px;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #4caf50;
-        }
-
-        .task-item p {
-            font-size: 16px;
-            margin-bottom: 10px;
-            color: #333;
-        }
-
-        .task-item h5 {
-            color: #4caf50;
-            font-size: 14px;
-        }
-
-        /* Style the buttons */
-        .btn-primary,
-        .btn-del {
-            background-color: #4caf50;
-            border: none;
-            color: #fff;
-            padding: 5px 15px;
-            font-size: 14px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .btn-primary:hover,
-        .btn-del:hover {
-            background-color: #45a049;
-        }
-
         /* Add more custom styles as needed */
 
     </style>
-</head>
-<body>
+{% endblock %}
+{% block content %}
     <div class="container">
-        <h1>Trade-like Progress Tracker</h1>
+        <h1></h1>
 
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12" style="width: 100%;">
                 <div class="chart-container">
                     <canvas id="progressChart"></canvas>
                 </div>
@@ -169,5 +98,4 @@
             }
         });
     </script>
-</body>
-</html>
+{% endblock %}
