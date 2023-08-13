@@ -46,7 +46,7 @@ def loginFoydalanuvchi(request):
     else:
         formMe = AuthenticationForm()
     
-    return render(request, 'accounts/loginFoydalanuvchi.html', {'formMe': formMe})
+    return render(request, 'accounts/testLogin.html', {'formMe': formMe})
 
 
 def logoutFoydalanuvchi(request):
