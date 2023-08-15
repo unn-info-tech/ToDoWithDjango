@@ -235,6 +235,7 @@ label{
 /* Darker background on mouse-over */
 .btn:hover {
     background-color: #76c679;
+    color:white;
 }
 .del:hover{
     background-color: #f27f7f;
