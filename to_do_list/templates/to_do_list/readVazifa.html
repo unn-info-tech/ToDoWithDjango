@@ -42,10 +42,10 @@
                                     <div class="task-item">
                                         <h1><strong>{{ vazifa.sarlavha }}</strong></h1>
                                         <p>{{ vazifa.tuliq_malumot }}</p>
-                                        <h5>Start Time: {{ vazifa.boshlanish_vaqti|time:"H:i:s" }}</h5>
-                                        <h5>Due Date: {{ vazifa.tugatish_muddati|time:"H:i:s" }}</h5>
+                                        <h5>Boshlash vaqti: {{ vazifa.boshlanish_vaqti|time:"H:i:s" }}</h5>
+                                        <h5>Tugatish vaqti: {{ vazifa.tugatish_muddati|time:"H:i:s" }}</h5>
                                         {% if vazifa.boshlanish_vaqti <= timeMe %}
-                                            <h5>Time Remaining: <span id="countdown_{{ vazifa.id }}"></span></h5>
+                                            <h5>Qolgan vaqt: <span id="countdown_{{ vazifa.id }}"></span></h5>
 
                                             <script>
                                                 // Get the start time and deadline for the current to-do item

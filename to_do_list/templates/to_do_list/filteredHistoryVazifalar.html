@@ -48,9 +48,9 @@
                             <div class="task-item">
                                 <h1><strong>{{ i.sarlavha }}</strong></h1>
                                 <p>{{ i.tuliq_malumot }}</p>
-                                <h5>Start Time: {{ i.boshlanish_vaqti|time:"H:i:s" }}</h5>
-                                <h5>Due Date: {{ i.tugatish_muddati|time:"H:i:s" }}</h5>
-                                <h5>Bajarilgan_vaqt{{ i.bajarilgan_vaqt }}</h5>
+                                <h5>Boshlash vaqti: {{ i.boshlanish_vaqti|time:"H:i:s" }}</h5>
+                                <h5>Tugatish vaqti: {{ i.tugatish_muddati|time:"H:i:s" }}</h5><br>
+                                <h5>Tugatilgan vaqt: {{ i.bajarilgan_vaqt|time:"H:i:s" }}</h5>
                                 
                                 <div class="edit_del">
                                     <form action="{% url 'updateVazifa' i.id %}">
@@ -79,8 +79,8 @@
                             <div class="task-item">
                                 <h1><strong>{{ i.sarlavha }}</strong></h1>
                                 <p>{{ i.tuliq_malumot }}</p>
-                                <h5>Start Time: {{ i.boshlanish_vaqti|time:"H:i:s" }}</h5>
-                                <h5>Due Date: {{ i.tugatish_muddati|time:"H:i:s" }}</h5>
+                                <h5>Boshlash vaqti: {{ i.boshlanish_vaqti|time:"H:i:s" }}</h5>
+                                <h5>Tugatish vaqti: {{ i.tugatish_muddati|time:"H:i:s" }}</h5>
                                 
                                 <div class="edit_del">
                                     <form action="{% url 'updateVazifa' i.id %}">

@@ -11,14 +11,15 @@
     <style>
         .logo {
             display: block;
-            margin: 0 auto 30px; /* Centered with a bottom margin */
-            max-width: 30%; /* Make sure the logo doesn't exceed its container's width */
+            margin: 0 auto 50px;
+            max-width: 50%;
         }
 
         body {
-            background-color: #f0f0f0; /* Green background color */
+            background-color: #f0f0f0;
             padding: 20px;
         }
+
         .cool-background {
             position: absolute; 
             top: 0;
@@ -27,11 +28,12 @@
             height: 100%;
             z-index: -1;
         }
+
         .circle {
             position: absolute;
             border-radius: 50%;
-            /* opacity: 0.3; */
         }
+
         .circle-green {
             width: 350px;
             height: 350px;
@@ -39,6 +41,7 @@
             top: 10%;
             left: 5%;
         }
+
         .circle-white {
             width: 400px;
             height: 400px;
@@ -46,6 +49,7 @@
             top: 30%;
             right: 15%;
         }
+
         .circle-green-2 {
             width: 300px;
             height: 300px;
@@ -53,6 +57,7 @@
             top: 40%;
             right: 5%;
         }
+
         .circle-white-2 {
             width: 250px;
             height: 250px;
@@ -60,52 +65,75 @@
             top: 60%;
             left: 20%;
         }
+
         .welcome-text {
             text-align: center;
-            color: #000000;
+            color: #595555;
             font-size: 24px;
-            margin-top: 50px;
+            margin-top: 30px;
         }
+
         .btn-signup {
-            background-color: #4caf50; /* Green button color */
+            background-color: #4caf50;
             border: none;
+            transition: background-color 0.3s ease;
         }
-        .btn-signin {
-            background-color: #fff; /* White button color */
-            color: #4caf50; /* Green text color */
-            border: 2px solid #4caf50; /* Green border */
+
+        .btn-signup:hover {
+            background-color: #45a049;
         }
+
         .logoname {
-            background-color: #fff; /* White button color */
-            color: #4caf50; /* Green text color */
-            border: 2px solid #4caf50; /* Green border */
+            color: #4caf50;
+            font-weight: bold;
+        }
+
+        .logo-container {
+            text-align: center;
+        }
+
+        .logoname h1 {
+            margin-top: -50px;
+            font-weight: bold;
+        }
+
+        /* Animations */
+        .animated-circle {
+            animation: moveCircle 6s infinite alternate ease-in-out;
+        }
+
+        @keyframes moveCircle {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(10px, 10px);
+            }
         }
     </style>
 </head>
 <body>
     <div class="cool-background">
-        <div class="circle circle-green"></div>
-        <div class="circle circle-white"></div>
-        <div class="circle circle-green-2"></div>
-        <div class="circle circle-white-2"></div>
+        <div class="circle circle-green animated-circle"></div>
+        <div class="circle circle-white animated-circle"></div>
+        <div class="circle circle-green-2 animated-circle"></div>
+        <div class="circle circle-white-2 animated-circle"></div>
     </div>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="welcome-text">
-                    <img src="{% static 'to_do_list/media/Untitled.png' %}" alt="Logo" class="logo">
+                    <div class="logo-container">
+                        <img src="{% static 'to_do_list/media/Untitled.png' %}" alt="Logo" class="logo">
                         <div class="logoname">
-                            <h1><strong><strong>Wasat Wird</strong></strong></h1>
+                            <h1><strong>Wasat Wird</strong></h1><br><br>
                         </div>
-                    
-                    <h1>Assalamu 'alaykum hurmatli foydalanuvchi😊</h1><br>
-                    <h2>Saytimizga Xush kelibsiz!
-                        Bu yerda ekanligingizdan xursandmiz.</h2><br>
-                    <h3>Vazifalaringizni tizimlang va produktivlikni oshiring.</h3>
-                    <p>Boshlash uchun ro'yxatdan o'ting yoki tizimga kiring. Qani ketdik>>></p>
+                    </div>
+                    <h1>Assalamu 'alaykum</h1>
+                    <h2>Websahifamizga xush kelibsiz!</h2>
+                    <p>Vazifalaringizni tizimlang va produktivlikni oshiring</p><br><br>
                     <div class="text-center">
-                        <a href="{% url 'registerFoydalanuvchi' %}" class="btn btn-signup btn-lg">Ro'yhatdan o'tish</a>
-                        <a href="{% url 'readVazifa' %}" class="btn btn-signin btn-lg">Kirish</a>
+                        <a href="{% url 'registerFoydalanuvchi' %}" class="btn btn-signup btn-lg ", style="color: #ffffff;">Boshlash</a>
                     </div>
                 </div>
             </div>
@@ -117,4 +145,3 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
- <!--ttttttttttttttt-->>

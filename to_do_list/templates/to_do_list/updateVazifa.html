@@ -1,6 +1,6 @@
 {% extends 'to_do_list/layout.html' %}
 {% load django_bootstrap5 %}
-{% block title %}Vazifani Uzgartirish {%endblock%}
+{% block title %}Vazifani O'zgartirish {%endblock%}
 {% load static %}
 {% block head %} 
     <link rel="stylesheet" href="{% static 'to_do_list/read_style.css' %}">
@@ -20,7 +20,7 @@
             <!-- Create To-Do Form -->
             <div class="card">
                 <div class="card-header">
-                    <h2>Vazifani uzgartirish<h2>
+                    <h2>Vazifaga o'zgartirish kiritish<h2>
                 </div>
                 <div class="card-body">
                     <form method="post" action="." class="form">
@@ -72,7 +72,7 @@
                         <!-- </div> -->
                             
                         
-                        <button type="submit" class="btn btn-block"><strong>Uzgartirish</strong></button>
+                        <button type="submit" class="btn btn-block"><strong>O'zgartirish</strong></button>
                     </form>
                 </div>
             </div>
