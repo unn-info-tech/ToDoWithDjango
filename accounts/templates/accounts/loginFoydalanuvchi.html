@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{% static 'accounts/style.css' %}">
     <style>
         body {
-            background-color: #81c784; /* Green background color */
+            background-color: #f0f0f0;
             padding: 20px;
         }
         .cool-background {
@@ -25,33 +25,35 @@
         }
         .circle {
             position: absolute;
-            background-color: #fff; /* White circle color */
             border-radius: 50%;
-            opacity: 0.3;
         }
         .circle-green {
-            width: 100px;
-            height: 100px;
-            top: 30%;
-            left: 10%;
+            width: 350px;
+            height: 350px;
+            background-color: #4caf50;
+            top: 10%;
+            left: 5%;
         }
         .circle-white {
-            width: 80px;
-            height: 80px;
-            top: 40%;
+            width: 400px;
+            height: 400px;
+            background-color: #fff;
+            top: 30%;
             right: 15%;
         }
         .circle-green-2 {
-            width: 70px;
-            height: 70px;
-            top: 70%;
+            width: 300px;
+            height: 300px;
+            background-color: #4caf50;
+            top: 40%;
             right: 5%;
         }
         .circle-white-2 {
-            width: 120px;
-            height: 120px;
+            width: 250px;
+            height: 250px;
+            background-color: #fff;
             top: 60%;
-            left: 25%;
+            left: 20%;
         }
         .card {
             max-width: 400px;
@@ -100,7 +102,7 @@
         <div class="row justify-content-center">
             <div class="card">
                 <div class="card-header">
-                    <h2>Kirish Formasi</h2>
+                    <h2>Kirish</h2>
                 </div>
                 <div class="card-body">
                     <div>
@@ -119,7 +121,7 @@
                         </form>
                     </div>
                     <div class="asking">
-                        <a href="{% url 'registerFoydalanuvchi' %}"><p>Bu yerda yangimisiz?</p></a>
+                        <p>Bu erda yangimisiz? <a href="{% url 'registerFoydalanuvchi' %}">Ro'yhatdan o'tish</a></p>
                     </div>
                 </div>
             </div>
