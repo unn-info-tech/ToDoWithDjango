@@ -1,14 +1,10 @@
 {% extends "to_do_list/base.html" %}
 {% block contentme %}
 
-<form method="post">
-    {% csrf_token %}
-    
-    {{ formMe.as_p }}
 
-    
-    <button type="submit">Submit</button>
-</form>
+{% for i in modelMe %}
+    <h1>{{ i}}</h1>
+{%endfor%}
 
 
 

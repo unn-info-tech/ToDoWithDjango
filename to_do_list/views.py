@@ -6,6 +6,7 @@ from datetime import date, datetime, timedelta
 from itertools import groupby
 from operator import itemgetter
 import json
+from django.db.models import Q
 
 
 
@@ -23,27 +24,45 @@ from .forms import VazifaPostForm
 @login_required
 def readVazifa(request): #list of activities
     # __gt = Filter the to-do items where the due date is greater than the current datetime
-    print(timezone.localdate().year)
-    modelMe = VazifaModel.objects.filter(
-        tugatish_muddati__gt=timezone.localtime().time(),
-        bajarilgan_date__date__gte=timezone.localdate().strftime('%Y-%m-%d'),
-        foydalanuvchi=request.user,
-        bajarildi=False).order_by('bajarilgan_date__date', 'boshlanish_vaqti')
-    
+    current_time = timezone.localtime().time()
+    current_date = timezone.localdate().strftime('%Y-%m-%d')
 
+    filter1 = Q(
+        bajarilgan_date__date__gt=current_date,
+        foydalanuvchi=request.user,
+        bajarildi=False)
+    
+    
+    # __gt = Filter the to-do items where the due date is greater than the current datetime
+    filter2 = Q(
+        tugatish_muddati__gt=current_time,
+        bajarilgan_date__date=current_date,
+        foydalanuvchi=request.user,
+        bajarildi=False)
+    
+    merged_filter = filter1 | filter2
+
+    modelMe = VazifaModel.objects.filter(merged_filter).order_by('bajarilgan_date__date', 'boshlanish_vaqti')
+    
+    
+    current_time = timezone.localtime().time()
+    current_date = timezone.localdate().strftime('%Y-%m-%d')
+    for index, vazifa in enumerate(modelMe[:]):
+        if vazifa.tugatish_muddati <= current_time and vazifa.bajarilgan_date.date.strftime('%Y-%m-%d') == current_date:
+            del modelMe[index]
+    
+    print(modelMe)
     # Create a list to store the grouped to-do items and date headings
     dateMe = timezone.localdate()
     grouped_items = []
     for date, vazifalar in groupby(modelMe, key=lambda x: x.bajarilgan_date):
         boo = f'{dateMe}' == f'{date}'
-        print(boo)
         grouped_items.append({
             'vazifa_kuni': date,
             'vazifalar': sorted(vazifalar, key=lambda vazifa: vazifa.boshlanish_vaqti),
             'dat': boo,
         })
         
-
     return render(request, "to_do_list/readVazifa.html", {"modelMe": grouped_items, 
                                                           'timeMe': timezone.localtime().time(),
                                                           'dateMe': timezone.localdate().strftime('%Y-%m-%d'),
