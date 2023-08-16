@@ -45,7 +45,7 @@
 
                                         <h5>Boshlash vaqti: {{ vazifa.boshlanish_vaqti|time:"H:i:s" }}</h5>
                                         <h5>Tugatish vaqti: {{ vazifa.tugatish_muddati|time:"H:i:s" }}</h5>
-                                        {% if vazifa.boshlanish_vaqti <= timeMe %}
+                                        {% if group.dat and vazifa.boshlanish_vaqti <= timeMe%}
                                             <h5>Qolgan vaqt: <span id="countdown_{{ vazifa.id }}"></span></h5>
 
                                             <script>
