@@ -12,12 +12,12 @@
         <div class="row">
             <div class="col done">
                 <form action="{% url 'bajarilganVazifalar' idMe %}" method="get" class="done">
-                    <button type="submit" class="btn">Bajarilgan</button>
+                    <button type="submit" class="btn" style="color: aliceblue;">Bajarilgan</button>
                 </form>
             </div>
             <div class="col undone">
                 <form action="{% url 'unBajarilganVazifalar' idMe %}" method="get" class="undone">
-                    <button type="submit" class="btn">Bajarilmagan</button>
+                    <button type="submit" class="btn" style="color: azure;">Bajarilmagan</button>
                 </form>
             </div>
         </div>
@@ -27,12 +27,12 @@
             <div class="card">
                 {% if bajarilgan %}
                 <div class="card-header">
-                    <h2><strong>Bajarilgan Vazifalar ({{len_bajarilgan}})</strong></h2>
+                    <h2><strong>Bajarilgan vazifalar ({{len_bajarilgan}})</strong></h2>
                 </div>
                 {% endif %}
                 {% if unBajarilgan %}
                 <div class="card-header">
-                    <h2>Bajarilgmagan Vazifalar ({{len_unBajarilgan}})</h2>
+                    <h2>Bajarilgmagan vazifalar ({{len_unBajarilgan}})</h2>
                 </div>
                 {% endif %}
                 <div class="card-body">
@@ -48,18 +48,18 @@
                             <div class="task-item">
                                 <h1><strong>{{ i.sarlavha }}</strong></h1>
                                 <p>{{ i.tuliq_malumot }}</p>
-                                <h5>Start Time: {{ i.boshlanish_vaqti|time:"H:i:s" }}</h5>
-                                <h5>Due Date: {{ i.tugatish_muddati|time:"H:i:s" }}</h5>
-                                <h5>Bajarilgan_vaqt{{ i.bajarilgan_vaqt }}</h5>
+                                <h5>Boshlash vaqti: {{ i.boshlanish_vaqti|time:"H:i:s" }}</h5>
+                                <h5>Tugatish vaqti: {{ i.tugatish_muddati|time:"H:i:s" }}</h5><br>
+                                <h5>Tugatilgan vaqt: {{ i.bajarilgan_vaqt|time:"H:i:s" }}</h5>
                                 
                                 <div class="edit_del">
                                     <form action="{% url 'updateVazifa' i.id %}">
                                         {% csrf_token %}
-                                        <button class="btn"><i class="fa fa-edit"></i></button>
+                                        <button class="btn"><i class="fa fa-edit" style="color: aliceblue;"></i></button>
                                     </form>
                                     <form action="{% url 'deleteVazifa' i.id %}" method="post">
                                         {% csrf_token %}
-                                        <button type="submit" class="btn del"><i class="fa fa-trash"></i></button>
+                                        <button type="submit" class="btn del"><i class="fa fa-trash" style="color: aliceblue;"></i></button>
                                     </form>
                                 </div>
 
@@ -79,8 +79,8 @@
                             <div class="task-item">
                                 <h1><strong>{{ i.sarlavha }}</strong></h1>
                                 <p>{{ i.tuliq_malumot }}</p>
-                                <h5>Start Time: {{ i.boshlanish_vaqti|time:"H:i:s" }}</h5>
-                                <h5>Due Date: {{ i.tugatish_muddati|time:"H:i:s" }}</h5>
+                                <h5>Boshlash vaqti: {{ i.boshlanish_vaqti|time:"H:i:s" }}</h5>
+                                <h5>Tugatish vaqti: {{ i.tugatish_muddati|time:"H:i:s" }}</h5>
                                 
                                 <div class="edit_del">
                                     <form action="{% url 'updateVazifa' i.id %}">

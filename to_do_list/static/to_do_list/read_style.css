@@ -235,6 +235,7 @@ label{
 /* Darker background on mouse-over */
 .btn:hover {
     background-color: #76c679;
+    color:white;
 }
 .del:hover{
     background-color: #f27f7f;
@@ -301,4 +302,21 @@ select {
     border: 2px solid rgb(221, 221, 221);
     border-radius: 10px; 
     padding: 0px;
+}
+-----------------------------------------
+
+/* Darker background on mouse-over */
+.btn:hover {
+    background-color: #64b563; /* Change to a different color you like */
+    color: white; /* Change text color to white */
+}
+.del:hover {
+    background-color: #f27f7f; /* Change to a different color you like */
+}
+.add {
+    border-top: 2px solid rgb(211, 211, 211);
+    padding-left: 10%;
+    padding-right: 10%;
+    background-color: #76c679;
+    font-weight: 90;
 }

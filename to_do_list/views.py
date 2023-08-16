@@ -143,8 +143,11 @@ def historyVazifa(request):
             date__lt=last_10kun,
             foydalanuvchi=request.user
         ).delete()
-
-    return render(request, "to_do_list/historyVazifa.html", {"modelMe": modelMe})
+    dat = []
+    for item in modelMe:
+        item['date'] = item['date'].strftime("%Y-%m-%d")
+        dat.append(item)
+    return render(request, "to_do_list/historyVazifa.html", {"modelMe": dat})
 
 
 # delete History Date
