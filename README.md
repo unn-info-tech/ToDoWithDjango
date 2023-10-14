@@ -1,4 +1,4 @@
-# first_project(the project is deployed in pythonanywhere.com[https://tajmaxpro.pythonanywhere.com/])
+# first_project(the project is deployed in (pythonanywhere.com)[https://tajmaxpro.pythonanywhere.com/])
 ## Language - English
 # Task Management System
 
