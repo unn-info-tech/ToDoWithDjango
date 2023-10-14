@@ -1,4 +1,4 @@
-# first_project
+# first_project(the project is deployed in pythonanywhere.com - [https://tajmaxpro.pythonanywhere.com/])
 ## Language - English
 # Task Management System
 
@@ -73,7 +73,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 For any questions or inquiries, please contact me at [unn.info.tech.gmail.com]
 
 
-# first_prjoject
+# first_prjoject(проект развернут на pythonanywhere.com — [https://tajmaxpro.pythonanywhere.com/])
 ## Language - Russian
 # Система управления задачами
 
