@@ -27,7 +27,7 @@ This Task Management System, enables users to efficiently create, update, and ma
 - Experienced usage of Django ORM for database management.
 
 ## Access the Deployed Project
-Access the project's functionalities seamlessly using [link](https://tajmaxpro.pythonanywhere.com/))
+Access the project's functionalities seamlessly using [link](https://tajmaxpro.pythonanywhere.com/)
 
 ### Usage
 
@@ -83,15 +83,6 @@ Before running the project, ensure you have the following installed:
     ```
 
 7. Open your web browser and go to http://localhost:8000/ to access the Task Management System.
-
-
-  
-## Features
-
-- User authentication and registration
-- CRUD functionalities for tasks
-- Task completion marking and separate view for completed tasks
-- Responsive and stylish UI design
 
 
 ## Contact
