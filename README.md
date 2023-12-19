@@ -41,7 +41,8 @@ Access the project's functionalities seamlessly using [link](https://tajmaxpro.p
 - To view your progress, click on the "Progress" in the navigation bar.
 - To fetch your profile, click on the "Mening sahifam" in the navigation bar.
 
-## Getting Started
+## Try It on Your Local Machine:
+   If you prefer to test the project on your local machine, you can follow these steps:
 
 ### Prerequisites
 
