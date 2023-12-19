@@ -1,151 +1,99 @@
-# first_project(the project is deployed in [pythonanywhere.com](https://tajmaxpro.pythonanywhere.com/))
-## Language - English
 # Task Management System
+This Task Management System, built with Django, enables users to efficiently create, update, and manage their tasks seamlessly.
 
-This is a Task Management System built with Django, allowing users to create, update, and manage their tasks.
+## Features
+
+- User authentication and registration
+- CRUD functionalities for tasks
+- Task completion marking and separate view for completed tasks
+- History of tasks to view past activities
+- Progress tracking feature for task completion monitoring
+- Responsive and stylish UI design
+
+## Used Technologies:
+
+- Python
+- Django 4.2
+- HTML
+- CSS
+- JavaScript
+- Bootstrap
+
+## Learned and Gained Experience
+
+- Implemented user authentication and registration functionalities.
+- Created CRUD operations for tasks.
+- Learned to design and develop responsive user interfaces.
+- Experienced usage of Django ORM for database management.
+
+## Access the Deployed Project
+Access the project's functionalities seamlessly using [link](https://tajmaxpro.pythonanywhere.com/))
+
+### Usage
+
+- To register a new user, click on the "Ro'yhatdan o'tish" link in the navigation bar and fill in the required details.
+- To log in, click on the "Kirish" link in the navigation bar and enter your credentials.
+- Once logged in, you can create, update, and manage your tasks.
+- To create a new task, click on the "+" icon button and fill in the necessary details.
+- To update a task, click on the "edit" icon button next to the task you want to modify.
+- To mark a task as done, click on the checkbox next to the task. It will be moved to the "Tarix" section.
+- To view all tasks, click on the "Vazifalar" in the navigation bar.
+- To view your progress, click on the "Progress" in the navigation bar.
+- To fetch your profile, click on the "Mening sahifam" in the navigation bar.
 
 ## Getting Started
 
 ### Prerequisites
 
-Before running the project, make sure you have the following installed:
+Before running the project, ensure you have the following installed:
 
 - Python 
 - Django 4.2
-- Django Rest Framework (if needed)
 
 ### Installation
 
-## 1. Clone the repository to your local machine:
-**git clone <repository-url>**
+1. Clone the repository to your local machine:
+    ```bash
+    git clone <repository-url>
+    ```
 
-## 2. Navigate to the project directory:
-**cd task_management_system**
+2. Navigate to the project directory:
+    ```bash
+    cd path_to_root_directory
+    ```
 
-## 3. Install the required Python packages:
-**pip install -r requirements.txt**
+3. Install the required Python packages:
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-## 4. Run the migrations:
-**python manage.py migrate**
+4. Run the migrations:
+    ```bash
+    python manage.py migrate
+    ```
 
-## 5. Create a superuser to access the Django admin panel:
-**python manage.py createsuperuser**
+5. Create a superuser to access the Django admin panel:
+    ```bash
+    python manage.py createsuperuser
+    ```
 
-## 6. Start the development server:
-**python manage.py runserver**
+6. Start the development server:
+    ```bash
+    python manage.py runserver
+    ```
 
-##  7. Open your web browser and go to http://localhost:8000/ to access the Task Management System.
+7. Open your web browser and go to http://localhost:8000/ to access the Task Management System.
 
-### Register and Log In
 
-- To register a new user, click on the "Ro'yhatdan o'tish" link in the navigation bar and fill in the required details.
-- To log in, click on the "Kirish" link in the navigation bar and enter your credentials.
-- Once logged in, you can create, update, and manage your tasks.
-
-## Usage
-
-- To create a new task, click on the "+"(icon) button and fill in the required details.
-- To view all tasks, click on the "Vazifalar Ro'yxati" link in the navigation bar.
-- To update a task, click on the "edit"(icon) button next to the task you want to modify.
-- To mark a task as done, click on the checkbox next to the task. It will be moved to the "Bajarilgan Vazifalar" section.
-
+  
 ## Features
 
 - User authentication and registration
-- Create, read, update, and delete tasks
-- Mark tasks as done and view completed tasks separately
+- CRUD functionalities for tasks
+- Task completion marking and separate view for completed tasks
 - Responsive and stylish UI design
 
-## Contributing
-
-Contributions are welcome! If you find any issues or have suggestions for improvements, feel free to open an issue or submit a pull request.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- The UI design was inspired by [Bootstrap](https://getbootstrap.com/) and [Font Awesome](https://fontawesome.com/).
 
 ## Contact
 
-For any questions or inquiries, please contact me at [unn.info.tech.gmail.com]
-
-
-# first_prjoject(проект развернут на [pythonanywhere.com](https://tajmaxpro.pythonanywhere.com/))
-## Language - Russian
-# Система управления задачами
-
-Это система управления задачами, созданная с помощью Django, позволяющая пользователям создавать, обновлять и управлять своими задачами.
-
-## Начиная
-
-### Предпосылки
-
-Перед запуском проекта убедитесь, что у вас установлено следующее:
-
-- Питон
-- Джанго 4.2
-- Django Rest Framework (при необходимости)
-
-### Монтаж
-
-## 1. Клонируйте репозиторий на свой локальный компьютер:
-**git clone <ссылка-репозитория>**
-
-## 2. Перейдите в каталог проекта:
-**cd task_management_system**
-
-## 3. Установите необходимые пакеты Python:
-**pip install -r требования.txt**
-
-## 4. Запустите миграцию:
-**python manage.py migrate**
-
-## 5. Создайте суперпользователя для доступа к панели администратора Django:
-**python manage.py makemigrations**
-
-## 6. Запускаем сервер разработки:
-**python manage.py runserver**
-
-## 7. Откройте веб-браузер и перейдите по адресу http://localhost:8000/, чтобы получить доступ к системе управления задачами.
-
-- Чтобы зарегистрировать нового пользователя, нажмите на ссылку «Ro'yhatdan o'tish» на панели навигации и заполните необходимые данные.
-- Чтобы войти, нажмите на ссылку «Kirish» на панели навигации и введите свои учетные данные.
-- После входа в систему вы можете создавать, обновлять и управлять своими задачами.
-
-## Использование
-
-- Чтобы создать новую задачу, нажмите кнопку «+» (значок) и заполните необходимые данные.
-- Чтобы просмотреть все задания, нажмите на ссылку "Vazifalar Ro'yxati" на панели навигации.
-- Чтобы обновить задачу, нажмите кнопку «редактировать» (значок) рядом с задачей, которую вы хотите изменить.
-- Чтобы отметить задачу как выполненную, установите флажок рядом с задачей. Он будет перемещен в раздел «Bajarilgan Vazifalar».
-
-## Функции
-
-- Аутентификация пользователя и регистрация
-- Создание, чтение, обновление и удаление задач
-- Отмечайте задачи как выполненные и просматривайте завершенные задачи отдельно
-- Отзывчивый и стильный дизайн пользовательского интерфейса
-
-## Содействие
-
-Взносы приветствуются! Если вы обнаружите какие-либо проблемы или у вас есть предложения по улучшению, не стесняйтесь открывать проблему или отправлять запрос на включение.
-
-## Лицензия
-
-Этот проект находится под лицензией MIT License — подробности см. в файле [LICENSE](LICENSE).
-
-## Благодарности
-
-- Дизайн пользовательского интерфейса был вдохновлен [Bootstrap] (https://getbootstrap.com/) и [Font Awesome] (https://fontawesome.com/).
-
-## Контакт
-
-По любым вопросам или запросам, пожалуйста, свяжитесь со мной по адресу [unn.info.tech.gmail.com]
-
-
-
-
-
+For any questions or inquiries, please [contact me](https://t.me/nematulloh_uktamov).
