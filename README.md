@@ -7,7 +7,7 @@ This Task Management System, enables users to efficiently create, update, and ma
 - CRUD functionalities for tasks
 - Task completion marking and separate view for completed tasks
 - History of tasks to view past activities
-- Progress tracking feature for task completion monitoring
+- Progress tracking feature for tasks
 - Responsive and stylish UI design
 
 ## Used Technologies:
