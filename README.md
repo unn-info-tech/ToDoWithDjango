@@ -1,5 +1,5 @@
 # Task Management System - WasatWird
-This Task Management System, built with Django, enables users to efficiently create, update, and manage their tasks seamlessly.
+This Task Management System, enables users to efficiently create, update, and manage their tasks seamlessly.
 
 ## Features
 
