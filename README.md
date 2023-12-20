@@ -12,10 +12,13 @@ This Task Management System, enables users to efficiently create, update, and ma
 - Progress tracking feature for tasks
 - Responsive and stylish UI design
 
-## Used Technologies:
+## Used Technologies for Backend:
 
 - Python
 - Django 4.2
+  
+## Used Technologies for Frontend:
+
 - HTML
 - CSS
 - JavaScript
