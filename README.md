@@ -27,6 +27,8 @@ This Task Management System, enables users to efficiently create, update, and ma
 - Created CRUD operations for tasks.
 - Learned to design and develop responsive user interfaces.
 - Experienced usage of Django ORM for database management.
+- Collaborated in a team environment, enhancing communication and teamwork.
+- Utilized online tools for effective project management.
 
 ## Access the Deployed Project
 Access the project's functionalities seamlessly using [link](https://tajmaxpro.pythonanywhere.com/)
