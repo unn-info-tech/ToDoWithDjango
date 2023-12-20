@@ -21,7 +21,7 @@ This Task Management System, enables users to efficiently create, update, and ma
 - JavaScript
 - Bootstrap
 
-## ## Gained Experience and Skills
+## Gained Experience and Skills
 
 - Implemented user authentication and registration functionalities.
 - Created CRUD operations for tasks.
