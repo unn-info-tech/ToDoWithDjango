@@ -77,7 +77,7 @@ Before running the project, ensure you have the following installed:
 
 4. Run the migrations:
     ```bash
-    python manage.py migrate
+    python manage.py makemigrations/migrate
     ```
 
 5. Create a superuser to access the Django admin panel:
