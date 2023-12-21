@@ -1,4 +1,4 @@
-# Task Management System - WasatWird
+# Task Management System - Wasat Wird
 
 ## Introduction
 This Task Management System enables users to efficiently create, update, track progress, and manage their tasks seamlessly.
