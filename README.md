@@ -93,6 +93,3 @@ Before running the project, ensure you have the following installed:
 7. Open your web browser and go to http://localhost:8000/ to access the Task Management System.
 
 
-## Contact
-
-For any questions or inquiries, please [contact me](https://t.me/nematulloh_uktamov).
