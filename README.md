@@ -26,12 +26,12 @@ This Task Management System enables users to efficiently create, update, track p
 
 ## Gained Experience and Skills
 
-- Implemented user authentication and registration functionalities.
-- Created CRUD operations for tasks.
-- Learned to design and develop responsive user interfaces.
-- Experienced usage of Django ORM for database management.
-- Collaborated in a team environment, enhancing communication and teamwork.
-- Utilized online tools for effective project management.
+- Learned user authentication and registration functionalities.
+- Gained experience with CRUD operations for tasks.
+- Developed skills in designing and developing responsive user interfaces.
+- Utilized Django ORM for database management.
+- Collaborated in a team environment, honing communication and teamwork skills.
+- Leveraged online tools for effective project management.
 
 ## Access the Deployed Project
 Access the project's functionalities seamlessly using [link](https://tajmaxpro.pythonanywhere.com/)
